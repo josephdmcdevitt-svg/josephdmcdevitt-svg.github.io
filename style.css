@@ -255,6 +255,34 @@ body {
     align-items: start;
 }
 
+.about-photo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.headshot-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.headshot {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 3px solid var(--border-hover);
+    box-shadow: 0 8px 30px rgba(79, 125, 245, 0.15);
+    transition: var(--transition);
+}
+
+.headshot:hover {
+    border-color: var(--accent);
+    box-shadow: 0 12px 40px rgba(79, 125, 245, 0.25);
+    transform: scale(1.03);
+}
+
 .about-text p {
     color: var(--text-secondary);
     margin-bottom: 18px;
@@ -671,6 +699,11 @@ body {
     .about-grid {
         grid-template-columns: 1fr;
         gap: 40px;
+    }
+
+    .headshot {
+        width: 160px;
+        height: 160px;
     }
 
     .skills-grid {
