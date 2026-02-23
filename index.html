@@ -226,62 +226,165 @@
         <div class="container">
             <h2 class="section-title">Featured Project</h2>
             <div class="project-wrapper">
+
+                <!-- Header -->
                 <div class="project-header-block">
                     <span class="project-status">Active Development</span>
                     <h3 class="project-name">AI-Powered Private Equity Deal Sourcing Engine</h3>
-                    <p class="project-summary">An automated system that scans business-for-sale marketplaces, ingests listings, scores opportunities against institutional investment criteria, and surfaces the highest-priority deals in a live dashboard.</p>
+                    <p class="project-summary">An automated system that scans business-for-sale marketplaces, ingests listings, scores opportunities against investment criteria, and surfaces the highest-priority deals in a live dashboard.</p>
                 </div>
 
-                <div class="project-grid">
+                <!-- Problem & Objective side by side -->
+                <div class="project-two-col">
                     <div class="project-block">
                         <h4>Problem</h4>
-                        <p>Traditional private equity deal sourcing is manual, relationship-dependent, and slow. Analysts spend significant time scanning fragmented listing platforms, copying data into spreadsheets, and applying inconsistent evaluation criteria across opportunities. High-quality deals get buried in noise. By the time a team identifies and qualifies a promising target, the window to act has often narrowed or closed entirely.</p>
+                        <p>PE deal sourcing is manual and slow. Analysts waste hours scanning fragmented platforms, copying data into spreadsheets, and applying inconsistent criteria. Good deals get buried. By the time a target is qualified, the window to act has often closed.</p>
                     </div>
-
                     <div class="project-block">
                         <h4>Objective</h4>
-                        <p>Build a system that eliminates the manual bottleneck in early-stage deal origination. The goal is to continuously monitor acquisition marketplaces, automatically extract and normalize listing data, apply a repeatable scoring methodology, and deliver a ranked pipeline of opportunities — reducing time-to-decision from days to minutes.</p>
+                        <p>Eliminate the manual bottleneck in deal origination. Continuously monitor marketplaces, auto-extract and normalize listings, apply repeatable scoring, and deliver a ranked pipeline — reducing time-to-decision from days to minutes.</p>
                     </div>
+                </div>
 
-                    <div class="project-block project-block-wide">
-                        <h4>Solution Overview</h4>
-                        <p>The engine operates as an end-to-end pipeline: <strong>source</strong> listings from business-for-sale platforms, <strong>ingest</strong> and normalize raw data, <strong>classify</strong> by EBITDA band and industry, <strong>score</strong> against weighted investment criteria, <strong>prioritize</strong> the opportunity set, and <strong>display</strong> results in a real-time dashboard with configurable alerts.</p>
+                <!-- Pipeline Flow -->
+                <div class="project-block project-block-full">
+                    <h4>Solution Pipeline</h4>
+                    <div class="pipeline-flow">
+                        <div class="pipeline-step">
+                            <div class="pipeline-num">1</div>
+                            <div class="pipeline-label">Source</div>
+                            <div class="pipeline-desc">Scan marketplaces</div>
+                        </div>
+                        <div class="pipeline-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </div>
+                        <div class="pipeline-step">
+                            <div class="pipeline-num">2</div>
+                            <div class="pipeline-label">Ingest</div>
+                            <div class="pipeline-desc">Normalize data</div>
+                        </div>
+                        <div class="pipeline-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </div>
+                        <div class="pipeline-step">
+                            <div class="pipeline-num">3</div>
+                            <div class="pipeline-label">Classify</div>
+                            <div class="pipeline-desc">EBITDA & industry</div>
+                        </div>
+                        <div class="pipeline-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </div>
+                        <div class="pipeline-step">
+                            <div class="pipeline-num">4</div>
+                            <div class="pipeline-label">Score</div>
+                            <div class="pipeline-desc">Weighted criteria</div>
+                        </div>
+                        <div class="pipeline-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </div>
+                        <div class="pipeline-step">
+                            <div class="pipeline-num">5</div>
+                            <div class="pipeline-label">Prioritize</div>
+                            <div class="pipeline-desc">Rank opportunities</div>
+                        </div>
+                        <div class="pipeline-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </div>
+                        <div class="pipeline-step">
+                            <div class="pipeline-num">6</div>
+                            <div class="pipeline-label">Display</div>
+                            <div class="pipeline-desc">Dashboard & alerts</div>
+                        </div>
                     </div>
+                </div>
 
+                <!-- How It Works - mini cards -->
+                <div class="project-block project-block-full">
+                    <h4>How It Works</h4>
+                    <div class="how-it-works-grid">
+                        <div class="hiw-card">
+                            <div class="hiw-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M9 12l2 2 4-4"/></svg>
+                            </div>
+                            <h5>Data Collection</h5>
+                            <p>Automated scrapers pull listings on a recurring schedule — financials, asking price, industry, location, and seller notes</p>
+                        </div>
+                        <div class="hiw-card">
+                            <div class="hiw-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                            </div>
+                            <h5>Processing</h5>
+                            <p>Raw listings are cleaned, deduplicated, and normalized. EBITDA extracted. Valuation multiples calculated</p>
+                        </div>
+                        <div class="hiw-card">
+                            <div class="hiw-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 7h6m0 10v-3m-3 3v-6m-3 6v-1m6-10a2 2 0 002-2 2 2 0 00-2-2H9a2 2 0 00-2 2 2 2 0 002 2m6 0H9m6 0v10a2 2 0 01-2 2h-2a2 2 0 01-2-2V7"/></svg>
+                            </div>
+                            <h5>Scoring Engine</h5>
+                            <p>Each deal evaluated against weighted criteria — revenue quality, owner dependency, industry, EBITDA band, multiples</p>
+                        </div>
+                        <div class="hiw-card">
+                            <div class="hiw-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7c-2 0-3 1-3 3z"/><path d="M9 12h6M12 9v6"/></svg>
+                            </div>
+                            <h5>Storage</h5>
+                            <p>Structured database with full audit trail for historical analysis and pipeline trend tracking</p>
+                        </div>
+                        <div class="hiw-card">
+                            <div class="hiw-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                            </div>
+                            <h5>Dashboard</h5>
+                            <p>Live ranked pipeline with filtering by score, EBITDA range, industry, and geography. Visual flags for top deals</p>
+                        </div>
+                        <div class="hiw-card">
+                            <div class="hiw-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                            </div>
+                            <h5>Alerts</h5>
+                            <p>Automated notifications when new listings exceed score thresholds — high-priority deals flagged immediately</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scoring Methodology - visual cards -->
+                <div class="project-block project-block-full">
+                    <h4>Scoring Methodology</h4>
+                    <div class="scoring-grid">
+                        <div class="score-card">
+                            <div class="score-label">Recurring Revenue</div>
+                            <p>Higher scores for subscription, contract, or retainer-based models indicating cash flow predictability</p>
+                        </div>
+                        <div class="score-card">
+                            <div class="score-label">Owner Dependency</div>
+                            <p>Lower scores where operations are concentrated in the owner, indicating transition risk</p>
+                        </div>
+                        <div class="score-card">
+                            <div class="score-label">Industry Filter</div>
+                            <p>Sector-specific multipliers reflecting target industry preferences and macro tailwinds</p>
+                        </div>
+                        <div class="score-card">
+                            <div class="score-label">EBITDA Attractiveness</div>
+                            <p>Band-based scoring prioritizing deals within a defined earnings range for the buyer's capital base</p>
+                        </div>
+                        <div class="score-card">
+                            <div class="score-label">Valuation Multiple</div>
+                            <p>Comparative scoring against sector median multiples to identify relative value</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Output, Tech, Future - three columns -->
+                <div class="project-three-col">
                     <div class="project-block">
-                        <h4>How It Works</h4>
+                        <h4>Output & Value</h4>
                         <ul class="project-bullets">
-                            <li><strong>Data Collection</strong> — Automated scrapers pull listings from target marketplaces on a recurring schedule, capturing financials, asking price, industry, location, and seller notes</li>
-                            <li><strong>Processing</strong> — Raw listings are cleaned, deduplicated, and normalized. EBITDA is extracted or estimated. Valuation multiples are calculated from asking price and reported earnings</li>
-                            <li><strong>Scoring Engine</strong> — Each deal is evaluated against weighted criteria including recurring revenue indicators, owner dependency signals, industry attractiveness, EBITDA band, and valuation multiple relative to sector benchmarks</li>
-                            <li><strong>Storage</strong> — Processed deals are stored in a structured database with full audit trail, enabling historical analysis and trend tracking across the pipeline</li>
-                            <li><strong>Dashboard</strong> — A live interface displays the ranked deal pipeline with filtering by score, EBITDA range, industry, and geography. Visual indicators flag top-tier opportunities</li>
-                            <li><strong>Alerts</strong> — Configurable notifications trigger when new listings exceed defined score thresholds, ensuring high-priority deals are reviewed immediately</li>
+                            <li>Screening time reduced from hours to continuous automated monitoring</li>
+                            <li>Consistent evaluation criteria across all opportunities</li>
+                            <li>Surfaces deals that would otherwise be missed in high-volume environments</li>
+                            <li>Structured data for faster decisions and cleaner DD handoff</li>
                         </ul>
                     </div>
-
-                    <div class="project-block">
-                        <h4>Scoring Methodology</h4>
-                        <p>The scoring model assigns weighted values across five dimensions:</p>
-                        <ul class="project-bullets">
-                            <li><strong>Recurring Revenue</strong> — Higher scores for subscription, contract, or retainer-based revenue models that indicate cash flow predictability</li>
-                            <li><strong>Owner Dependency</strong> — Lower scores for businesses where operations are concentrated in the owner, indicating transition risk</li>
-                            <li><strong>Industry Filter</strong> — Sector-specific multipliers reflecting target industry preferences and macro tailwinds</li>
-                            <li><strong>EBITDA Attractiveness</strong> — Band-based scoring that prioritizes deals within a defined earnings range appropriate for the buyer's capital base</li>
-                            <li><strong>Valuation Multiple</strong> — Comparative scoring against sector median multiples to identify relative value</li>
-                        </ul>
-                    </div>
-
-                    <div class="project-block">
-                        <h4>Output and Value</h4>
-                        <ul class="project-bullets">
-                            <li>Reduces initial deal screening time from hours of manual review to automated, continuous monitoring</li>
-                            <li>Standardizes evaluation criteria across all opportunities, eliminating inconsistency in early-stage filtering</li>
-                            <li>Surfaces deals that would otherwise be missed in high-volume listing environments</li>
-                            <li>Provides structured data for faster decision-making and cleaner handoff to due diligence</li>
-                        </ul>
-                    </div>
-
                     <div class="project-block">
                         <h4>Technologies</h4>
                         <div class="project-tech-tags">
@@ -295,18 +398,18 @@
                             <span>Scheduled Automation</span>
                         </div>
                     </div>
-
                     <div class="project-block">
                         <h4>Future Development</h4>
                         <ul class="project-bullets">
-                            <li>Integrate additional marketplace sources to expand deal coverage</li>
-                            <li>Add NLP-based analysis of seller descriptions to extract qualitative risk signals</li>
-                            <li>Build CRM-style tracking for outreach and LOI status on scored deals</li>
-                            <li>Implement portfolio-level analytics to compare active pipeline against historical acquisition benchmarks</li>
-                            <li>Deploy as a hosted application with multi-user access and role-based permissions</li>
+                            <li>Expand marketplace source coverage</li>
+                            <li>NLP analysis of seller descriptions for risk signals</li>
+                            <li>CRM-style outreach and LOI tracking</li>
+                            <li>Portfolio-level pipeline analytics</li>
+                            <li>Hosted multi-user deployment</li>
                         </ul>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
