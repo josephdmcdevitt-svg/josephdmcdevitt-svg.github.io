@@ -4,12 +4,24 @@ window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 50);
 });
 
+// ===== Mobile menu toggle =====
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('open');
+});
+
 // ===== Smooth scroll for nav links =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) target.scrollIntoView({ behavior: 'smooth' });
+        // Close mobile menu after clicking a link
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('open');
     });
 });
 
