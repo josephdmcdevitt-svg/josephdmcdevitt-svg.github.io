@@ -420,6 +420,15 @@ body {
     color: var(--text-muted);
 }
 
+.role-narrative {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 18px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
 .timeline-bullets {
     list-style: none;
     margin-bottom: 18px;
