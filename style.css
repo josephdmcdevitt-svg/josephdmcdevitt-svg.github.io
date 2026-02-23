@@ -459,6 +459,143 @@ body {
     border: 1px solid rgba(79, 125, 245, 0.15);
 }
 
+/* ===== FEATURED PROJECT ===== */
+.project-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.project-header-block {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.project-status {
+    display: inline-block;
+    padding: 5px 16px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: rgba(52, 211, 153, 0.1);
+    color: #34d399;
+    border: 1px solid rgba(52, 211, 153, 0.2);
+    margin-bottom: 16px;
+}
+
+.project-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+}
+
+.project-summary {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.project-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    transition: var(--transition);
+}
+
+.project-block:hover {
+    border-color: var(--border-hover);
+}
+
+.project-block-wide {
+    grid-column: 1 / -1;
+}
+
+.project-block h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 12px;
+}
+
+.project-block p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.75;
+}
+
+.project-bullets {
+    list-style: none;
+    padding: 0;
+}
+
+.project-bullets li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 10px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+.project-bullets li:last-child {
+    margin-bottom: 0;
+}
+
+.project-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.6;
+}
+
+.project-bullets strong {
+    color: var(--text-primary);
+}
+
+.project-tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.project-tech-tags span {
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background: var(--accent-glow);
+    color: var(--accent);
+    border: 1px solid rgba(79, 125, 245, 0.15);
+}
+
+@media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-name {
+        font-size: 1.4rem;
+    }
+}
+
 /* ===== SKILLS ===== */
 .skills-grid {
     display: grid;

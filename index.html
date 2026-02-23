@@ -17,6 +17,7 @@
             <div class="nav-links">
                 <a href="#about">About</a>
                 <a href="#experience">Experience</a>
+                <a href="#project">Project</a>
                 <a href="#skills">Skills</a>
                 <a href="#passions">Passions</a>
                 <a href="#contact">Contact</a>
@@ -216,6 +217,96 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Project Section -->
+    <section class="section" id="project">
+        <div class="container">
+            <h2 class="section-title">Featured Project</h2>
+            <div class="project-wrapper">
+                <div class="project-header-block">
+                    <span class="project-status">Active Development</span>
+                    <h3 class="project-name">AI-Powered Private Equity Deal Sourcing Engine</h3>
+                    <p class="project-summary">An automated system that scans business-for-sale marketplaces, ingests listings, scores opportunities against institutional investment criteria, and surfaces the highest-priority deals in a live dashboard.</p>
+                </div>
+
+                <div class="project-grid">
+                    <div class="project-block">
+                        <h4>Problem</h4>
+                        <p>Traditional private equity deal sourcing is manual, relationship-dependent, and slow. Analysts spend significant time scanning fragmented listing platforms, copying data into spreadsheets, and applying inconsistent evaluation criteria across opportunities. High-quality deals get buried in noise. By the time a team identifies and qualifies a promising target, the window to act has often narrowed or closed entirely.</p>
+                    </div>
+
+                    <div class="project-block">
+                        <h4>Objective</h4>
+                        <p>Build a system that eliminates the manual bottleneck in early-stage deal origination. The goal is to continuously monitor acquisition marketplaces, automatically extract and normalize listing data, apply a repeatable scoring methodology, and deliver a ranked pipeline of opportunities — reducing time-to-decision from days to minutes.</p>
+                    </div>
+
+                    <div class="project-block project-block-wide">
+                        <h4>Solution Overview</h4>
+                        <p>The engine operates as an end-to-end pipeline: <strong>source</strong> listings from business-for-sale platforms, <strong>ingest</strong> and normalize raw data, <strong>classify</strong> by EBITDA band and industry, <strong>score</strong> against weighted investment criteria, <strong>prioritize</strong> the opportunity set, and <strong>display</strong> results in a real-time dashboard with configurable alerts.</p>
+                    </div>
+
+                    <div class="project-block">
+                        <h4>How It Works</h4>
+                        <ul class="project-bullets">
+                            <li><strong>Data Collection</strong> — Automated scrapers pull listings from target marketplaces on a recurring schedule, capturing financials, asking price, industry, location, and seller notes</li>
+                            <li><strong>Processing</strong> — Raw listings are cleaned, deduplicated, and normalized. EBITDA is extracted or estimated. Valuation multiples are calculated from asking price and reported earnings</li>
+                            <li><strong>Scoring Engine</strong> — Each deal is evaluated against weighted criteria including recurring revenue indicators, owner dependency signals, industry attractiveness, EBITDA band, and valuation multiple relative to sector benchmarks</li>
+                            <li><strong>Storage</strong> — Processed deals are stored in a structured database with full audit trail, enabling historical analysis and trend tracking across the pipeline</li>
+                            <li><strong>Dashboard</strong> — A live interface displays the ranked deal pipeline with filtering by score, EBITDA range, industry, and geography. Visual indicators flag top-tier opportunities</li>
+                            <li><strong>Alerts</strong> — Configurable notifications trigger when new listings exceed defined score thresholds, ensuring high-priority deals are reviewed immediately</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-block">
+                        <h4>Scoring Methodology</h4>
+                        <p>The scoring model assigns weighted values across five dimensions:</p>
+                        <ul class="project-bullets">
+                            <li><strong>Recurring Revenue</strong> — Higher scores for subscription, contract, or retainer-based revenue models that indicate cash flow predictability</li>
+                            <li><strong>Owner Dependency</strong> — Lower scores for businesses where operations are concentrated in the owner, indicating transition risk</li>
+                            <li><strong>Industry Filter</strong> — Sector-specific multipliers reflecting target industry preferences and macro tailwinds</li>
+                            <li><strong>EBITDA Attractiveness</strong> — Band-based scoring that prioritizes deals within a defined earnings range appropriate for the buyer's capital base</li>
+                            <li><strong>Valuation Multiple</strong> — Comparative scoring against sector median multiples to identify relative value</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-block">
+                        <h4>Output and Value</h4>
+                        <ul class="project-bullets">
+                            <li>Reduces initial deal screening time from hours of manual review to automated, continuous monitoring</li>
+                            <li>Standardizes evaluation criteria across all opportunities, eliminating inconsistency in early-stage filtering</li>
+                            <li>Surfaces deals that would otherwise be missed in high-volume listing environments</li>
+                            <li>Provides structured data for faster decision-making and cleaner handoff to due diligence</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-block">
+                        <h4>Technologies</h4>
+                        <div class="project-tech-tags">
+                            <span>Python</span>
+                            <span>SQL</span>
+                            <span>Streamlit</span>
+                            <span>BeautifulSoup</span>
+                            <span>OpenAI API</span>
+                            <span>Pandas</span>
+                            <span>SQLite</span>
+                            <span>Scheduled Automation</span>
+                        </div>
+                    </div>
+
+                    <div class="project-block">
+                        <h4>Future Development</h4>
+                        <ul class="project-bullets">
+                            <li>Integrate additional marketplace sources to expand deal coverage</li>
+                            <li>Add NLP-based analysis of seller descriptions to extract qualitative risk signals</li>
+                            <li>Build CRM-style tracking for outreach and LOI status on scored deals</li>
+                            <li>Implement portfolio-level analytics to compare active pipeline against historical acquisition benchmarks</li>
+                            <li>Deploy as a hosted application with multi-user access and role-based permissions</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
