@@ -43,6 +43,18 @@ document.querySelectorAll('.timeline-item, .stat-card, .skill-category, .passion
     observer.observe(el);
 });
 
+// ===== Project tab switching =====
+document.querySelectorAll('.project-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        // Deactivate all tabs and panels
+        document.querySelectorAll('.project-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.project-panel').forEach(p => p.classList.remove('active'));
+        // Activate clicked tab and matching panel
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.project).classList.add('active');
+    });
+});
+
 // ===== Particle background =====
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');

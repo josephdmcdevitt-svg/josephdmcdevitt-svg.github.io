@@ -492,6 +492,77 @@ body {
     border: 1px solid rgba(79, 125, 245, 0.15);
 }
 
+/* ===== PROJECT TABS ===== */
+.project-tabs {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+}
+
+.project-tab {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 28px;
+    border-radius: 50px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.project-tab:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-card-hover);
+    color: var(--text-primary);
+}
+
+.project-tab.active {
+    border-color: var(--accent);
+    background: var(--accent-glow);
+    color: var(--text-primary);
+}
+
+.tab-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent);
+    opacity: 0.6;
+}
+
+.project-tab.active .tab-number {
+    opacity: 1;
+}
+
+.tab-label {
+    letter-spacing: 0.01em;
+}
+
+/* Project Panels */
+.project-panel {
+    display: none;
+    animation: fadeUp 0.4s ease;
+}
+
+.project-panel.active {
+    display: block;
+}
+
+/* Status variants */
+.status-live {
+    background: rgba(79, 125, 245, 0.1);
+    color: var(--accent);
+    border-color: rgba(79, 125, 245, 0.2);
+}
+
 /* ===== FEATURED PROJECT ===== */
 .project-wrapper {
     max-width: 1000px;
@@ -780,6 +851,15 @@ body {
 
 /* Project responsive */
 @media (max-width: 768px) {
+    .project-tabs {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .project-tab {
+        justify-content: center;
+    }
+
     .project-two-col,
     .project-three-col {
         grid-template-columns: 1fr;
