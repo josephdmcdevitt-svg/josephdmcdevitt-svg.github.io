@@ -279,18 +279,18 @@
                 <div class="project-wrapper">
                     <div class="project-header-block">
                         <span class="project-status">Active Development</span>
-                        <h3 class="project-name">AI-Powered Private Equity Deal Sourcing Engine</h3>
-                        <p class="project-summary">An automated system that scrapes 8 business-for-sale marketplaces daily, runs a dual scoring algorithm (Operator vs. PE buyer), enriches with Census Bureau and BLS labor data, and surfaces 5,000+ ranked deals in a live dashboard.</p>
+                        <h3 class="project-name">PE Deal Intelligence Dashboard</h3>
+                        <p class="project-summary">A deal intelligence platform that aggregates listings from business-for-sale marketplaces, runs a dual scoring algorithm (Operator vs. PE buyer), enriches with Census Bureau and BLS labor data, and surfaces ranked opportunities in an interactive dashboard with PDF deal reports and analytics.</p>
                     </div>
 
                     <div class="project-two-col">
                         <div class="project-block">
                             <h4>Problem</h4>
-                            <p>PE deal sourcing is manual and slow. Analysts waste hours scanning fragmented platforms, copying data into spreadsheets, and applying inconsistent criteria. Good deals get buried before they're even reviewed — and there's no way to objectively compare an owner-operator opportunity against a PE platform target.</p>
+                            <p>PE deal sourcing is manual and slow. Analysts scan fragmented platforms, copy data into spreadsheets, and apply inconsistent criteria. Good deals get buried — and there's no way to objectively compare an owner-operator opportunity against a PE platform target using real market data.</p>
                         </div>
                         <div class="project-block">
                             <h4>Solution</h4>
-                            <p>A zero-touch daily pipeline that scrapes listings from 8 broker networks, deduplicates across sources, runs two independent 0–100 scoring frameworks (solo buyer vs. PE sponsor), enriches each deal with public market data from the Census Bureau and Bureau of Labor Statistics, and delivers a ranked pipeline with full scoring breakdowns.</p>
+                            <p>An automated pipeline that aggregates deal flow from 8 broker networks, deduplicates across sources, runs two independent 0–100 scoring frameworks (solo buyer vs. PE sponsor), enriches each deal with public market data from the Census Bureau and Bureau of Labor Statistics, and delivers a ranked pipeline with full scoring breakdowns, an interactive deal map, and exportable PDF reports.</p>
                         </div>
                     </div>
 
@@ -301,16 +301,16 @@
                                 <div class="hiw-icon">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M9 12l2 2 4-4"/></svg>
                                 </div>
-                                <h5>Multi-Source Scraping</h5>
-                                <p>Daily automated ingestion from 8 broker networks — BizBuySell, BizQuest, BusinessBroker.net, Sunbelt, Transworld, and others. Extracts price, EBITDA, revenue, employees, industry, location, and full broker descriptions</p>
+                                <h5>Deal Flow Aggregation</h5>
+                                <p>Aggregates and normalizes deal flow from 8 broker marketplace sources on a daily automated schedule across 35 states</p>
                                 <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
                                 <div class="hiw-detail">
                                     <ul>
-                                        <li><strong>8 sources:</strong> BizBuySell, BizQuest, BusinessBroker.net, Sunbelt Business Network, Transworld, VR Business Brokers, Murphy Business Sales, BusinessesForSale</li>
-                                        <li><strong>Fields extracted:</strong> title, description, broker notes, asking price, EBITDA/cash flow/SDE, gross revenue, employee count, industry classification, city/state/ZIP, source URL</li>
-                                        <li>Runs daily at 6 AM via macOS launchd scheduler — zero manual intervention</li>
-                                        <li>Raw listings stored in SQLite with first-seen / last-seen date tracking for lifecycle analysis</li>
-                                        <li>Recently sold detection: listings that disappear between runs are flagged as "sold" for market intelligence</li>
+                                        <li><strong>8 marketplace sources</strong> monitored daily — extracts asking price, EBITDA/cash flow/SDE, gross revenue, employee count, industry classification, location (city/state/ZIP), and full broker descriptions</li>
+                                        <li><strong>35 states</strong> covered across all U.S. regions: Midwest, Southeast, Northeast, Southwest, West Coast</li>
+                                        <li><strong>2,300+ total deals reviewed</strong> through the pipeline — only the highest-quality pass through to the dashboard</li>
+                                        <li>Listings stored in SQLite with first-seen / last-seen date tracking. Deals that disappear are flagged as "likely sold" for market intelligence</li>
+                                        <li>Zero manual intervention — runs daily via automated scheduler</li>
                                     </ul>
                                 </div>
                             </div>
@@ -318,15 +318,16 @@
                                 <div class="hiw-icon">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
                                 </div>
-                                <h5>Filtering & Dedup</h5>
-                                <p>Hard exclusion engine rejects 12 categories (restaurants, ecommerce, cannabis, franchises, hotels, etc.). URL-based deduplication across all sources ensures no listing is scored twice. EBITDA proxy logic falls back to cash flow or SDE when EBITDA is missing</p>
+                                <h5>Filtering & Classification</h5>
+                                <p>Exclusion engine rejects low-quality deal types, deduplicates across sources, and applies EBITDA eligibility thresholds</p>
                                 <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
                                 <div class="hiw-detail">
                                     <ul>
-                                        <li><strong>12 hard-exclude categories:</strong> Food/Nightlife, Ecommerce/FBA, Cannabis/Vape/Liquor, Crypto/Forex, Gas Stations, Hotels/Lodging, Healthcare Reimbursement, Environmental Risk (dry cleaners, auto body), Commodity Labor (trucking, janitorial), Low-Defensibility Retail, Real Estate Only, Franchises</li>
-                                        <li><strong>Dedup logic:</strong> URL-based matching across both databases — each listing tracked in a seen_urls set to ensure 1:1 uniqueness</li>
-                                        <li><strong>EBITDA proxy chain:</strong> Prefers explicit EBITDA → falls back to cash flow → falls back to SDE. A −5 point scoring penalty is applied when using proxy values</li>
-                                        <li>Valuation multiples auto-calculated (price / EBITDA) for every listing that has earnings data</li>
+                                        <li><strong>12 hard-exclude categories:</strong> Food/Nightlife, Ecommerce/FBA, Cannabis/Vape/Liquor, Crypto/Forex, Gas Stations, Hotels/Lodging, Healthcare Reimbursement, Environmental Risk, Commodity Labor, Low-Defensibility Retail, Real Estate Only, Franchises</li>
+                                        <li><strong>EBITDA minimums:</strong> $400K for Operator track, $500K for PE track</li>
+                                        <li><strong>EBITDA proxy chain:</strong> Prefers explicit EBITDA → falls back to cash flow → SDE. A −5 pt scoring penalty applied when using proxy values</li>
+                                        <li><strong>Dedup:</strong> URL-based matching across all 8 sources — each listing tracked in a seen_urls set to ensure 1:1 uniqueness</li>
+                                        <li>Valuation multiples auto-calculated (price / EBITDA) for every listing with earnings data</li>
                                     </ul>
                                 </div>
                             </div>
@@ -335,15 +336,15 @@
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 7h6m0 10v-3m-3 3v-6m-3 6v-1m6-10a2 2 0 002-2 2 2 0 00-2-2H9a2 2 0 00-2 2 2 2 0 002 2m6 0H9m6 0v10a2 2 0 01-2 2h-2a2 2 0 01-2-2V7"/></svg>
                                 </div>
                                 <h5>Dual Scoring Algorithm</h5>
-                                <p>Each deal gets two independent 0–100 scores: <strong>Operator Score</strong> (operational simplicity, owner independence, revenue stability, customer diversification, lifestyle load) and <strong>PE Score</strong> (platform scalability, revenue quality, management depth, value creation potential, exit optionality). Each score = 50 pts qualitative text analysis + 50 pts quantitative public data</p>
+                                <p>Two independent 0–100 scores per deal — one for solo/owner-operator buyers, one for PE sponsors. Each = 50 pts qualitative + 50 pts quantitative</p>
                                 <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
                                 <div class="hiw-detail">
                                     <ul>
-                                        <li><strong>Operator — Qualitative (50 pts):</strong> Operational Simplicity (15 pts — penalizes custom manufacturing, heavy regulation, specialized equipment), Owner Independence (10 pts — hard penalty for owner-operated/key-man risk), Revenue Stability (10 pts — penalizes seasonal/project-based; bonuses for recurring/subscription), Customer Diversification (10 pts — penalizes single-customer concentration), Lifestyle Load (5 pts — penalizes 24/7, emergency, on-call businesses)</li>
-                                        <li><strong>Operator — Quantitative (50 pts):</strong> Industry Survival Rate (15 pts — Census BDS firm death rate by NAICS), Local Demand (10 pts — BLS 3-year employment growth), Labor Cost Pressure (10 pts — local vs. national wage growth), Competition Density (10 pts — Census CBP establishments per capita), Debt Safety (5 pts — implied multiple + EBITDA margin thresholds)</li>
-                                        <li><strong>PE — Qualitative (50 pts):</strong> Platform Scalability (15 pts — bonuses for 25+ employees, multi-location, $10M+ revenue), Revenue Quality (10 pts), Management Depth (10 pts — bonuses for GM, ops manager, controllers), Value Creation (10 pts — bonuses for under-managed businesses), Exit Optionality (5 pts — NAICS on a 54-sector PE whitelist)</li>
-                                        <li><strong>PE — Quantitative (50 pts):</strong> Market Fragmentation (15 pts — % of establishments with &lt;20 employees), Market Growth (10 pts — blended 60% local + 40% national), Labor Efficiency (10 pts — employment growth minus wage growth), Add-on Pipeline (10 pts — establishment density per 100K population), Financing Resilience (5 pts)</li>
-                                        <li><strong>Text analysis:</strong> 300+ keywords scanned across title, description, and broker notes. Case-insensitive matching with hard/soft penalty tiers per scoring bucket</li>
+                                        <li><strong>Operator — Qualitative (50 pts):</strong> Operational Simplicity (15), Owner Independence (10), Revenue Stability (10), Customer Diversification (10), Lifestyle Load (5). Penalizes owner-dependent, seasonal, 24/7 businesses. Rewards recurring revenue and diversified customers</li>
+                                        <li><strong>Operator — Quantitative (50 pts):</strong> Industry Survival Rate (15 — Census BDS firm death rate), Local Demand (10 — BLS employment growth), Labor Cost Pressure (10 — wage growth differential), Competition Density (10 — establishments per capita), Debt Safety (5 — leverage + margin)</li>
+                                        <li><strong>PE — Qualitative (50 pts):</strong> Platform Scalability (15 — multi-location, 25+ employees, $10M+ revenue), Revenue Quality (10), Management Depth (10), Value Creation Potential (10), Exit Optionality (5 — NAICS on 54-sector PE whitelist)</li>
+                                        <li><strong>PE — Quantitative (50 pts):</strong> Market Fragmentation (15 — % of market &lt;20 employees), Market Growth (10 — blended 60% local + 40% national), Labor Efficiency (10), Add-on Pipeline (10 — establishment density per 100K), Financing Resilience (5)</li>
+                                        <li><strong>Text analysis:</strong> 300+ keywords scanned across title, description, and broker notes with hard/soft penalty tiers per bucket</li>
                                     </ul>
                                 </div>
                             </div>
@@ -352,15 +353,15 @@
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>
                                 </div>
                                 <h5>Public Data Enrichment</h5>
-                                <p>Integrates <strong>Census Bureau</strong> data (County Business Patterns, Business Dynamics Statistics) for industry survival rates, competition density, and market fragmentation. Pulls <strong>BLS QCEW</strong> data for 3-year employment growth trends and wage pressure analysis — all resolved to county-level FIPS codes</p>
+                                <p>Integrates Census Bureau and BLS data to score each deal against real industry and labor market conditions at the county level</p>
                                 <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
                                 <div class="hiw-detail">
                                     <ul>
-                                        <li><strong>Census CBP (County Business Patterns):</strong> Establishment count by NAICS + geography, employment count, payroll data, size distribution (% with &lt;20 employees for fragmentation scoring). Resolved to 4-digit NAICS with 2-digit fallback</li>
-                                        <li><strong>Census BDS (Business Dynamics Statistics):</strong> Firm death rate by 2-digit NAICS — thresholds: ≤8% → 15 pts, ≤10% → 12, ≤12% → 9, ≤14% → 6, ≤16% → 3</li>
-                                        <li><strong>BLS QCEW:</strong> 3-year annualized employment growth (2019–2022 baseline) and wage growth at county level. Private sector only (ownership code 5). National data used as fallback proxy</li>
-                                        <li><strong>Caching:</strong> SQLite-based 30-day TTL cache keyed by naics:fips:is_county — minimizes redundant API calls across 5,000+ listings</li>
-                                        <li><strong>Data confidence flags:</strong> High (NAICS + county FIPS), Medium (NAICS + state FIPS), Low (partial), None. A −2 pt penalty per bucket when using state-level instead of county data</li>
+                                        <li><strong>Census CBP:</strong> Establishment count, employment, payroll, and size distribution by NAICS + county. Fragmentation analysis (% of firms &lt;20 employees). 4-digit NAICS with 2-digit fallback</li>
+                                        <li><strong>Census BDS:</strong> Firm death rate by industry — thresholds: ≤8% → 15 pts, ≤10% → 12, ≤12% → 9, ≤14% → 6, ≤16% → 3</li>
+                                        <li><strong>BLS QCEW:</strong> 3-year annualized employment and wage growth at county level. Private sector only. National data as fallback</li>
+                                        <li><strong>NAICS inference:</strong> Automatic industry classification from listing text when not explicitly provided</li>
+                                        <li><strong>Caching:</strong> SQLite 30-day TTL cache keyed by naics:fips:is_county. Data confidence flags: High/Medium/Low/None with scoring penalties for lower confidence</li>
                                     </ul>
                                 </div>
                             </div>
@@ -368,15 +369,15 @@
                                 <div class="hiw-icon">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
                                 </div>
-                                <h5>Geographic Intelligence</h5>
-                                <p>ZIP-to-county FIPS resolution with city/state fallback. Maps deals to 40+ defined markets across 5 regions with tier classifications (Tier 1/2/3). Enables market-by-market pipeline comparison and regional concentration analysis</p>
+                                <h5>Interactive Deal Map</h5>
+                                <p>Leaflet-based U.S. map with market-level deal visualization, click-to-filter popups, and regional concentration analysis across 40+ markets</p>
                                 <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
                                 <div class="hiw-detail">
                                     <ul>
-                                        <li><strong>Resolution priority:</strong> ZIP code → county FIPS (via zip_county_fips.json lookup) → city/state → county FIPS (via city_county_fallback.json) → state FIPS only as last resort</li>
-                                        <li><strong>40+ defined markets:</strong> Chicago, NYC, Atlanta, Dallas, Miami, LA, Boston, Denver, Phoenix, Seattle, and others — grouped into 5 regions (Midwest, Southeast, Northeast, Southwest, West Coast)</li>
-                                        <li><strong>Market tiers:</strong> Tier 1 (major metros), Tier 2 (secondary), Tier 3 (tertiary) — enables pipeline filtering by market depth</li>
-                                        <li>Dashboard shows regional concentration, market-by-market deal counts, and geographic distribution analytics</li>
+                                        <li><strong>Market dots:</strong> Color-coded by average deal score, sized by deal count. Click any market to see avg score, deal count, avg EBITDA, avg multiple</li>
+                                        <li><strong>40+ defined markets</strong> across 5 regions (Midwest, Southeast, Northeast, Southwest, West Coast) with Tier 1/2/3 classifications</li>
+                                        <li><strong>FIPS resolution:</strong> ZIP → county FIPS (lookup table) → city/state fallback → state FIPS as last resort</li>
+                                        <li>Click-through from map popup directly to filtered listings for that market</li>
                                     </ul>
                                 </div>
                             </div>
@@ -384,16 +385,18 @@
                                 <div class="hiw-icon">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                                 </div>
-                                <h5>Dashboard & Analytics</h5>
-                                <p>Full listing detail pages with score breakdowns for both buyer types. Badge system ranks each deal (e.g., "Platform Candidate", "Operator Ideal"). Filterable by region, market, score, EBITDA band, and industry. Tracks recently sold listings and lifecycle changes. Auto-deploys daily via Vercel</p>
+                                <h5>Dashboard, Analytics & PDF Export</h5>
+                                <p>Full dashboard with badge rankings, analytics page, SBA financing calculator, and exportable 2-page PDF deal reports</p>
                                 <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
                                 <div class="hiw-detail">
                                     <ul>
-                                        <li><strong>Operator badges:</strong> "Operator Ideal" (90–100), "Strong Owner Business" (80–89), "Manageable With Risk" (70–79), "High Operator Load" (60–69), "Avoid for Solo Buyer" (&lt;60)</li>
-                                        <li><strong>PE badges:</strong> "Elite Platform Target" (90–100), "Platform Candidate" (80–89), "Add-On Target" (70–79), "Sponsor Review" (60–69), "Low PE Priority" (&lt;60)</li>
-                                        <li><strong>Pages:</strong> Dashboard overview, full listings table (sortable/filterable), individual deal detail with scoring breakdown, scoring methodology guide, analytics/distributions, map view, and user preferences</li>
-                                        <li><strong>Export:</strong> Listings.json (~100+ MB, 5,000+ deals) auto-generated and pushed to Vercel. Client-side rendering with no backend — instant filtering and sorting</li>
-                                        <li><strong>Lifecycle tracking:</strong> First-seen / last-seen dates, recently sold detection, source status monitoring across all 8 networks</li>
+                                        <li><strong>Two-track system:</strong> Users select "Solo Search" or "PE Fund" at login — all stats, listings, and filters adapt to the chosen track</li>
+                                        <li><strong>Badge system — Operator:</strong> "Operator Ideal" (90+), "Strong Owner Business" (80+), "Manageable With Risk" (70+), "High Operator Load" (60+), "Avoid" (&lt;60)</li>
+                                        <li><strong>Badge system — PE:</strong> "Elite Platform Target" (90+), "Platform Candidate" (80+), "Add-On Target" (70+), "Sponsor Review" (60+), "Low PE Priority" (&lt;60)</li>
+                                        <li><strong>Analytics page:</strong> Score distributions, deals by region, top industries, EBITDA band analysis, source breakdown, recently sold tracking (Chart.js)</li>
+                                        <li><strong>SBA Calculator:</strong> Seller financing support, rate/term sensitivity table, affordability back-solver, extra payment prepayment savings</li>
+                                        <li><strong>PDF export:</strong> 2-page professional report — deal summary + financial snapshot on page 1, full 10-bucket scoring breakdown on page 2. Track-specific analysis (IC memo for solo, LBO analysis for PE)</li>
+                                        <li><strong>Lifecycle:</strong> First-seen / last-seen dates, recently sold detection, source monitoring across all networks</li>
                                     </ul>
                                 </div>
                             </div>
@@ -404,11 +407,11 @@
                         <div class="project-block">
                             <h4>Key Highlights</h4>
                             <ul class="project-bullets">
-                                <li><strong>5,000+</strong> active listings scored across 8 marketplace sources</li>
-                                <li>Dual algorithmic scoring — independent frameworks for solo buyers vs. PE sponsors</li>
+                                <li><strong>2,300+</strong> deals reviewed, scored, and ranked across 8 marketplace sources and 35 states</li>
+                                <li>Dual algorithmic scoring — independent 10-bucket frameworks for solo buyers vs. PE sponsors</li>
                                 <li>Public data integration: Census Bureau (CBP, BDS) + Bureau of Labor Statistics (QCEW)</li>
-                                <li>300+ keyword text analysis engine extracts qualitative signals from broker descriptions</li>
-                                <li>Zero-touch daily pipeline — scrape, score, deploy with no manual intervention</li>
+                                <li>Interactive Leaflet deal map with 40+ markets, analytics dashboard, and PDF deal reports</li>
+                                <li>SBA financing calculator with sensitivity analysis and affordability back-solver</li>
                             </ul>
                         </div>
                         <div class="project-block">
@@ -420,10 +423,10 @@
                                 <span>Census Bureau API</span>
                                 <span>BLS QCEW API</span>
                                 <span>Vercel</span>
-                                <span>Pandas</span>
-                                <span>Web Scraping</span>
+                                <span>Leaflet.js</span>
+                                <span>Chart.js</span>
+                                <span>html2pdf.js</span>
                                 <span>NLP / Keyword Engine</span>
-                                <span>Automation</span>
                             </div>
                         </div>
                     </div>
@@ -458,7 +461,7 @@
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7c-2 0-3 1-3 3z"/><path d="M9 12h6M12 9v6"/></svg>
                                 </div>
                                 <h5>NPI Registry Ingestion</h5>
-                                <p>Downloads the full CMS NPPES data dissemination file (~700MB compressed, 10GB+ expanded). Parses in 100K-row chunks via Pandas, filters on 12 pharmacy-specific taxonomy codes, and batch-inserts 5,000 records at a time. Covers <strong>112,000+ pharmacies</strong> across all 50 states and territories</p>
+                                <p>Downloads and processes the full CMS NPPES registry — <strong>112,000+ pharmacies</strong> across all 50 states and territories</p>
                                 <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
                                 <div class="hiw-detail">
                                     <ul>
@@ -476,7 +479,7 @@
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M9 12l2 2 4-4"/></svg>
                                 </div>
                                 <h5>Chain Classification Engine</h5>
-                                <p>Regex matching against 35+ named chains (CVS, Walgreens, Walmart, Rite Aid, Kroger, Costco, Genoa, etc.). Flags institutional pharmacies (hospitals, nursing, LTC, correctional). Multi-location clustering automatically identifies operators with 10+ locations as de facto chains. Parses ownership signals (LLC, Inc, Partnership, PC) from organization names</p>
+                                <p>Identifies and separates chains, independents, and institutional pharmacies using pattern matching and multi-location clustering</p>
                                 <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
                                 <div class="hiw-detail">
                                     <ul>
@@ -493,7 +496,7 @@
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
                                 </div>
                                 <h5>Medicare & 340B Enrichment</h5>
-                                <p>Enriches pharmacies with <strong>Medicare Part D</strong> claims data — total claims filled, unique beneficiaries served, and total drug cost. Identifies 340B-eligible pharmacies (federally qualified health centers, critical access hospitals, contract pharmacies) which fill prescriptions at deeply discounted acquisition costs — a key signal for file value and competitive positioning</p>
+                                <p>Enriches pharmacies with Medicare Part D claims data and identifies 340B-eligible pharmacies — key signals for file value and acquisition pricing</p>
                                 <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
                                 <div class="hiw-detail">
                                     <ul>
@@ -509,7 +512,7 @@
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
                                 </div>
                                 <h5>Census Demographic Scoring</h5>
-                                <p>Pulls ZIP-level <strong>U.S. Census</strong> data for every pharmacy: population, % age 65+ (seniors fill 2–3x more scripts), median household income (payer mix quality), and population growth rate. Calculates local competition density — pharmacies per 10,000 residents — to identify underserved markets where acquisition targets hold more value</p>
+                                <p>Enriches every pharmacy with ZIP-level Census data — aging population, income, growth, and competition density — to identify high-value markets</p>
                                 <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
                                 <div class="hiw-detail">
                                     <ul>
@@ -527,7 +530,7 @@
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 7h6m0 10v-3m-3 3v-6m-3 6v-1m6-10a2 2 0 002-2 2 2 0 00-2-2H9a2 2 0 00-2 2 2 2 0 002 2m6 0H9m6 0v10a2 2 0 01-2 2h-2a2 2 0 01-2-2V7"/></svg>
                                 </div>
                                 <h5>6-Factor Acquisition Score</h5>
-                                <p>Composite 0–100 score with weighted factors: <strong>Rx Volume</strong> (30%) — estimated scripts/year scaled to 80K baseline; <strong>Competition</strong> (20%) — pharmacies per 10K population; <strong>Aging Population</strong> (20%) — % 65+ scaled to 30% threshold; <strong>Retirement Risk</strong> (15%) — years in operation from NPI enumeration date; <strong>Income</strong> (8%) — median ZIP income; <strong>Pop Growth</strong> (7%) — market expansion signal</p>
+                                <p>Composite 0–100 score combining Rx volume, competition, aging population, retirement risk, income, and population growth</p>
                                 <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
                                 <div class="hiw-detail">
                                     <ul>
@@ -546,7 +549,7 @@
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                                 </div>
                                 <h5>Closing Signals & Probability</h5>
-                                <p>Identifies pharmacies with a high likelihood of being available or discounted using three signals: <strong>Long-tenured owners</strong> (20+ years operating — likely near retirement); <strong>Stale NPI records</strong> (3+ years without update — possible inactivity); <strong>Nearby deactivations</strong> (pharmacies in ZIPs where others recently closed — displaced patients need a new provider). Change detection tracks deactivations, new registrations, and field-level updates across pipeline runs</p>
+                                <p>Surfaces pharmacies with a high likelihood of being available or discounted based on retirement risk, record staleness, and nearby closures</p>
                                 <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
                                 <div class="hiw-detail">
                                     <ul>
@@ -600,7 +603,7 @@
                     <div class="project-header-block">
                         <span class="project-status status-live">Live Platform</span>
                         <h3 class="project-name">AI-Powered Travel Planner</h3>
-                        <p class="project-summary">A personalized travel recommendation engine with a curated database of 326 cities across 84 countries — each with 28 data fields. A 9-step preference wizard captures 40+ user inputs, feeds them into a 30-factor scoring algorithm, then auto-generates multi-city itineraries with day-by-day activities, animated route maps, and full budget breakdowns.</p>
+                        <p class="project-summary">A full-featured travel planning platform with 326 cities across 84 countries. A 9-step preference wizard feeds into a 30-factor scoring algorithm that generates personalized multi-city itineraries with structured activities, animated route maps, visa info, booking links, smart packing lists, budget breakdowns, and exportable PDF trip reports.</p>
                     </div>
 
                     <div class="project-two-col">
@@ -622,7 +625,7 @@
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
                                 </div>
                                 <h5>9-Step Preference Wizard</h5>
-                                <p>Captures 40+ inputs across 9 sections: trip basics ($500–$50K budget, 3–60 days), travel style (adventure level, pace, group type), 12 interest categories, 12 must-have experiences (scuba, safari, aurora, etc.), comfort & dietary needs, destination filters (city size, landscape, beach type), social preferences, safety/logistics, and deal-breakers</p>
+                                <p>Guided questionnaire captures 40+ inputs across budget, travel style, interests, must-have experiences, comfort, and deal-breakers</p>
                                 <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
                                 <div class="hiw-detail">
                                     <ul>
@@ -640,7 +643,7 @@
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 7h6m0 10v-3m-3 3v-6m-3 6v-1m6-10a2 2 0 002-2 2 2 0 00-2-2H9a2 2 0 00-2 2 2 2 0 002 2m6 0H9m6 0v10a2 2 0 01-2 2h-2a2 2 0 01-2-2V7"/></svg>
                                 </div>
                                 <h5>30-Factor Scoring Algorithm</h5>
-                                <p>Each city scored on: interest tag matching (+15 pts each), budget fit (+25/−penalty), seasonal weather alignment (+15), comfort level scaling, adventure compatibility, flight duration penalties, jet lag sensitivity (−hours × 1.5), language comfort (+8), safety priority (+8), city size preference, landscape/terrain matching, nightlife scoring, crowd tolerance, WiFi needs, dietary restrictions, cultural immersion, shopping, fitness level, and must-have experience matching (+12 exact, +4 tag)</p>
+                                <p>Every city evaluated against the user's preferences across 30 weighted dimensions — from budget and weather to dietary needs and crowd tolerance</p>
                                 <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
                                 <div class="hiw-detail">
                                     <ul>
@@ -661,7 +664,7 @@
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
                                 </div>
                                 <h5>Multi-Country Routing</h5>
-                                <p>Dynamically determines optimal country count based on trip length (1–4 countries). Scores countries by composite average of their top 3 cities, then applies regional proximity filtering — additional countries must be in the same region or score above 60% of the top pick. Selects 2–3 cities per country and calculates inter-region flight hours to minimize total travel time</p>
+                                <p>Determines optimal country and city count based on trip length, then applies proximity filtering to minimize travel time</p>
                                 <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
                                 <div class="hiw-detail">
                                     <ul>
@@ -679,7 +682,7 @@
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                                 </div>
                                 <h5>Day Allocation & Activities</h5>
-                                <p>Calculates a "richness score" per city (how many user interests it matches) and distributes available days proportionally — richer cities get more time. Generates 3–5 activities per day based on chosen pace (Relaxed/Moderate/Packed) using a templating system with 121 curated activity templates across 12 interest categories. Deduplication ensures no activity repeats within a trip</p>
+                                <p>Distributes days proportionally by interest richness and generates structured activities with Google Maps links, hours, and costs</p>
                                 <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
                                 <div class="hiw-detail">
                                     <ul>
@@ -697,7 +700,7 @@
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                                 </div>
                                 <h5>Interactive Route Map</h5>
-                                <p>Plotly animated scatter-geo map plots the full route on a natural earth projection. Marker sizes scale with days allocated. Animated frames reveal each stop sequentially with play/pause controls and a timeline slider. Flight vs. overland connections shown with distinct line styles. All 326 cities available on a separate explore map, color-coded by region with hover details</p>
+                                <p>Animated Plotly map reveals the route stop-by-stop with play/pause controls, plus a global explore map of all 326 cities</p>
                                 <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
                                 <div class="hiw-detail">
                                     <ul>
@@ -713,18 +716,19 @@
                                 <div class="hiw-icon">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                                 </div>
-                                <h5>Budget Engine & Tools</h5>
-                                <p>Estimates total trip cost using per-city daily rates, Airbnb averages, Uber costs, and group size multipliers — broken down by city with visual summaries. Additional tools: side-by-side city comparison (up to 3 cities), top-ranked destination lists, budget calculator, and a "Surprise Me" random generator for spontaneous planning. User accounts with SHA-256 hashed auth for saving multiple trips</p>
+                                <h5>Budget, Booking & Export</h5>
+                                <p>Full budget breakdowns, direct booking links, visa info, smart packing lists, and exportable PDF trip reports</p>
                                 <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
                                 <div class="hiw-detail">
                                     <ul>
-                                        <li><strong>Cost formula:</strong> Per city: daily_rate × days_allocated × group_size. Group sizes: Solo=1, Couple=2, Group=4, Family=4</li>
-                                        <li><strong>Per-city data:</strong> Daily cost per person (e.g., Bangkok $60, Zurich $250), average Airbnb nightly rate ($25–$220+), average Uber ride cost ($2–$30) — all curated for 326 cities</li>
-                                        <li><strong>City comparison tool:</strong> Side-by-side view of up to 3 cities showing cost, safety, comfort, weather, interests, neighborhoods, and top activities</li>
-                                        <li><strong>Top cities tool:</strong> Ranked destination lists filterable by various criteria</li>
-                                        <li><strong>"Surprise Me" generator:</strong> Random destination picker with regenerate button for spontaneous planning</li>
-                                        <li><strong>User accounts:</strong> SHA-256 password hashing with salt. Save multiple trip plans per account. Local JSON-based persistence</li>
-                                        <li><strong>28 data fields per city:</strong> Country, region, lat/lon, cost, good months, interest tags, comfort, weather, highlights, description, language, safety, WiFi, vegetarian score, crowd level, city size, terrain, beach type, festivals, best-for tags, neighborhoods, top activities, local food, local drinks, things to do, Uber cost, Airbnb cost</li>
+                                        <li><strong>Budget engine:</strong> Per city: daily_rate × days_allocated × group_size. Includes Airbnb averages ($25–$220+/night), Uber costs ($2–$30), and per-person daily rates — all curated for 326 cities</li>
+                                        <li><strong>Booking links:</strong> Direct integration with Kiwi.com (flights), Booking.com (hotels), and Airbnb — auto-fills dates and destination</li>
+                                        <li><strong>Visa info:</strong> Color-coded visa badges per country — visa-free, visa-on-arrival, e-visa, or embassy required — with max stay duration and notes</li>
+                                        <li><strong>Practical info panel:</strong> Currency, power plugs, tipping customs, emergency numbers, SIM card advice, tap water safety, and dress codes for every destination</li>
+                                        <li><strong>Smart packing list:</strong> Auto-generated based on destinations, climate, terrain, and activities — with checkboxes for tracking</li>
+                                        <li><strong>PDF export:</strong> Polished multi-page trip report with title page, daily itinerary, city info cards, budget summary, and practical info — styled with colored headers and visual hierarchy</li>
+                                        <li><strong>Tools:</strong> Side-by-side city comparison (up to 3), top-ranked lists, budget calculator, and "Surprise Me" random generator</li>
+                                        <li><strong>User accounts:</strong> SHA-256 hashed auth with salt. Save multiple trip plans per account</li>
                                     </ul>
                                 </div>
                             </div>
@@ -735,11 +739,11 @@
                         <div class="project-block">
                             <h4>Key Highlights</h4>
                             <ul class="project-bullets">
-                                <li><strong>326 cities, 84 countries</strong> — each with 28 data fields including curated neighborhoods, top activities, local cuisine, festivals, and Airbnb/Uber costs</li>
+                                <li><strong>326 cities, 84 countries</strong> — each with 30+ data fields including structured activities with Google Maps links, neighborhoods, cuisine, festivals, visa info, and practical travel details</li>
                                 <li>30-factor scoring algorithm balancing budget, season, safety, language, dietary needs, crowd tolerance, and 20+ other dimensions</li>
                                 <li>Intelligent multi-country routing with proximity filtering and richness-based day allocation</li>
-                                <li>121 activity templates across 12 interest categories with pace-aware scheduling and deduplication</li>
-                                <li>Animated Plotly route map with play/pause, timeline slider, and region-coded explore map</li>
+                                <li>Direct booking links (Kiwi.com, Booking.com, Airbnb), visa badges, smart packing lists, and multi-page PDF export</li>
+                                <li>Animated Plotly route map, city comparison tool, budget calculator, and "Surprise Me" generator</li>
                             </ul>
                         </div>
                         <div class="project-block">
@@ -748,12 +752,12 @@
                                 <span>Python</span>
                                 <span>Streamlit</span>
                                 <span>Plotly</span>
+                                <span>FPDF2</span>
                                 <span>Custom CSS</span>
-                                <span>JSON</span>
                                 <span>Scoring Algorithms</span>
-                                <span>Data Pipelines</span>
-                                <span>SHA-256 Auth</span>
                                 <span>Animated Maps</span>
+                                <span>SHA-256 Auth</span>
+                                <span>Booking API Links</span>
                             </div>
                         </div>
                     </div>
