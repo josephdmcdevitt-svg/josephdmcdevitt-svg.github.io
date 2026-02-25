@@ -43,6 +43,13 @@ document.querySelectorAll('.timeline-item, .stat-card, .skill-category, .passion
     observer.observe(el);
 });
 
+// ===== Deep Dive toggle =====
+document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.hiw-toggle');
+    if (!btn) return;
+    btn.closest('.hiw-card').classList.toggle('expanded');
+});
+
 // ===== Project tab switching =====
 document.querySelectorAll('.project-tab').forEach(tab => {
     tab.addEventListener('click', () => {

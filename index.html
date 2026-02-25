@@ -303,6 +303,16 @@
                                 </div>
                                 <h5>Multi-Source Scraping</h5>
                                 <p>Daily automated ingestion from 8 broker networks — BizBuySell, BizQuest, BusinessBroker.net, Sunbelt, Transworld, and others. Extracts price, EBITDA, revenue, employees, industry, location, and full broker descriptions</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>8 sources:</strong> BizBuySell, BizQuest, BusinessBroker.net, Sunbelt Business Network, Transworld, VR Business Brokers, Murphy Business Sales, BusinessesForSale</li>
+                                        <li><strong>Fields extracted:</strong> title, description, broker notes, asking price, EBITDA/cash flow/SDE, gross revenue, employee count, industry classification, city/state/ZIP, source URL</li>
+                                        <li>Runs daily at 6 AM via macOS launchd scheduler — zero manual intervention</li>
+                                        <li>Raw listings stored in SQLite with first-seen / last-seen date tracking for lifecycle analysis</li>
+                                        <li>Recently sold detection: listings that disappear between runs are flagged as "sold" for market intelligence</li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="hiw-card">
                                 <div class="hiw-icon">
@@ -310,6 +320,15 @@
                                 </div>
                                 <h5>Filtering & Dedup</h5>
                                 <p>Hard exclusion engine rejects 12 categories (restaurants, ecommerce, cannabis, franchises, hotels, etc.). URL-based deduplication across all sources ensures no listing is scored twice. EBITDA proxy logic falls back to cash flow or SDE when EBITDA is missing</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>12 hard-exclude categories:</strong> Food/Nightlife, Ecommerce/FBA, Cannabis/Vape/Liquor, Crypto/Forex, Gas Stations, Hotels/Lodging, Healthcare Reimbursement, Environmental Risk (dry cleaners, auto body), Commodity Labor (trucking, janitorial), Low-Defensibility Retail, Real Estate Only, Franchises</li>
+                                        <li><strong>Dedup logic:</strong> URL-based matching across both databases — each listing tracked in a seen_urls set to ensure 1:1 uniqueness</li>
+                                        <li><strong>EBITDA proxy chain:</strong> Prefers explicit EBITDA → falls back to cash flow → falls back to SDE. A −5 point scoring penalty is applied when using proxy values</li>
+                                        <li>Valuation multiples auto-calculated (price / EBITDA) for every listing that has earnings data</li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="hiw-card">
                                 <div class="hiw-icon">
@@ -317,6 +336,16 @@
                                 </div>
                                 <h5>Dual Scoring Algorithm</h5>
                                 <p>Each deal gets two independent 0–100 scores: <strong>Operator Score</strong> (operational simplicity, owner independence, revenue stability, customer diversification, lifestyle load) and <strong>PE Score</strong> (platform scalability, revenue quality, management depth, value creation potential, exit optionality). Each score = 50 pts qualitative text analysis + 50 pts quantitative public data</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Operator — Qualitative (50 pts):</strong> Operational Simplicity (15 pts — penalizes custom manufacturing, heavy regulation, specialized equipment), Owner Independence (10 pts — hard penalty for owner-operated/key-man risk), Revenue Stability (10 pts — penalizes seasonal/project-based; bonuses for recurring/subscription), Customer Diversification (10 pts — penalizes single-customer concentration), Lifestyle Load (5 pts — penalizes 24/7, emergency, on-call businesses)</li>
+                                        <li><strong>Operator — Quantitative (50 pts):</strong> Industry Survival Rate (15 pts — Census BDS firm death rate by NAICS), Local Demand (10 pts — BLS 3-year employment growth), Labor Cost Pressure (10 pts — local vs. national wage growth), Competition Density (10 pts — Census CBP establishments per capita), Debt Safety (5 pts — implied multiple + EBITDA margin thresholds)</li>
+                                        <li><strong>PE — Qualitative (50 pts):</strong> Platform Scalability (15 pts — bonuses for 25+ employees, multi-location, $10M+ revenue), Revenue Quality (10 pts), Management Depth (10 pts — bonuses for GM, ops manager, controllers), Value Creation (10 pts — bonuses for under-managed businesses), Exit Optionality (5 pts — NAICS on a 54-sector PE whitelist)</li>
+                                        <li><strong>PE — Quantitative (50 pts):</strong> Market Fragmentation (15 pts — % of establishments with &lt;20 employees), Market Growth (10 pts — blended 60% local + 40% national), Labor Efficiency (10 pts — employment growth minus wage growth), Add-on Pipeline (10 pts — establishment density per 100K population), Financing Resilience (5 pts)</li>
+                                        <li><strong>Text analysis:</strong> 300+ keywords scanned across title, description, and broker notes. Case-insensitive matching with hard/soft penalty tiers per scoring bucket</li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="hiw-card">
                                 <div class="hiw-icon">
@@ -324,6 +353,16 @@
                                 </div>
                                 <h5>Public Data Enrichment</h5>
                                 <p>Integrates <strong>Census Bureau</strong> data (County Business Patterns, Business Dynamics Statistics) for industry survival rates, competition density, and market fragmentation. Pulls <strong>BLS QCEW</strong> data for 3-year employment growth trends and wage pressure analysis — all resolved to county-level FIPS codes</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Census CBP (County Business Patterns):</strong> Establishment count by NAICS + geography, employment count, payroll data, size distribution (% with &lt;20 employees for fragmentation scoring). Resolved to 4-digit NAICS with 2-digit fallback</li>
+                                        <li><strong>Census BDS (Business Dynamics Statistics):</strong> Firm death rate by 2-digit NAICS — thresholds: ≤8% → 15 pts, ≤10% → 12, ≤12% → 9, ≤14% → 6, ≤16% → 3</li>
+                                        <li><strong>BLS QCEW:</strong> 3-year annualized employment growth (2019–2022 baseline) and wage growth at county level. Private sector only (ownership code 5). National data used as fallback proxy</li>
+                                        <li><strong>Caching:</strong> SQLite-based 30-day TTL cache keyed by naics:fips:is_county — minimizes redundant API calls across 5,000+ listings</li>
+                                        <li><strong>Data confidence flags:</strong> High (NAICS + county FIPS), Medium (NAICS + state FIPS), Low (partial), None. A −2 pt penalty per bucket when using state-level instead of county data</li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="hiw-card">
                                 <div class="hiw-icon">
@@ -331,6 +370,15 @@
                                 </div>
                                 <h5>Geographic Intelligence</h5>
                                 <p>ZIP-to-county FIPS resolution with city/state fallback. Maps deals to 40+ defined markets across 5 regions with tier classifications (Tier 1/2/3). Enables market-by-market pipeline comparison and regional concentration analysis</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Resolution priority:</strong> ZIP code → county FIPS (via zip_county_fips.json lookup) → city/state → county FIPS (via city_county_fallback.json) → state FIPS only as last resort</li>
+                                        <li><strong>40+ defined markets:</strong> Chicago, NYC, Atlanta, Dallas, Miami, LA, Boston, Denver, Phoenix, Seattle, and others — grouped into 5 regions (Midwest, Southeast, Northeast, Southwest, West Coast)</li>
+                                        <li><strong>Market tiers:</strong> Tier 1 (major metros), Tier 2 (secondary), Tier 3 (tertiary) — enables pipeline filtering by market depth</li>
+                                        <li>Dashboard shows regional concentration, market-by-market deal counts, and geographic distribution analytics</li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="hiw-card">
                                 <div class="hiw-icon">
@@ -338,6 +386,16 @@
                                 </div>
                                 <h5>Dashboard & Analytics</h5>
                                 <p>Full listing detail pages with score breakdowns for both buyer types. Badge system ranks each deal (e.g., "Platform Candidate", "Operator Ideal"). Filterable by region, market, score, EBITDA band, and industry. Tracks recently sold listings and lifecycle changes. Auto-deploys daily via Vercel</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Operator badges:</strong> "Operator Ideal" (90–100), "Strong Owner Business" (80–89), "Manageable With Risk" (70–79), "High Operator Load" (60–69), "Avoid for Solo Buyer" (&lt;60)</li>
+                                        <li><strong>PE badges:</strong> "Elite Platform Target" (90–100), "Platform Candidate" (80–89), "Add-On Target" (70–79), "Sponsor Review" (60–69), "Low PE Priority" (&lt;60)</li>
+                                        <li><strong>Pages:</strong> Dashboard overview, full listings table (sortable/filterable), individual deal detail with scoring breakdown, scoring methodology guide, analytics/distributions, map view, and user preferences</li>
+                                        <li><strong>Export:</strong> Listings.json (~100+ MB, 5,000+ deals) auto-generated and pushed to Vercel. Client-side rendering with no backend — instant filtering and sorting</li>
+                                        <li><strong>Lifecycle tracking:</strong> First-seen / last-seen dates, recently sold detection, source status monitoring across all 8 networks</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -401,6 +459,17 @@
                                 </div>
                                 <h5>NPI Registry Ingestion</h5>
                                 <p>Downloads the full CMS NPPES data dissemination file (~700MB compressed, 10GB+ expanded). Parses in 100K-row chunks via Pandas, filters on 12 pharmacy-specific taxonomy codes, and batch-inserts 5,000 records at a time. Covers <strong>112,000+ pharmacies</strong> across all 50 states and territories</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Source:</strong> CMS NPPES Data Dissemination — downloaded via httpx streaming in 1MB chunks with a 1-hour timeout</li>
+                                        <li><strong>Parsing:</strong> Pandas read_csv with chunksize=100,000 rows and low_memory=False. Entity type filter (organizations only). Batch inserts of 5,000 records per database commit</li>
+                                        <li><strong>12 pharmacy taxonomy codes:</strong> Community/Retail, Compounding, Long Term Care, Home Infusion, Institutional, Mail Order, Military, Managed Care, Nuclear, Specialty, General Pharmacy, and Pharmacist</li>
+                                        <li><strong>Normalization:</strong> Phone standardized to (XXX) XXX-XXXX, names uppercased, ZIP truncated to 5 digits, dedup key = MD5 hash of org_name|address|zip</li>
+                                        <li><strong>NPI date extraction:</strong> Enumeration date, last update date, deactivation date/reason parsed from columns 36–39. Years in operation calculated from enumeration date</li>
+                                        <li><strong>Coverage:</strong> 64 states/territories. Top 5 independent: NY (6,827), CA (5,844), TX (5,502), FL (5,248), MI (2,819)</li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="hiw-card">
                                 <div class="hiw-icon">
@@ -408,6 +477,16 @@
                                 </div>
                                 <h5>Chain Classification Engine</h5>
                                 <p>Regex matching against 35+ named chains (CVS, Walgreens, Walmart, Rite Aid, Kroger, Costco, Genoa, etc.). Flags institutional pharmacies (hospitals, nursing, LTC, correctional). Multi-location clustering automatically identifies operators with 10+ locations as de facto chains. Parses ownership signals (LLC, Inc, Partnership, PC) from organization names</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Named chains matched:</strong> CVS, Walgreens, Walmart, Rite Aid, Kroger, Costco, Sam's Club, Target, Publix, H-E-B, Albertsons, Safeway, Meijer, Winn-Dixie, Giant, ShopRite, Wegmans, Hy-Vee, Fred Meyer, Harris Teeter, Omnicare, PharMerica, Kindred, BrightSpring, Cardinal Health, McKesson, AmerisourceBergen, Express Scripts, Optum Rx, Cigna, Amazon Pharmacy, Capsule, Alto, Genoa, PharmHouse</li>
+                                        <li><strong>Multi-location clustering:</strong> Any organization name appearing at 10+ distinct addresses is auto-flagged as a chain — catches regional operators not in the named chain list (~18,000 pharmacies)</li>
+                                        <li><strong>Institutional filtering:</strong> Regex patterns for: Hospital, Medical Center, Nursing, Long-Term Care, LTC, Skilled Nursing, Rehab, Assisted Living, Infusion, Correctional, Prison, Veterans, VA — tagged but not deleted from database</li>
+                                        <li><strong>Ownership signals:</strong> Corporation (41,764), LLC (30,449), Unknown (39,174), Partnership (935), Professional Corporation (215)</li>
+                                        <li><strong>Result:</strong> 65,279 independents (58%), 47,258 chains (42%), 3,890 institutional</li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="hiw-card">
                                 <div class="hiw-icon">
@@ -415,6 +494,15 @@
                                 </div>
                                 <h5>Medicare & 340B Enrichment</h5>
                                 <p>Enriches pharmacies with <strong>Medicare Part D</strong> claims data — total claims filled, unique beneficiaries served, and total drug cost. Identifies 340B-eligible pharmacies (federally qualified health centers, critical access hospitals, contract pharmacies) which fill prescriptions at deeply discounted acquisition costs — a key signal for file value and competitive positioning</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Medicare Part D fields:</strong> Total claims count (prescriptions filled), unique Medicare beneficiaries served, total drug cost in dollars — sourced from CMS prescriber-level utilization data</li>
+                                        <li><strong>340B program:</strong> Federal drug pricing program that requires drug manufacturers to sell outpatient drugs at a discount to eligible healthcare organizations. 340B pharmacies acquire drugs at 25–50% below retail — dramatically affecting per-script margin and file value calculations</li>
+                                        <li><strong>340B eligibility signals:</strong> Federally Qualified Health Centers (FQHCs), critical access hospitals, disproportionate share hospitals, contract pharmacy arrangements — identified via taxonomy codes and organization name patterns</li>
+                                        <li><strong>Why it matters for M&A:</strong> A pharmacy's 340B status signals margin compression risk for buyers — or opportunity if the acquirer can maintain the 340B contract. Medicare volume indicates patient stickiness and reimbursement predictability</li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="hiw-card">
                                 <div class="hiw-icon">
@@ -422,6 +510,17 @@
                                 </div>
                                 <h5>Census Demographic Scoring</h5>
                                 <p>Pulls ZIP-level <strong>U.S. Census</strong> data for every pharmacy: population, % age 65+ (seniors fill 2–3x more scripts), median household income (payer mix quality), and population growth rate. Calculates local competition density — pharmacies per 10,000 residents — to identify underserved markets where acquisition targets hold more value</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Coverage:</strong> 99.8% of pharmacies enriched with Census data (112,154 of 112,537)</li>
+                                        <li><strong>% Age 65+:</strong> Range 0–100%, average 17.93%. Scaled to a 30% threshold (30% or higher = max score of 100). Rationale: seniors fill 2–3x more prescriptions and have higher adherence — directly correlates with script volume and file value</li>
+                                        <li><strong>Median household income:</strong> Range $2,499–$250,001, average $81,776. Scaled to $100K threshold. Higher income = better commercial payer mix = higher reimbursement per script</li>
+                                        <li><strong>Population growth:</strong> Weighted multiplier of 5x applied (e.g., 10% growth → 100 pts). Signals expanding patient base and market demand</li>
+                                        <li><strong>Competition density:</strong> Pharmacies per 10,000 residents per ZIP. Range 0.17–10,000, average 6.65. Thresholds: ≤1 → 100 pts (excellent), ≤3 → 80, ≤5 → 60, ≤8 → 40, ≤12 → 20, >12 → 10 (saturated)</li>
+                                        <li><strong>File value estimate:</strong> Rx volume × $4/script (industry standard acquisition price). Total independent pipeline value: ~$4.72 billion</li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="hiw-card">
                                 <div class="hiw-icon">
@@ -429,6 +528,18 @@
                                 </div>
                                 <h5>6-Factor Acquisition Score</h5>
                                 <p>Composite 0–100 score with weighted factors: <strong>Rx Volume</strong> (30%) — estimated scripts/year scaled to 80K baseline; <strong>Competition</strong> (20%) — pharmacies per 10K population; <strong>Aging Population</strong> (20%) — % 65+ scaled to 30% threshold; <strong>Retirement Risk</strong> (15%) — years in operation from NPI enumeration date; <strong>Income</strong> (8%) — median ZIP income; <strong>Pop Growth</strong> (7%) — market expansion signal</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Rx Volume (30%):</strong> Estimated scripts/year scaled to 80,000 baseline = 100 pts. Range across database: 1,732–123,750 scripts/year, average 18,073. Default 20 pts if volume unknown</li>
+                                        <li><strong>Competition (20%):</strong> Based on zip_pharmacies_per_10k. ≤1 → 100, ≤3 → 80, ≤5 → 60, ≤8 → 40, ≤12 → 20, >12 → 10</li>
+                                        <li><strong>Aging Population (20%):</strong> % residents 65+ scaled to 30% ceiling. Average score strong due to 17.93% national average</li>
+                                        <li><strong>Retirement Risk (15%):</strong> Based on years since NPI enumeration. ≥25 yrs → 100 (owner likely 60+), ≥20 → 80, ≥15 → 50, ≥10 → 30, &lt;10 → 10. 3,435 pharmacies currently at 20+ years</li>
+                                        <li><strong>Income (8%):</strong> Median ZIP income / $100,000 × 100. Caps at 100</li>
+                                        <li><strong>Pop Growth (7%):</strong> 50 + (growth_pct × 5). 0% growth = 50 pts, 10% growth = 100 pts</li>
+                                        <li><strong>Final score distribution:</strong> Range 9.69–87.48, average 44.41 across all 112,537 pharmacies</li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="hiw-card">
                                 <div class="hiw-icon">
@@ -436,6 +547,16 @@
                                 </div>
                                 <h5>Closing Signals & Probability</h5>
                                 <p>Identifies pharmacies with a high likelihood of being available or discounted using three signals: <strong>Long-tenured owners</strong> (20+ years operating — likely near retirement); <strong>Stale NPI records</strong> (3+ years without update — possible inactivity); <strong>Nearby deactivations</strong> (pharmacies in ZIPs where others recently closed — displaced patients need a new provider). Change detection tracks deactivations, new registrations, and field-level updates across pipeline runs</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Long-tenured (20+ years):</strong> 3,435 pharmacies. Owner likely age 60+ and approaching retirement — highest probability of willingness to sell. NPI enumeration date used as proxy for business age</li>
+                                        <li><strong>Stale NPI records (3+ years):</strong> 71,986 pharmacies. No update to CMS registration in 3+ years may indicate declining engagement, reduced operations, or owner disengagement — early signal of potential availability</li>
+                                        <li><strong>Nearby deactivations:</strong> 155 pharmacies recently deactivated in the system. Platform surfaces independent pharmacies in the same ZIP code — these stores inherit displaced patient volume, making them higher-value targets (and their owners may be motivated by the same market pressures)</li>
+                                        <li><strong>Change detection:</strong> Snapshots full database state before each pipeline run. Compares new vs. previous records to detect new registrations, field updates, and deactivations. Stores audit trail with change type, field name, old value, and new value</li>
+                                        <li><strong>Pipeline tracking:</strong> Each run logs started_at, completed_at, status, records_processed, records_added, records_updated, and changes_detected</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -502,6 +623,17 @@
                                 </div>
                                 <h5>9-Step Preference Wizard</h5>
                                 <p>Captures 40+ inputs across 9 sections: trip basics ($500–$50K budget, 3–60 days), travel style (adventure level, pace, group type), 12 interest categories, 12 must-have experiences (scuba, safari, aurora, etc.), comfort & dietary needs, destination filters (city size, landscape, beach type), social preferences, safety/logistics, and deal-breakers</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Step 1 — Trip Basics:</strong> Budget ($500–$50K), duration (3–60 days), departure city, start/end dates, travel month (auto-detected), multi-country toggle</li>
+                                        <li><strong>Step 2 — Travel Style:</strong> Adventure level (1–100 slider), pace (Relaxed/Moderate/Packed), group type (Solo/Couple/Group/Family), trip purpose (honeymoon, bucket list, gap year, etc.), travel experience level</li>
+                                        <li><strong>Step 3 — Interests:</strong> 12 categories: food, temples, nightlife, beaches, hiking, art, shopping, architecture, wellness, wildlife, photography, local culture</li>
+                                        <li><strong>Step 4 — Experiences:</strong> 12 must-haves: scuba diving, volcanoes, aurora borealis, safari, wine tasting, hot air balloons, mountain trekking, cooking classes, scenic train journeys, river cruises, festivals, ancient ruins</li>
+                                        <li><strong>Step 5 — Comfort:</strong> Comfort level (1–100), transport mode, food adventurousness, dietary restrictions, WiFi needs, fitness level</li>
+                                        <li><strong>Steps 6–9:</strong> City size preference, landscape/beach type, language comfort, cultural immersion, nightlife importance, crowd tolerance, safety priority, jet lag tolerance (3 modes), shopping importance, weather preference, region preference, long-flight deal-breaker</li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="hiw-card">
                                 <div class="hiw-icon">
@@ -509,6 +641,20 @@
                                 </div>
                                 <h5>30-Factor Scoring Algorithm</h5>
                                 <p>Each city scored on: interest tag matching (+15 pts each), budget fit (+25/−penalty), seasonal weather alignment (+15), comfort level scaling, adventure compatibility, flight duration penalties, jet lag sensitivity (−hours × 1.5), language comfort (+8), safety priority (+8), city size preference, landscape/terrain matching, nightlife scoring, crowd tolerance, WiFi needs, dietary restrictions, cultural immersion, shopping, fitness level, and must-have experience matching (+12 exact, +4 tag)</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Interest matching:</strong> +15 pts per tag match across 12 categories (food, temples, nightlife, beaches, hiking, art, shopping, architecture, wellness, wildlife, photography, culture)</li>
+                                        <li><strong>Budget fit:</strong> +25 if daily cost ≤ budget per person; +10 if within 120% of budget; dynamic penalty −(overage × 0.3) if over budget</li>
+                                        <li><strong>Season/weather:</strong> +15 if travel month is in city's "good months"; −5 if outside. Warm-only preference: +10 match / −15 mismatch. No-rain preference: −10 for tropical climates</li>
+                                        <li><strong>Comfort & adventure:</strong> +8 if city comfort ≥ user level; dynamic penalty −(gap × 5) for mismatch. Adventure ≥70 with hiking/wildlife tags: +5 bonus. Adventure ≤30 with high comfort: +5 bonus</li>
+                                        <li><strong>Flight & jet lag:</strong> Long-haul penalty: −20 for >10 hrs, −10 for >8 hrs (if deal-breaker enabled). Jet lag: −(hours × 1.5) in minimize mode; −8 if prefer_few and >10 hrs</li>
+                                        <li><strong>Location preferences:</strong> Language comfort (+8/+3), safety priority (+8/+2), city size match (+8/−8), landscape/terrain (+10), beach type (+6/−3), nightlife (+6/−6), crowd tolerance (+3/−8)</li>
+                                        <li><strong>Lifestyle factors:</strong> WiFi needs (+5), dietary/vegetarian (+5/−5), cultural immersion (+5), shopping (+5), fitness/hiking (+5/−5), photography (+5)</li>
+                                        <li><strong>Must-have experiences:</strong> +12 pts for exact city match (e.g., Tromso for aurora), +4 pts for tag match. 12 experience types with 8–12 curated cities each</li>
+                                        <li><strong>Random noise:</strong> ±5 pts added for natural variance — ensures different recommendations across runs</li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="hiw-card">
                                 <div class="hiw-icon">
@@ -516,6 +662,17 @@
                                 </div>
                                 <h5>Multi-Country Routing</h5>
                                 <p>Dynamically determines optimal country count based on trip length (1–4 countries). Scores countries by composite average of their top 3 cities, then applies regional proximity filtering — additional countries must be in the same region or score above 60% of the top pick. Selects 2–3 cities per country and calculates inter-region flight hours to minimize total travel time</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Country count logic:</strong> Multi-country mode: max(2, min(4, trip_days ÷ 5)). Single mode: 1–7 days → 1 country, 8–14 → 2, 15+ → 3</li>
+                                        <li><strong>Country scoring:</strong> Each country scored by the average of its top 3 cities' individual scores</li>
+                                        <li><strong>Proximity filtering:</strong> Additional countries must be in the same region as the top pick, or score above 60% of the top country's score to qualify cross-region</li>
+                                        <li><strong>Cities per country:</strong> min(3, max(2, trip_days ÷ (num_countries × 3))). Example: 10-day, 2-country trip → 2 cities per country</li>
+                                        <li><strong>Inter-region flight hours:</strong> NA↔Asia: 14 hrs, NA↔Europe: 8 hrs, within Europe: 3 hrs, within Asia: 4 hrs — used to penalize impractical multi-region trips</li>
+                                        <li><strong>6 regions:</strong> Asia, Europe, South America, Africa, Oceania, North America — each color-coded on the explore map</li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="hiw-card">
                                 <div class="hiw-icon">
@@ -523,6 +680,17 @@
                                 </div>
                                 <h5>Day Allocation & Activities</h5>
                                 <p>Calculates a "richness score" per city (how many user interests it matches) and distributes available days proportionally — richer cities get more time. Generates 3–5 activities per day based on chosen pace (Relaxed/Moderate/Packed) using a templating system with 121 curated activity templates across 12 interest categories. Deduplication ensures no activity repeats within a trip</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Richness formula:</strong> richness = count of matching interest tags between user preferences and city data. Minimum richness = 1 to guarantee every city gets at least 1 day</li>
+                                        <li><strong>Day distribution:</strong> available_days = trip_days − travel_days (1 travel day per inter-city move). Each city gets: (city_richness ÷ total_richness) × available_days, rounded. Remainder days added to first city; excess trimmed from last cities (min 1 day each)</li>
+                                        <li><strong>Activity pool per city:</strong> 1) All pre-curated city highlights, 2) templated activities for each matching interest tag, 3) generic fallback activities. Drawn from without replacement to prevent repeats</li>
+                                        <li><strong>121 activity templates</strong> across 12 categories. Examples: "Street food walking tour in {city}", "Hike to the best scenic viewpoint in {city}", "Book a traditional spa treatment in {city}"</li>
+                                        <li><strong>Pacing:</strong> Relaxed = 3 activities/day, Moderate = 4, Packed = 5. Time slots: Morning → Midday → Afternoon → Evening → Night</li>
+                                        <li>If activity pool is exhausted: fallback to "Free time to explore {city}"</li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="hiw-card">
                                 <div class="hiw-icon">
@@ -530,6 +698,16 @@
                                 </div>
                                 <h5>Interactive Route Map</h5>
                                 <p>Plotly animated scatter-geo map plots the full route on a natural earth projection. Marker sizes scale with days allocated. Animated frames reveal each stop sequentially with play/pause controls and a timeline slider. Flight vs. overland connections shown with distinct line styles. All 326 cities available on a separate explore map, color-coded by region with hover details</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Projection:</strong> Natural earth with light gray land, light blue ocean, and visible coastlines</li>
+                                        <li><strong>Markers:</strong> Departure city = gold star (size 16). Route cities = blue circles, size = max(10, days_allocated × 5). White outline, 0.9 opacity</li>
+                                        <li><strong>Route lines:</strong> Cross-country flights = blue dashed (#3498db, width 2.5). Same-country overland = teal solid (#2ec4b6, width 2)</li>
+                                        <li><strong>Animation:</strong> One frame per city in route sequence. Frame duration: 1000ms, transition: 500ms. Play/pause buttons + scrubbing slider (300ms step duration)</li>
+                                        <li><strong>Explore map:</strong> All 326 cities plotted. Color-coded by region (red=Asia, blue=Europe, green=S. America, orange=Africa, purple=Oceania). Hover shows: cost/day, best months, interest tags, highlights, and description</li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="hiw-card">
                                 <div class="hiw-icon">
@@ -537,6 +715,18 @@
                                 </div>
                                 <h5>Budget Engine & Tools</h5>
                                 <p>Estimates total trip cost using per-city daily rates, Airbnb averages, Uber costs, and group size multipliers — broken down by city with visual summaries. Additional tools: side-by-side city comparison (up to 3 cities), top-ranked destination lists, budget calculator, and a "Surprise Me" random generator for spontaneous planning. User accounts with SHA-256 hashed auth for saving multiple trips</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Cost formula:</strong> Per city: daily_rate × days_allocated × group_size. Group sizes: Solo=1, Couple=2, Group=4, Family=4</li>
+                                        <li><strong>Per-city data:</strong> Daily cost per person (e.g., Bangkok $60, Zurich $250), average Airbnb nightly rate ($25–$220+), average Uber ride cost ($2–$30) — all curated for 326 cities</li>
+                                        <li><strong>City comparison tool:</strong> Side-by-side view of up to 3 cities showing cost, safety, comfort, weather, interests, neighborhoods, and top activities</li>
+                                        <li><strong>Top cities tool:</strong> Ranked destination lists filterable by various criteria</li>
+                                        <li><strong>"Surprise Me" generator:</strong> Random destination picker with regenerate button for spontaneous planning</li>
+                                        <li><strong>User accounts:</strong> SHA-256 password hashing with salt. Save multiple trip plans per account. Local JSON-based persistence</li>
+                                        <li><strong>28 data fields per city:</strong> Country, region, lat/lon, cost, good months, interest tags, comfort, weather, highlights, description, language, safety, WiFi, vegetarian score, crowd level, city size, terrain, beach type, festivals, best-for tags, neighborhoods, top activities, local food, local drinks, things to do, Uber cost, Airbnb cost</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
