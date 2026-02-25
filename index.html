@@ -280,17 +280,17 @@
                     <div class="project-header-block">
                         <span class="project-status">Active Development</span>
                         <h3 class="project-name">AI-Powered Private Equity Deal Sourcing Engine</h3>
-                        <p class="project-summary">An automated system that scans business-for-sale marketplaces, scores opportunities against investment criteria, and surfaces the highest-priority deals in a real-time dashboard.</p>
+                        <p class="project-summary">An automated system that scrapes 8 business-for-sale marketplaces daily, runs a dual scoring algorithm (Operator vs. PE buyer), enriches with Census Bureau and BLS labor data, and surfaces 5,000+ ranked deals in a live dashboard.</p>
                     </div>
 
                     <div class="project-two-col">
                         <div class="project-block">
                             <h4>Problem</h4>
-                            <p>PE deal sourcing is manual and slow. Analysts waste hours scanning fragmented platforms, copying data into spreadsheets, and applying inconsistent criteria. Good deals get buried before they're even reviewed.</p>
+                            <p>PE deal sourcing is manual and slow. Analysts waste hours scanning fragmented platforms, copying data into spreadsheets, and applying inconsistent criteria. Good deals get buried before they're even reviewed — and there's no way to objectively compare an owner-operator opportunity against a PE platform target.</p>
                         </div>
                         <div class="project-block">
                             <h4>Solution</h4>
-                            <p>An end-to-end pipeline that continuously monitors marketplaces, auto-extracts and normalizes listings, classifies by EBITDA band and industry, scores against weighted criteria, and delivers a ranked pipeline — reducing time-to-decision from days to minutes.</p>
+                            <p>A zero-touch daily pipeline that scrapes listings from 8 broker networks, deduplicates across sources, runs two independent 0–100 scoring frameworks (solo buyer vs. PE sponsor), enriches each deal with public market data from the Census Bureau and Bureau of Labor Statistics, and delivers a ranked pipeline with full scoring breakdowns.</p>
                         </div>
                     </div>
 
@@ -301,29 +301,43 @@
                                 <div class="hiw-icon">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M9 12l2 2 4-4"/></svg>
                                 </div>
-                                <h5>Data Collection</h5>
-                                <p>Automated ingestion of listings — financials, asking price, industry, location, and seller notes</p>
+                                <h5>Multi-Source Scraping</h5>
+                                <p>Daily automated ingestion from 8 broker networks — BizBuySell, BizQuest, BusinessBroker.net, Sunbelt, Transworld, and others. Extracts price, EBITDA, revenue, employees, industry, location, and full broker descriptions</p>
                             </div>
                             <div class="hiw-card">
                                 <div class="hiw-icon">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
                                 </div>
-                                <h5>Processing</h5>
-                                <p>Listings cleaned, deduplicated, normalized. EBITDA extracted. Valuation multiples calculated</p>
+                                <h5>Filtering & Dedup</h5>
+                                <p>Hard exclusion engine rejects 12 categories (restaurants, ecommerce, cannabis, franchises, hotels, etc.). URL-based deduplication across all sources ensures no listing is scored twice. EBITDA proxy logic falls back to cash flow or SDE when EBITDA is missing</p>
                             </div>
                             <div class="hiw-card">
                                 <div class="hiw-icon">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 7h6m0 10v-3m-3 3v-6m-3 6v-1m6-10a2 2 0 002-2 2 2 0 00-2-2H9a2 2 0 00-2 2 2 2 0 002 2m6 0H9m6 0v10a2 2 0 01-2 2h-2a2 2 0 01-2-2V7"/></svg>
                                 </div>
-                                <h5>Scoring Engine</h5>
-                                <p>Weighted evaluation — revenue quality, owner dependency, industry, EBITDA band, multiples</p>
+                                <h5>Dual Scoring Algorithm</h5>
+                                <p>Each deal gets two independent 0–100 scores: <strong>Operator Score</strong> (operational simplicity, owner independence, revenue stability, customer diversification, lifestyle load) and <strong>PE Score</strong> (platform scalability, revenue quality, management depth, value creation potential, exit optionality). Each score = 50 pts qualitative text analysis + 50 pts quantitative public data</p>
+                            </div>
+                            <div class="hiw-card">
+                                <div class="hiw-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>
+                                </div>
+                                <h5>Public Data Enrichment</h5>
+                                <p>Integrates <strong>Census Bureau</strong> data (County Business Patterns, Business Dynamics Statistics) for industry survival rates, competition density, and market fragmentation. Pulls <strong>BLS QCEW</strong> data for 3-year employment growth trends and wage pressure analysis — all resolved to county-level FIPS codes</p>
+                            </div>
+                            <div class="hiw-card">
+                                <div class="hiw-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                                </div>
+                                <h5>Geographic Intelligence</h5>
+                                <p>ZIP-to-county FIPS resolution with city/state fallback. Maps deals to 40+ defined markets across 5 regions with tier classifications (Tier 1/2/3). Enables market-by-market pipeline comparison and regional concentration analysis</p>
                             </div>
                             <div class="hiw-card">
                                 <div class="hiw-icon">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                                 </div>
-                                <h5>Dashboard</h5>
-                                <p>Live ranked pipeline with filtering by score, EBITDA range, industry, geography, and alerts</p>
+                                <h5>Dashboard & Analytics</h5>
+                                <p>Full listing detail pages with score breakdowns for both buyer types. Badge system ranks each deal (e.g., "Platform Candidate", "Operator Ideal"). Filterable by region, market, score, EBITDA band, and industry. Tracks recently sold listings and lifecycle changes. Auto-deploys daily via Vercel</p>
                             </div>
                         </div>
                     </div>
@@ -332,22 +346,25 @@
                         <div class="project-block">
                             <h4>Key Highlights</h4>
                             <ul class="project-bullets">
-                                <li>Screening time reduced from hours to continuous automated monitoring</li>
-                                <li>Consistent, repeatable evaluation criteria across all opportunities</li>
-                                <li>Surfaces deals that would be missed in high-volume environments</li>
-                                <li>Structured data for faster decisions and cleaner DD handoff</li>
+                                <li><strong>5,000+</strong> active listings scored across 8 marketplace sources</li>
+                                <li>Dual algorithmic scoring — independent frameworks for solo buyers vs. PE sponsors</li>
+                                <li>Public data integration: Census Bureau (CBP, BDS) + Bureau of Labor Statistics (QCEW)</li>
+                                <li>300+ keyword text analysis engine extracts qualitative signals from broker descriptions</li>
+                                <li>Zero-touch daily pipeline — scrape, score, deploy with no manual intervention</li>
                             </ul>
                         </div>
                         <div class="project-block">
                             <h4>Technologies</h4>
                             <div class="project-tech-tags">
                                 <span>Python</span>
-                                <span>SQL</span>
-                                <span>Streamlit</span>
-                                <span>OpenAI API</span>
-                                <span>Pandas</span>
                                 <span>SQLite</span>
-                                <span>Data Pipelines</span>
+                                <span>JavaScript</span>
+                                <span>Census Bureau API</span>
+                                <span>BLS QCEW API</span>
+                                <span>Vercel</span>
+                                <span>Pandas</span>
+                                <span>Web Scraping</span>
+                                <span>NLP / Keyword Engine</span>
                                 <span>Automation</span>
                             </div>
                         </div>
@@ -361,17 +378,17 @@
                     <div class="project-header-block">
                         <span class="project-status status-live">Live Platform</span>
                         <h3 class="project-name">Pharmacy M&A Intelligence Platform</h3>
-                        <p class="project-summary">A full-stack acquisition targeting dashboard that identifies, scores, and tracks independent pharmacy acquisition targets using NPI registry data, Medicare Part D claims, and U.S. Census demographics.</p>
+                        <p class="project-summary">A full-stack acquisition targeting platform that ingests 112,000+ U.S. pharmacy records from the CMS NPI registry, enriches with Medicare Part D claims and Census demographics, classifies chain vs. independent, scores acquisition readiness using a 6-factor weighted model, and tracks deals through an 8-stage pipeline.</p>
                     </div>
 
                     <div class="project-two-col">
                         <div class="project-block">
                             <h4>Problem</h4>
-                            <p>Pharmacy acquisition teams manually sift through fragmented public databases to find independent targets. There's no centralized tool that combines provider registry data, prescription volume, demographics, and competitive density into a single scoring system.</p>
+                            <p>Pharmacy acquisition teams manually sift through fragmented public databases to find independent targets. There's no centralized tool that combines provider registry data, prescription volume, Medicare/340B designation, demographics, and competitive density into a single scoring system — and no way to probabilistically identify which stores are most likely to be available at a discount.</p>
                         </div>
                         <div class="project-block">
                             <h4>Solution</h4>
-                            <p>An automated pipeline that ingests 70,000+ pharmacy records from CMS, classifies them as chain vs. independent, enriches with Medicare claims and Census demographics, scores acquisition attractiveness, and surfaces top targets in a filterable dashboard with a built-in deal pipeline tracker.</p>
+                            <p>An automated pipeline that downloads the full NPPES registry (~700MB, 10GB+ expanded), filters across 12 pharmacy taxonomy codes, classifies 112,000+ pharmacies as chain vs. independent, enriches with Medicare Part D claims and ZIP-level Census demographics, applies a weighted acquisition score, surfaces closing signals and retirement risk probabilities, and delivers everything in a filterable dashboard with a built-in deal tracker.</p>
                         </div>
                     </div>
 
@@ -382,29 +399,43 @@
                                 <div class="hiw-icon">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7c-2 0-3 1-3 3z"/><path d="M9 12h6M12 9v6"/></svg>
                                 </div>
-                                <h5>Data Ingestion</h5>
-                                <p>Downloads and processes the full CMS NPI registry — 70K+ pharmacies across all 50 states</p>
+                                <h5>NPI Registry Ingestion</h5>
+                                <p>Downloads the full CMS NPPES data dissemination file (~700MB compressed, 10GB+ expanded). Parses in 100K-row chunks via Pandas, filters on 12 pharmacy-specific taxonomy codes, and batch-inserts 5,000 records at a time. Covers <strong>112,000+ pharmacies</strong> across all 50 states and territories</p>
                             </div>
                             <div class="hiw-card">
                                 <div class="hiw-icon">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M9 12l2 2 4-4"/></svg>
                                 </div>
-                                <h5>Classification</h5>
-                                <p>Regex engine matches 50+ chains. Flags institutional pharmacies. Clusters multi-location operators</p>
+                                <h5>Chain Classification Engine</h5>
+                                <p>Regex matching against 35+ named chains (CVS, Walgreens, Walmart, Rite Aid, Kroger, Costco, Genoa, etc.). Flags institutional pharmacies (hospitals, nursing, LTC, correctional). Multi-location clustering automatically identifies operators with 10+ locations as de facto chains. Parses ownership signals (LLC, Inc, Partnership, PC) from organization names</p>
+                            </div>
+                            <div class="hiw-card">
+                                <div class="hiw-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                </div>
+                                <h5>Medicare & 340B Enrichment</h5>
+                                <p>Enriches pharmacies with <strong>Medicare Part D</strong> claims data — total claims filled, unique beneficiaries served, and total drug cost. Identifies 340B-eligible pharmacies (federally qualified health centers, critical access hospitals, contract pharmacies) which fill prescriptions at deeply discounted acquisition costs — a key signal for file value and competitive positioning</p>
+                            </div>
+                            <div class="hiw-card">
+                                <div class="hiw-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                                </div>
+                                <h5>Census Demographic Scoring</h5>
+                                <p>Pulls ZIP-level <strong>U.S. Census</strong> data for every pharmacy: population, % age 65+ (seniors fill 2–3x more scripts), median household income (payer mix quality), and population growth rate. Calculates local competition density — pharmacies per 10,000 residents — to identify underserved markets where acquisition targets hold more value</p>
                             </div>
                             <div class="hiw-card">
                                 <div class="hiw-icon">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 7h6m0 10v-3m-3 3v-6m-3 6v-1m6-10a2 2 0 002-2 2 2 0 00-2-2H9a2 2 0 00-2 2 2 2 0 002 2m6 0H9m6 0v10a2 2 0 01-2 2h-2a2 2 0 01-2-2V7"/></svg>
                                 </div>
-                                <h5>Scoring</h5>
-                                <p>Composite 0–100 score combining Rx volume, competition density, demographics, and market signals</p>
+                                <h5>6-Factor Acquisition Score</h5>
+                                <p>Composite 0–100 score with weighted factors: <strong>Rx Volume</strong> (30%) — estimated scripts/year scaled to 80K baseline; <strong>Competition</strong> (20%) — pharmacies per 10K population; <strong>Aging Population</strong> (20%) — % 65+ scaled to 30% threshold; <strong>Retirement Risk</strong> (15%) — years in operation from NPI enumeration date; <strong>Income</strong> (8%) — median ZIP income; <strong>Pop Growth</strong> (7%) — market expansion signal</p>
                             </div>
                             <div class="hiw-card">
                                 <div class="hiw-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                                 </div>
-                                <h5>Dashboard & Pipeline</h5>
-                                <p>Filterable targets, interactive map, deal tracker with 8-stage funnel, and CSV export for outreach</p>
+                                <h5>Closing Signals & Probability</h5>
+                                <p>Identifies pharmacies with a high likelihood of being available or discounted using three signals: <strong>Long-tenured owners</strong> (20+ years operating — likely near retirement); <strong>Stale NPI records</strong> (3+ years without update — possible inactivity); <strong>Nearby deactivations</strong> (pharmacies in ZIPs where others recently closed — displaced patients need a new provider). Change detection tracks deactivations, new registrations, and field-level updates across pipeline runs</p>
                             </div>
                         </div>
                     </div>
@@ -413,10 +444,11 @@
                         <div class="project-block">
                             <h4>Key Highlights</h4>
                             <ul class="project-bullets">
-                                <li><strong>70,000+</strong> pharmacies ingested and classified across all 50 states</li>
-                                <li>Multi-source enrichment: NPI registry, Medicare Part D claims, U.S. Census demographics</li>
-                                <li>Change detection system tracks new registrations, deactivations, and field-level updates</li>
-                                <li>Full deal pipeline tracker from prospect through closing with contact management</li>
+                                <li><strong>112,000+</strong> pharmacies ingested, classified, and scored across all 50 states</li>
+                                <li>Multi-source enrichment: CMS NPI registry, Medicare Part D claims, 340B designation, U.S. Census demographics</li>
+                                <li>6-factor weighted acquisition score with retirement risk probability and closing signal detection</li>
+                                <li>Change detection system snapshots state before each run and tracks field-level deltas</li>
+                                <li>8-stage deal pipeline tracker (Prospect to Closed) with contact management and CSV export</li>
                                 <li>Dockerized full-stack deployment — FastAPI, React, PostgreSQL in one command</li>
                             </ul>
                         </div>
@@ -433,6 +465,8 @@
                                 <span>Leaflet Maps</span>
                                 <span>Pandas</span>
                                 <span>CMS / NPI Data</span>
+                                <span>Medicare Part D</span>
+                                <span>U.S. Census API</span>
                             </div>
                         </div>
                     </div>
@@ -445,17 +479,17 @@
                     <div class="project-header-block">
                         <span class="project-status status-live">Live Platform</span>
                         <h3 class="project-name">AI-Powered Travel Planner</h3>
-                        <p class="project-summary">A personalized travel recommendation engine covering 326 cities across 84 countries. Takes users through a guided questionnaire and generates custom multi-city itineraries with route maps and budget breakdowns.</p>
+                        <p class="project-summary">A personalized travel recommendation engine with a curated database of 326 cities across 84 countries — each with 28 data fields. A 9-step preference wizard captures 40+ user inputs, feeds them into a 30-factor scoring algorithm, then auto-generates multi-city itineraries with day-by-day activities, animated route maps, and full budget breakdowns.</p>
                     </div>
 
                     <div class="project-two-col">
                         <div class="project-block">
                             <h4>Problem</h4>
-                            <p>Planning multi-city international trips is overwhelming. Travelers spend hours researching destinations, comparing costs, checking seasons, and building itineraries — often ending up with generic recommendations that don't match their actual preferences.</p>
+                            <p>Planning multi-city international trips is overwhelming. Travelers spend hours researching destinations, comparing costs, checking seasons, and building itineraries — often ending up with generic recommendations that don't match their actual budget, comfort level, interests, or dietary needs.</p>
                         </div>
                         <div class="project-block">
                             <h4>Solution</h4>
-                            <p>A 9-step preference wizard feeds into a 30+ factor scoring algorithm that evaluates all 326 cities against the user's budget, interests, comfort level, and travel style — then auto-generates optimized multi-city itineraries with day-by-day activities, route maps, and cost estimates.</p>
+                            <p>A guided 9-step wizard collects detailed preferences (budget, pace, interests, comfort, safety priority, language comfort, dietary restrictions, deal-breakers), then a 30-factor scoring algorithm evaluates all 326 cities simultaneously — balancing budget fit, seasonal weather, flight duration, adventure level, crowd tolerance, and 20+ other dimensions to produce a personalized, multi-country itinerary in seconds.</p>
                         </div>
                     </div>
 
@@ -466,29 +500,43 @@
                                 <div class="hiw-icon">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
                                 </div>
-                                <h5>Preference Wizard</h5>
-                                <p>9-step questionnaire captures budget, travel style, interests, comfort level, and deal-breakers</p>
+                                <h5>9-Step Preference Wizard</h5>
+                                <p>Captures 40+ inputs across 9 sections: trip basics ($500–$50K budget, 3–60 days), travel style (adventure level, pace, group type), 12 interest categories, 12 must-have experiences (scuba, safari, aurora, etc.), comfort & dietary needs, destination filters (city size, landscape, beach type), social preferences, safety/logistics, and deal-breakers</p>
                             </div>
                             <div class="hiw-card">
                                 <div class="hiw-icon">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 7h6m0 10v-3m-3 3v-6m-3 6v-1m6-10a2 2 0 002-2 2 2 0 00-2-2H9a2 2 0 00-2 2 2 2 0 002 2m6 0H9m6 0v10a2 2 0 01-2 2h-2a2 2 0 01-2-2V7"/></svg>
                                 </div>
-                                <h5>Matching Engine</h5>
-                                <p>30+ factor algorithm scores 326 cities on budget, season, safety, language, interests, and more</p>
+                                <h5>30-Factor Scoring Algorithm</h5>
+                                <p>Each city scored on: interest tag matching (+15 pts each), budget fit (+25/−penalty), seasonal weather alignment (+15), comfort level scaling, adventure compatibility, flight duration penalties, jet lag sensitivity (−hours × 1.5), language comfort (+8), safety priority (+8), city size preference, landscape/terrain matching, nightlife scoring, crowd tolerance, WiFi needs, dietary restrictions, cultural immersion, shopping, fitness level, and must-have experience matching (+12 exact, +4 tag)</p>
                             </div>
                             <div class="hiw-card">
                                 <div class="hiw-icon">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
                                 </div>
-                                <h5>Smart Routing</h5>
-                                <p>Selects optimal countries and cities, allocates days by richness, minimizes travel time between stops</p>
+                                <h5>Multi-Country Routing</h5>
+                                <p>Dynamically determines optimal country count based on trip length (1–4 countries). Scores countries by composite average of their top 3 cities, then applies regional proximity filtering — additional countries must be in the same region or score above 60% of the top pick. Selects 2–3 cities per country and calculates inter-region flight hours to minimize total travel time</p>
                             </div>
                             <div class="hiw-card">
                                 <div class="hiw-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                                 </div>
-                                <h5>Itinerary & Budget</h5>
-                                <p>Day-by-day activities, interactive route map, full cost breakdown by city with accommodation and transport</p>
+                                <h5>Day Allocation & Activities</h5>
+                                <p>Calculates a "richness score" per city (how many user interests it matches) and distributes available days proportionally — richer cities get more time. Generates 3–5 activities per day based on chosen pace (Relaxed/Moderate/Packed) using a templating system with 121 curated activity templates across 12 interest categories. Deduplication ensures no activity repeats within a trip</p>
+                            </div>
+                            <div class="hiw-card">
+                                <div class="hiw-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <h5>Interactive Route Map</h5>
+                                <p>Plotly animated scatter-geo map plots the full route on a natural earth projection. Marker sizes scale with days allocated. Animated frames reveal each stop sequentially with play/pause controls and a timeline slider. Flight vs. overland connections shown with distinct line styles. All 326 cities available on a separate explore map, color-coded by region with hover details</p>
+                            </div>
+                            <div class="hiw-card">
+                                <div class="hiw-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <h5>Budget Engine & Tools</h5>
+                                <p>Estimates total trip cost using per-city daily rates, Airbnb averages, Uber costs, and group size multipliers — broken down by city with visual summaries. Additional tools: side-by-side city comparison (up to 3 cities), top-ranked destination lists, budget calculator, and a "Surprise Me" random generator for spontaneous planning. User accounts with SHA-256 hashed auth for saving multiple trips</p>
                             </div>
                         </div>
                     </div>
@@ -497,11 +545,11 @@
                         <div class="project-block">
                             <h4>Key Highlights</h4>
                             <ul class="project-bullets">
-                                <li><strong>326 cities, 84 countries</strong> — each with 15+ data fields, curated activities, neighborhoods, and local cuisine</li>
-                                <li>30+ factor scoring algorithm balancing budget, season, safety, language, dietary needs, and interests</li>
-                                <li>Intelligent multi-country routing with day allocation proportional to interest richness</li>
-                                <li>Explore map with all 326 cities plotted, color-coded by region with hover detail</li>
-                                <li>Tools: city comparison, budget calculator, top-ranked lists, and "Surprise Me" random generator</li>
+                                <li><strong>326 cities, 84 countries</strong> — each with 28 data fields including curated neighborhoods, top activities, local cuisine, festivals, and Airbnb/Uber costs</li>
+                                <li>30-factor scoring algorithm balancing budget, season, safety, language, dietary needs, crowd tolerance, and 20+ other dimensions</li>
+                                <li>Intelligent multi-country routing with proximity filtering and richness-based day allocation</li>
+                                <li>121 activity templates across 12 interest categories with pace-aware scheduling and deduplication</li>
+                                <li>Animated Plotly route map with play/pause, timeline slider, and region-coded explore map</li>
                             </ul>
                         </div>
                         <div class="project-block">
@@ -512,9 +560,10 @@
                                 <span>Plotly</span>
                                 <span>Custom CSS</span>
                                 <span>JSON</span>
-                                <span>Algorithms</span>
+                                <span>Scoring Algorithms</span>
                                 <span>Data Pipelines</span>
                                 <span>SHA-256 Auth</span>
+                                <span>Animated Maps</span>
                             </div>
                         </div>
                     </div>
