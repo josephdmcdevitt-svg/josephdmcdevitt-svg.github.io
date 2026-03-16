@@ -33,7 +33,7 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
@@ -271,6 +271,22 @@
                 <button class="project-tab" data-project="travel-planner">
                     <span class="tab-number">03</span>
                     <span class="tab-label">AI Travel Planner</span>
+                </button>
+                <button class="project-tab" data-project="tax-strategy">
+                    <span class="tab-number">04</span>
+                    <span class="tab-label">Tax Strategy Finder</span>
+                </button>
+                <button class="project-tab" data-project="venture-intel">
+                    <span class="tab-number">05</span>
+                    <span class="tab-label">Venture Deal Intelligence</span>
+                </button>
+                <button class="project-tab" data-project="algo-trading">
+                    <span class="tab-number">06</span>
+                    <span class="tab-label">Algorithmic Trading System</span>
+                </button>
+                <button class="project-tab" data-project="real-estate">
+                    <span class="tab-number">07</span>
+                    <span class="tab-label">Real Estate DealScout</span>
                 </button>
             </div>
 
@@ -758,6 +774,430 @@
                                 <span>Animated Maps</span>
                                 <span>SHA-256 Auth</span>
                                 <span>Booking API Links</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== PROJECT 4: Tax Strategy Finder ==================== -->
+            <div class="project-panel" id="tax-strategy">
+                <div class="project-wrapper">
+                    <div class="project-header-block">
+                        <span class="project-status">Active Development</span>
+                        <h3 class="project-name">Tax Strategy Finder</h3>
+                        <p class="project-summary">A law-first tax strategy matching engine that connects business owners to 128 tax-saving strategies backed by primary legal authority — Internal Revenue Code sections, Treasury Regulations, and court opinions — with computation models and fact-dependency decision trees for eligibility logic.</p>
+                    </div>
+
+                    <div class="project-two-col">
+                        <div class="project-block">
+                            <h4>Problem</h4>
+                            <p>Business owners overpay on taxes because they don't know which strategies apply to them. Tax advice is fragmented across advisors, blogs, and generic tools — most of which lack citations to actual law and can't adapt to a specific business's facts and circumstances.</p>
+                        </div>
+                        <div class="project-block">
+                            <h4>Solution</h4>
+                            <p>A structured knowledge base of 128 tax strategies, each grounded in primary legal authority. An 85-field business intake questionnaire feeds into fact-dependency decision trees that determine which strategies a business qualifies for — with step-by-step computation models showing exactly how much they'd save.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-block project-block-full">
+                        <h4>How It Works</h4>
+                        <div class="how-it-works-grid">
+                            <div class="hiw-card">
+                                <div class="hiw-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                                </div>
+                                <h5>Legal Authority Base</h5>
+                                <p>223 authority chunks extracted from 24 Internal Revenue Code sections, Treasury Regulations, and court opinions — no hallucinated law</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>24 IRC sections</strong> fully indexed with raw statutory text, effective dates, and cross-references</li>
+                                        <li><strong>Law-first architecture:</strong> Every strategy must cite at least one primary authority chunk — strategies without legal backing are rejected</li>
+                                        <li><strong>799 strategy-to-citation links</strong> connecting strategies to their supporting legal authority</li>
+                                        <li><strong>678-edge IRC cross-reference graph</strong> mapping how tax code sections interact with each other</li>
+                                        <li>Staleness monitoring tracks when authority chunks may need updating due to new legislation or rulings</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="hiw-card">
+                                <div class="hiw-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 7h6m0 10v-3m-3 3v-6m-3 6v-1m6-10a2 2 0 002-2 2 2 0 00-2-2H9a2 2 0 00-2 2 2 2 0 002 2m6 0H9m6 0v10a2 2 0 01-2 2h-2a2 2 0 01-2-2V7"/></svg>
+                                </div>
+                                <h5>Strategy Matching Engine</h5>
+                                <p>128 strategies across 10 categories matched to businesses through an 85-field intake questionnaire and fact-dependency decision trees</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>10 strategy categories:</strong> Entity Structure, Depreciation & Cost Recovery, Retirement Plans, Tax Credits, Business Deductions, Timing Strategies, Real Estate, Insurance & Risk, State & Local, Industry-Specific</li>
+                                        <li><strong>85-field intake:</strong> Captures entity type, revenue, industry, employee count, asset details, real estate holdings, retirement plan status, state of operation, and more</li>
+                                        <li><strong>Fact-dependency trees:</strong> AND/OR logic gates determine eligibility — e.g., §179 requires the business to have purchased qualifying equipment AND have taxable income</li>
+                                        <li><strong>128 fact-dependency schemas</strong> — one per strategy — ensuring no strategy is recommended without meeting all prerequisites</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="hiw-card">
+                                <div class="hiw-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <h5>Computation Models</h5>
+                                <p>49 step-by-step calculation models showing exactly how much a business would save from each qualifying strategy</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>49 computation models</strong> with typed inputs (currency, percentage, integer, boolean) and formula-based calculation steps</li>
+                                        <li>Each model produces a concrete dollar savings estimate based on the business's actual numbers</li>
+                                        <li>Models handle phase-outs, income limits, and interaction effects between strategies</li>
+                                        <li>Next in queue: §1031 like-kind exchange computation models</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-two-col">
+                        <div class="project-block">
+                            <h4>Key Highlights</h4>
+                            <ul class="project-bullets">
+                                <li><strong>128 tax strategies</strong> across 10 categories — each backed by primary legal authority</li>
+                                <li><strong>223 legal authority chunks</strong> from 24 IRC sections with raw statutory text</li>
+                                <li><strong>49 computation models</strong> with step-by-step savings calculations</li>
+                                <li><strong>799 strategy-to-citation links</strong> ensuring every recommendation is legally grounded</li>
+                                <li><strong>85-field business intake</strong> with fact-dependency decision trees for eligibility</li>
+                            </ul>
+                        </div>
+                        <div class="project-block">
+                            <h4>Technologies</h4>
+                            <div class="project-tech-tags">
+                                <span>Next.js</span>
+                                <span>TypeScript</span>
+                                <span>JSON Data Schemas</span>
+                                <span>Docker</span>
+                                <span>Decision Trees</span>
+                                <span>IRC Cross-Reference Graph</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== PROJECT 5: Venture Deal Intelligence ==================== -->
+            <div class="project-panel" id="venture-intel">
+                <div class="project-wrapper">
+                    <div class="project-header-block">
+                        <span class="project-status status-live">Live Platform</span>
+                        <h3 class="project-name">Venture Deal Intelligence Platform</h3>
+                        <p class="project-summary">A signal-based startup detection and VC relationship engine that monitors 19 data sources to identify startups from idea stage through Series A, scores them 0-100 across 6 weighted dimensions, and matches companies to 82 VC firms across Chicago and New York.</p>
+                    </div>
+
+                    <div class="project-two-col">
+                        <div class="project-block">
+                            <h4>Problem</h4>
+                            <p>Early-stage deal flow is fragmented across dozens of platforms — GitHub, Product Hunt, job boards, SEC filings, accelerator demos, patent filings, and founder networks. VC analysts manually monitor these channels, missing signals and duplicating effort. By the time a promising startup surfaces through traditional channels, the round may already be closing.</p>
+                        </div>
+                        <div class="project-block">
+                            <h4>Solution</h4>
+                            <p>An automated intelligence platform that continuously monitors 19 signal sources, applies entity resolution to deduplicate companies across sources, scores each startup on a 0-100 composite scale, classifies by stage, and matches them to 82 VC firms based on thesis alignment, stage focus, and geographic preference — with real-time Telegram alerts and an 11-page Streamlit dashboard.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-block project-block-full">
+                        <h4>How It Works</h4>
+                        <div class="how-it-works-grid">
+                            <div class="hiw-card">
+                                <div class="hiw-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M9 12l2 2 4-4"/></svg>
+                                </div>
+                                <h5>19-Source Signal Collection</h5>
+                                <p>Continuously monitors developer ecosystems, accelerators, job boards, patent filings, funding databases, and founder movements</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Developer signals:</strong> GitHub (trending repos, new orgs), NPM/PyPI (new packages), Hugging Face (new models)</li>
+                                        <li><strong>Launch signals:</strong> Product Hunt (new launches), Hacker News (Show HN posts), TechCrunch articles</li>
+                                        <li><strong>Accelerator signals:</strong> Y Combinator batches, Techstars cohorts, Antler programs, 500 Global</li>
+                                        <li><strong>Hiring signals:</strong> Lever and Greenhouse job boards — rapid hiring = growth signal</li>
+                                        <li><strong>Regulatory signals:</strong> SEC Form D filings (funding events), USPTO patent applications</li>
+                                        <li><strong>Academic signals:</strong> arXiv papers (research-to-startup pipeline), Semantic Scholar, university spinout programs</li>
+                                        <li><strong>Other:</strong> Domain registrations (new .com/.ai), VC blog RSS feeds, regional tech news, Crunchbase news, founder LinkedIn signals</li>
+                                        <li>Full scrape runs every 6 hours via APScheduler background daemon</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="hiw-card">
+                                <div class="hiw-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 7h6m0 10v-3m-3 3v-6m-3 6v-1m6-10a2 2 0 002-2 2 2 0 00-2-2H9a2 2 0 00-2 2 2 2 0 002 2m6 0H9m6 0v10a2 2 0 01-2 2h-2a2 2 0 01-2-2V7"/></svg>
+                                </div>
+                                <h5>Scoring & Classification</h5>
+                                <p>6-dimension composite score (0-100) with stage classification from Idea through Series A</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Founder Quality (25%):</strong> Prior exits, domain expertise, team completeness, LinkedIn signals</li>
+                                        <li><strong>Technical Traction (20%):</strong> GitHub stars, contributors, commit velocity, package downloads</li>
+                                        <li><strong>Market Traction (20%):</strong> Product Hunt upvotes, press mentions, user growth signals, revenue indicators</li>
+                                        <li><strong>Network Quality (15%):</strong> Accelerator backing, notable advisors, investor connections</li>
+                                        <li><strong>Category Growth (10%):</strong> Sector-level growth rates and TAM indicators</li>
+                                        <li><strong>Hiring Velocity (10%):</strong> Open roles, role seniority, hiring pace</li>
+                                        <li><strong>Stage classification:</strong> Idea (pre-product) → Pre-Seed (MVP) → Seed (early revenue) → Series A (scaling)</li>
+                                        <li>Entity resolution via fuzzy matching deduplicates companies across all 19 sources</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="hiw-card">
+                                <div class="hiw-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                                </div>
+                                <h5>VC Match Engine & Dashboard</h5>
+                                <p>Matches startups to 82 VC firms with A+ to D grading, plus an 11-page Streamlit dashboard with CRM pipeline and Telegram alerts</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>82 VC firms</strong> mapped across Chicago and New York — thesis, stage focus, check size, sector preferences</li>
+                                        <li><strong>Match grading:</strong> A+ (perfect fit) through D (poor fit) based on stage alignment, sector overlap, geographic preference, and check size compatibility</li>
+                                        <li><strong>Founder graph:</strong> NetworkX visualization of founder connections, co-investor relationships, and accelerator alumni networks</li>
+                                        <li><strong>11-page dashboard:</strong> Pipeline CRM, company profiles, VC directory, signal feed, weekly reports, alert configuration, analytics, founder graph, stage breakdown, sector analysis, settings</li>
+                                        <li><strong>Real-time Telegram alerts</strong> when high-scoring startups are detected or existing companies cross score thresholds</li>
+                                        <li><strong>Weekly digest reports</strong> summarizing new companies, score changes, and deal flow trends</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-two-col">
+                        <div class="project-block">
+                            <h4>Key Highlights</h4>
+                            <ul class="project-bullets">
+                                <li><strong>19 active signal sources</strong> — GitHub, YC, Product Hunt, SEC Form D, USPTO, arXiv, job boards, and more</li>
+                                <li><strong>82 VC firms</strong> mapped with thesis alignment and match grading (A+ to D)</li>
+                                <li>6-dimension composite scoring with entity resolution across all sources</li>
+                                <li>Stage classification pipeline: Idea → Pre-Seed → Seed → Series A</li>
+                                <li>Real-time Telegram alerts and weekly digest reports</li>
+                                <li>11-page Streamlit dashboard with CRM pipeline and founder graph</li>
+                            </ul>
+                        </div>
+                        <div class="project-block">
+                            <h4>Technologies</h4>
+                            <div class="project-tech-tags">
+                                <span>Python</span>
+                                <span>Streamlit</span>
+                                <span>SQLite</span>
+                                <span>NetworkX</span>
+                                <span>APScheduler</span>
+                                <span>Telegram Bot API</span>
+                                <span>Fuzzy Matching</span>
+                                <span>RSS Feeds</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== PROJECT 6: Algorithmic Trading ==================== -->
+            <div class="project-panel" id="algo-trading">
+                <div class="project-wrapper">
+                    <div class="project-header-block">
+                        <span class="project-status">Active Development</span>
+                        <h3 class="project-name">Algorithmic Trading System</h3>
+                        <p class="project-summary">A 13,000+ line weekly trading system with 4 independent analysis sleeves — acquisition targets, undervalued stocks, insider signals, and IPO lock-up opportunities — targeting $1B-$15B market cap equities with automated risk management, regime detection, and options execution.</p>
+                    </div>
+
+                    <div class="project-two-col">
+                        <div class="project-block">
+                            <h4>Problem</h4>
+                            <p>Retail and small-fund investors lack systematic tools to screen the mid-cap equity universe for event-driven opportunities. Manual analysis of acquisition probabilities, insider filings, valuation signals, and IPO lock-up expirations across hundreds of stocks is impractical on a weekly cadence.</p>
+                        </div>
+                        <div class="project-block">
+                            <h4>Solution</h4>
+                            <p>A fully automated weekly pipeline that screens the $1B-$15B market cap universe through 4 independent analytical sleeves, applies an 11-gate admission filter, scores stocks on a 10-part weighted system with dynamic weight learning, detects market regimes, generates trade signals with options execution, and manages risk with drawdown triggers and correlation limits.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-block project-block-full">
+                        <h4>How It Works</h4>
+                        <div class="how-it-works-grid">
+                            <div class="hiw-card">
+                                <div class="hiw-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                                </div>
+                                <h5>4 Analysis Sleeves</h5>
+                                <p>Independent analytical frameworks that each generate probability scores for different event types</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Acquisition Sleeve:</strong> Cox proportional hazard model estimating probability of acquisition. Features: market cap, P/E, activism flags, sector M&A activity, cash-to-debt ratio</li>
+                                        <li><strong>Undervaluation Sleeve:</strong> Ridge regression + 6 statistical distributions identifying stocks trading below intrinsic value. Combines P/E, P/B, EV/EBITDA, FCF yield, and sector-relative metrics</li>
+                                        <li><strong>Insider Signal Sleeve:</strong> Regression + sentiment analysis on SEC insider filings. Tracks cluster buys, filing-to-trade timing, insider role weighting, and VADER/TextBlob sentiment on concurrent news</li>
+                                        <li><strong>IPO/Lock-Up Sleeve:</strong> Hazard model predicting post-lock-up price movement. Factors: days since IPO, lock-up expiration schedule, insider ownership %, underwriter reputation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="hiw-card">
+                                <div class="hiw-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"/></svg>
+                                </div>
+                                <h5>Scoring & Filtering</h5>
+                                <p>10-part weighted scoring system with an 11-gate admission filter and dynamic weight learning</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>10-part scoring:</strong> Universe Screen (6%), Data Integrity (10%), Acquisition Probability (16%), Acquisition Return (10%), Undervaluation (16%), Insider Signal (12%), News/Regime (6%), IPO/Lock-Up (8%), Portfolio Fit (10%), Execution Quality (6%)</li>
+                                        <li><strong>11-gate admission:</strong> Market cap $1B-$15B, minimum daily volume, data completeness, no pending delistings, no extreme short interest, sector not excluded, minimum analyst coverage, no earnings within 5 days, not max correlated, position size feasible, no regulatory halt</li>
+                                        <li><strong>Dynamic weight learning:</strong> Constrained ridge regression + Bayesian Model Averaging adjusts sleeve weights based on trailing performance — adapts to market conditions</li>
+                                        <li><strong>Weekly regime classification:</strong> Rule-based + Hidden Markov Model determines current market regime (risk-on, risk-off, neutral) — adjusts position sizing and hedge ratios</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="hiw-card">
+                                <div class="hiw-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                                </div>
+                                <h5>Risk Management & Execution</h5>
+                                <p>Position sizing, correlation limits, drawdown triggers, support/resistance zones, and options execution with IV sanity checks</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Capital:</strong> $100K default allocation, 25% maximum single position, 0.70 max pairwise correlation</li>
+                                        <li><strong>Drawdown triggers:</strong> 15% portfolio drawdown → reduce exposure by 50%. 20% drawdown → liquidate all positions</li>
+                                        <li><strong>Support/resistance:</strong> 3 methods blended — pivot points, volume profile, and fractal analysis</li>
+                                        <li><strong>Options execution:</strong> Call spreads for bullish signals, put spreads for hedges. IV sanity checks prevent overpaying for premium</li>
+                                        <li><strong>Factor model:</strong> Fama-French alpha calculation ensures the system generates returns above factor exposure</li>
+                                        <li><strong>Monitoring:</strong> Rich terminal dashboard, email/SMS alerts for trades and drawdown warnings</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-two-col">
+                        <div class="project-block">
+                            <h4>Key Highlights</h4>
+                            <ul class="project-bullets">
+                                <li><strong>13,000+ lines</strong> of production-grade Python across 4 analytical sleeves</li>
+                                <li>10-part weighted scoring with 11-gate admission filter</li>
+                                <li>Weekly regime classification using rule-based + Hidden Markov Model</li>
+                                <li>Dynamic weight learning adapts to changing market conditions</li>
+                                <li>Options execution with IV sanity checks and Fama-French alpha tracking</li>
+                                <li>Automated risk management with 15%/20% drawdown triggers</li>
+                            </ul>
+                        </div>
+                        <div class="project-block">
+                            <h4>Technologies</h4>
+                            <div class="project-tech-tags">
+                                <span>Python</span>
+                                <span>scikit-learn</span>
+                                <span>statsmodels</span>
+                                <span>lifelines</span>
+                                <span>cvxpy</span>
+                                <span>yfinance</span>
+                                <span>EDGAR</span>
+                                <span>VADER Sentiment</span>
+                                <span>Rich Dashboard</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== PROJECT 7: Real Estate DealScout ==================== -->
+            <div class="project-panel" id="real-estate">
+                <div class="project-wrapper">
+                    <div class="project-header-block">
+                        <span class="project-status">Active Development</span>
+                        <h3 class="project-name">Real Estate DealScout</h3>
+                        <p class="project-summary">A live distressed property sourcing tool that pulls real-time data from Redfin for northern Chicago suburbs and rural Indiana farmland, applying an 8-factor scoring engine to surface undervalued properties, price drops, and teardown opportunities.</p>
+                    </div>
+
+                    <div class="project-two-col">
+                        <div class="project-block">
+                            <h4>Problem</h4>
+                            <p>Finding distressed and undervalued residential properties requires manually scanning listings, tracking price drops over time, comparing lot values to structure values, and assessing renovation potential — all across multiple geographic markets with different price dynamics.</p>
+                        </div>
+                        <div class="project-block">
+                            <h4>Solution</h4>
+                            <p>An automated sourcing tool that pulls live Redfin data for target markets, scores every listing on 8 factors including undervaluation, price drop momentum, days on market, lot-to-structure ratio, and neighborhood comp spreads — surfacing the highest-opportunity properties in a filterable dashboard.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-block project-block-full">
+                        <h4>How It Works</h4>
+                        <div class="how-it-works-grid">
+                            <div class="hiw-card">
+                                <div class="hiw-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                                </div>
+                                <h5>Live Data Sourcing</h5>
+                                <p>Real-time Redfin data for northern Chicago suburbs and rural Indiana farmland markets</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Target markets:</strong> Northern Chicago suburbs (Cook County, Lake County) and rural Indiana (farmland conversion opportunities)</li>
+                                        <li>Pulls current listings with price, days on market, price history, lot size, structure details, and listing descriptions</li>
+                                        <li>Regex-based parsing extracts structured data from Redfin listing pages</li>
+                                        <li>Refreshes on demand — always working with current market data</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="hiw-card">
+                                <div class="hiw-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 7h6m0 10v-3m-3 3v-6m-3 6v-1m6-10a2 2 0 002-2 2 2 0 00-2-2H9a2 2 0 00-2 2 2 2 0 002 2m6 0H9m6 0v10a2 2 0 01-2 2h-2a2 2 0 01-2-2V7"/></svg>
+                                </div>
+                                <h5>8-Factor Scoring Engine</h5>
+                                <p>Scores each property on undervaluation, price drops, days on market, lot ratio, renovation potential, teardown economics, comp spread, and neighborhood momentum</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Undervaluation:</strong> Price vs. estimated market value based on comparable sales</li>
+                                        <li><strong>Price drops:</strong> Tracks cumulative price reductions — multiple drops signal motivated sellers</li>
+                                        <li><strong>Days on market:</strong> Extended DOM = potential negotiation leverage</li>
+                                        <li><strong>Lot-to-structure ratio:</strong> High lot value relative to structure = teardown/rebuild opportunity</li>
+                                        <li><strong>Renovation potential:</strong> Age, condition signals, and price-per-sqft gap vs. renovated comps</li>
+                                        <li><strong>Teardown economics:</strong> Land value minus demolition cost vs. new build potential</li>
+                                        <li><strong>Comp spread:</strong> Gap between listing price and highest comparable sale in the area</li>
+                                        <li><strong>Neighborhood momentum:</strong> Trend in nearby sale prices over recent months</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="hiw-card">
+                                <div class="hiw-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                                </div>
+                                <h5>Dashboard & Analysis</h5>
+                                <p>Filterable Streamlit dashboard with property cards, scoring breakdowns, and geographic filtering across target markets</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Property cards:</strong> Each listing displayed with key metrics, score breakdown, and direct link to Redfin listing</li>
+                                        <li><strong>Filtering:</strong> By score threshold, price range, geographic area, property type, and distress signals</li>
+                                        <li><strong>Sort by:</strong> Overall score, undervaluation %, price drop %, days on market, lot ratio</li>
+                                        <li><strong>Market comparison:</strong> Side-by-side analysis across Chicago suburbs vs. Indiana farmland</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-two-col">
+                        <div class="project-block">
+                            <h4>Key Highlights</h4>
+                            <ul class="project-bullets">
+                                <li><strong>Real-time data</strong> from Redfin — always working with current listings</li>
+                                <li>8-factor scoring engine covering financial, physical, and market momentum signals</li>
+                                <li>Teardown economics analysis for lot-value-driven opportunities</li>
+                                <li>Geographic targeting: northern Chicago suburbs + rural Indiana farmland</li>
+                                <li>Filterable dashboard with property cards and scoring breakdowns</li>
+                            </ul>
+                        </div>
+                        <div class="project-block">
+                            <h4>Technologies</h4>
+                            <div class="project-tech-tags">
+                                <span>Python</span>
+                                <span>Streamlit</span>
+                                <span>Requests</span>
+                                <span>Pandas</span>
+                                <span>RegEx Parsing</span>
+                                <span>Redfin Data</span>
                             </div>
                         </div>
                     </div>
