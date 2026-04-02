@@ -273,6 +273,10 @@
                     <span class="tab-number">04</span>
                     <span class="tab-label">FundLens</span>
                 </button>
+                <button class="project-tab" data-project="nomad-travel">
+                    <span class="tab-number">05</span>
+                    <span class="tab-label">Nomad Travel Guide</span>
+                </button>
             </div>
 
             <!-- ==================== PROJECT 1: Pharmacy M&A ==================== -->
@@ -820,6 +824,143 @@
                                 <span>Vercel</span>
                                 <span>Railway</span>
                                 <span>Qwen AI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== PROJECT 5: Nomad Travel Guide ==================== -->
+            <div class="project-panel" id="nomad-travel">
+                <div class="project-wrapper">
+                    <div class="project-header-block">
+                        <span class="project-status status-live">Live Platform</span>
+                        <h3 class="project-name">Nomad Travel Guide</h3>
+                        <p class="project-summary">An interactive travel intelligence platform covering 100 countries, 553 cities, and 8,500+ curated activities. Features an interactive world map, a proprietary Danger-O-Meter rating system, budget rankings, trip builders, food discovery, and a multi-country planner — all enriched by a dual-AI pipeline using Qwen 3.5 and Claude Opus.</p>
+                    </div>
+
+                    <!-- Demo Showcase -->
+                    <div class="demo-showcase">
+                        <div class="browser-mockup">
+                            <div class="browser-topbar">
+                                <div class="browser-dots"><span></span><span></span><span></span></div>
+                                <div class="browser-url">localhost:8501 — Nomad Travel Guide</div>
+                            </div>
+                            <div class="browser-content">
+                                <img src="demos/nomad-travel-demo.gif" alt="Nomad Travel Guide Demo" onerror="this.parentElement.innerHTML='<div class=demo-placeholder><svg class=demo-placeholder-icon viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><path d=&quot;M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z&quot;/><path d=&quot;M21 12a9 9 0 11-18 0 9 9 0 0118 0z&quot;/></svg><p>Demo GIF coming soon</p><span class=demo-cta>Drop nomad-travel-demo.gif in /demos</span></div>'">
+                            </div>
+                        </div>
+                        <div style="text-align:center;">
+                            <span class="demo-badge">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                Interactive Demo
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="project-two-col">
+                        <div class="project-block">
+                            <h4>Problem</h4>
+                            <p>Mainstream travel guides are sanitized, generic, and surface-level. There's no single platform that gives you brutally honest safety ratings, off-the-beaten-path activities, real budget data, and local food culture for 100+ countries — all in one place with an interactive map you can actually explore.</p>
+                        </div>
+                        <div class="project-block">
+                            <h4>Solution</h4>
+                            <p>A map-first travel intelligence app that covers 100 countries and 553 cities with 8,500+ curated activities. Features a proprietary Danger-O-Meter rating system scoring safety across 5 categories, 10 global discovery tools, per-city food guides, multi-day trip builders, and a dual-AI enrichment pipeline that generates high-quality content at zero API cost.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-block project-block-full">
+                        <h4>How It Works</h4>
+                        <div class="how-it-works-grid">
+                            <div class="hiw-card">
+                                <div class="hiw-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <h5>Interactive World Map</h5>
+                                <p>Explore <strong>100 countries</strong> on a dark-themed interactive globe with color-coded regions and activity-sized markers</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Map engine:</strong> PyDeck with CARTO dark basemap — no API keys or Mapbox tokens required</li>
+                                        <li><strong>Visual encoding:</strong> Dots color-coded by world region, sized by activity count per city, with glowing halo effects</li>
+                                        <li><strong>Navigation:</strong> Click any dot to drill into Country → City detail views with session-state routing</li>
+                                        <li><strong>Coverage:</strong> 100 countries across all inhabited continents — from Japan and Iceland to Burkina Faso and Uzbekistan</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="hiw-card">
+                                <div class="hiw-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                                </div>
+                                <h5>Danger-O-Meter Rating System</h5>
+                                <p>Proprietary safety scoring across <strong>5 categories</strong> with 10 brutally honest danger tiers</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>5 scoring categories:</strong> LGBTQ+ Rights, Drug Tolerance, Women's Rights, Child Labor, Religious Freedom — each rated 1-5, total score out of 25</li>
+                                        <li><strong>10 danger tiers:</strong> From safest to most dangerous — a no-holds-barred ranking system with memorable tier names</li>
+                                        <li><strong>Bonus stats:</strong> Foreign aid received per year and average lifespan displayed as stat bars for additional context</li>
+                                        <li><strong>Why it matters:</strong> Standard travel sites hide uncomfortable truths. This system gives travelers the unfiltered picture so they can make informed decisions</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="hiw-card">
+                                <div class="hiw-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                                </div>
+                                <h5>10 Global Discovery Tools</h5>
+                                <p>Danger Index, Budget Ranker, Country Compare, Global Search, Food Discovery, Surprise Me, When to Go, Region Explorer, Stats Dashboard, Multi-Country Planner</p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Budget Ranker:</strong> Compare daily costs across all 100 countries — find where your dollar goes furthest</li>
+                                        <li><strong>Food Discovery:</strong> Browse local cuisine across 553 cities with 7+ dishes per city</li>
+                                        <li><strong>Trip Builder:</strong> Build multi-day itineraries per city with activity sequencing</li>
+                                        <li><strong>Multi-Country Planner:</strong> Chain together countries into regional travel routes with time and budget estimates</li>
+                                        <li><strong>Surprise Me:</strong> Random destination generator for the spontaneous traveler</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="hiw-card">
+                                <div class="hiw-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                                </div>
+                                <h5>Dual-AI Enrichment Pipeline</h5>
+                                <p>Qwen 3.5 generates initial content locally, Claude Opus re-enriches for quality — <strong>zero API cost</strong></p>
+                                <button class="hiw-toggle">Deep Dive <span class="toggle-icon">+</span></button>
+                                <div class="hiw-detail">
+                                    <ul>
+                                        <li><strong>Qwen 3.5 9B:</strong> Runs locally on a dedicated GPU machine — generates initial country/city/activity data in chunked prompts</li>
+                                        <li><strong>Claude Opus agents:</strong> Re-enriches major countries to full quality — 15 activities per city, 7 food items per city</li>
+                                        <li><strong>Resume-safe:</strong> Progress tracked in JSON — pipeline can be stopped and restarted without data loss</li>
+                                        <li><strong>Result:</strong> 553 cities, 8,500+ activities, all generated and curated without a single API dollar spent</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-two-col">
+                        <div class="project-block">
+                            <h4>Key Highlights</h4>
+                            <ul class="project-bullets">
+                                <li><strong>100 countries, 553 cities, 8,500+ activities</strong> — one of the most comprehensive travel datasets built from scratch</li>
+                                <li>Proprietary Danger-O-Meter with 5-category safety scoring and 10 danger tiers</li>
+                                <li>10 global tools: budget ranker, food discovery, trip builder, multi-country planner, and more</li>
+                                <li>6-tab country pages: Overview, Cities & Activities, Food, Routes, Trip Builder, Practical Info</li>
+                                <li>Dual-AI pipeline (Qwen + Opus) generates all content at zero API cost</li>
+                            </ul>
+                        </div>
+                        <div class="project-block">
+                            <h4>Technologies</h4>
+                            <div class="project-tech-tags">
+                                <span>Python</span>
+                                <span>Streamlit</span>
+                                <span>PyDeck</span>
+                                <span>Qwen 3.5</span>
+                                <span>Claude Opus</span>
+                                <span>CARTO Maps</span>
+                                <span>Streamlit Cloud</span>
                             </div>
                         </div>
                     </div>
