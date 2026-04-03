@@ -279,13 +279,14 @@ body {
 }
 
 .headshot {
-    width: 140px;
-    height: 140px;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
     object-fit: cover;
     object-position: center top;
     border: 3px solid var(--border-hover);
     margin-bottom: 32px;
+    box-shadow: 0 8px 32px rgba(44, 82, 130, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .about-lead {
@@ -302,43 +303,6 @@ body {
     line-height: 1.8;
 }
 
-.about-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-}
-
-.stat-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 28px 24px;
-    text-align: center;
-    transition: var(--transition);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.04);
-}
-
-.stat-card:hover {
-    background: var(--bg-card-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07), 0 12px 32px rgba(0, 0, 0, 0.06);
-}
-
-.stat-number {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--accent);
-    margin-bottom: 4px;
-}
-
-.stat-label {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
 
 /* ===== TIMELINE ===== */
 .timeline {
@@ -1353,19 +1317,9 @@ body {
         color: var(--text-primary);
     }
 
-    .about-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
-    .about-text-with-photo {
-        flex-direction: column;
-        align-items: center;
-    }
-
     .headshot {
-        width: 80px;
-        height: 80px;
+        width: 120px;
+        height: 120px;
     }
 
     .skills-grid {
