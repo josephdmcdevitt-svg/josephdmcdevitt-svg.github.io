@@ -49,6 +49,17 @@ document.addEventListener('click', (e) => {
     btn.closest('.hiw-card').classList.toggle('expanded');
 });
 
+// ===== Experience collapsible toggle =====
+const expToggle = document.getElementById('experienceToggle');
+const expContent = document.getElementById('experienceContent');
+if (expToggle && expContent) {
+    expToggle.addEventListener('click', () => {
+        expToggle.classList.toggle('expanded');
+        expContent.classList.toggle('expanded');
+        expToggle.querySelector('span').textContent = expContent.classList.contains('expanded') ? 'Hide Resume' : 'Show Resume';
+    });
+}
+
 // ===== Project tab switching =====
 document.querySelectorAll('.project-tab').forEach(tab => {
     tab.addEventListener('click', () => {
