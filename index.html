@@ -3,22 +3,22 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Joseph McDevitt | Finance & AI</title>
-<meta name="description" content="Joseph McDevitt — finance professional building AI-powered tools for deal sourcing, acquisitions, and private markets. University of Miami, cum laude." />
+<title>Joseph McDevitt | Private Equity, M&A & Investment Analysis</title>
+<meta name="description" content="Joseph McDevitt — finance professional on the private equity and M&A track, building AI tools that source, score, and pressure-test deals. University of Miami, cum laude." />
 <meta name="author" content="Joseph McDevitt" />
 <link rel="icon" href="/favicon.ico" />
 <link rel="canonical" href="https://josephdmcdevitt.com/" />
 
 <!-- Open Graph / SEO -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Joseph McDevitt | Finance & AI" />
-<meta property="og:description" content="Finance professional building AI-powered tools for deal sourcing, acquisitions, and private markets. University of Miami, cum laude." />
+<meta property="og:title" content="Joseph McDevitt | Private Equity, M&A & Investment Analysis" />
+<meta property="og:description" content="Finance professional on the private equity and M&A track, building AI tools that source, score, and pressure-test deals. University of Miami, cum laude." />
 <meta property="og:image" content="https://josephdmcdevitt.com/og-image.png" />
 <meta property="og:url" content="https://josephdmcdevitt.com/" />
 <meta property="og:site_name" content="Joseph McDevitt" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Joseph McDevitt | Finance & AI" />
-<meta name="twitter:description" content="Finance professional building AI-powered tools for deal sourcing, acquisitions, and private markets. University of Miami, cum laude." />
+<meta name="twitter:title" content="Joseph McDevitt | Private Equity, M&A & Investment Analysis" />
+<meta name="twitter:description" content="Finance professional on the private equity and M&A track, building AI tools that source, score, and pressure-test deals. University of Miami, cum laude." />
 <meta name="twitter:image" content="https://josephdmcdevitt.com/og-image.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -272,8 +272,8 @@
 
   /* ---------- ABOUT ---------- */
   #about{border-bottom:1px solid var(--rule);}
-  .about-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px; align-items:center;}
-  .headshot-frame{position:relative;}
+  .about-grid{display:grid; grid-template-columns:260px 1fr; gap:54px; align-items:center;}
+  .headshot-frame{position:relative; max-width:260px;}
   .headshot-frame::after{
     content:""; position:absolute; inset:18px -18px -18px 18px;
     border:1px solid var(--brass); z-index:-1; transition:inset .6s var(--ease);
@@ -302,7 +302,7 @@
     text-transform:uppercase; color:var(--muted);
     border:1px solid var(--rule-strong); padding:8px 15px; border-radius:30px;
   }
-  @media(max-width:820px){ .about-grid{grid-template-columns:1fr; gap:48px;} .headshot-frame{max-width:380px;} }
+  @media(max-width:820px){ .about-grid{grid-template-columns:1fr; gap:40px;} .headshot-frame{max-width:230px;} }
 
   /* ---------- PROJECTS ---------- */
   #projects{background:var(--paper-2); border-bottom:1px solid var(--rule);}
@@ -511,7 +511,9 @@
 
   /* ===== launch refinements ===== */
   :root{ --muted-2:#6F6757; }                                  /* darker secondary text for AA contrast on small labels */
-  @media(max-width:1000px){ .hero-meta .stat{ flex:0 0 calc(50% - 28px); } }  /* clean 2x2 stat grid on tablet/phone */
+  .hero-meta{ display:grid; grid-template-columns:repeat(4,1fr); gap:32px 40px; align-items:start; }  /* tidy aligned stat grid */
+  @media(max-width:1000px){ .hero-meta{ grid-template-columns:repeat(2,1fr); } }                      /* 2x2 on tablet/phone */
+  @media(max-width:480px){ .hero-meta{ gap:24px 18px; } }
   @media(max-width:480px){ .about-body .dropcap::first-letter{ font-size:2.5em; padding:.04em .12em 0 0; } }  /* tame drop-cap on narrow screens */
 </style>
 
@@ -528,7 +530,8 @@
   "alumniOf":{"@type":"CollegeOrUniversity","name":"University of Miami"},
   "email":"mailto:Josephd.mcdevitt@gmail.com",
   "telephone":"+1-847-504-7993",
-  "description":"Finance professional building AI-powered tools for deal sourcing, acquisitions, and private markets.",
+  "description":"Finance professional focused on private equity, M&A, and investment analysis, who builds AI tools that source, score, and pressure-test deals.",
+  "knowsAbout":["Private Equity","Mergers & Acquisitions","Investment Analysis","Financial Modeling","Deal Sourcing","Leveraged Buyouts","Portfolio Management","DCF & LBO Modeling"],
   "sameAs":["https://www.linkedin.com/in/joseph-d-mcdevitt"]
 }
 </script>
@@ -579,18 +582,18 @@
   <!-- ===== HERO ===== -->
   <section class="hero" aria-label="Introduction">
     <div class="wrap">
-      <p class="eyebrow hero-kicker load-reveal l1">Finance Professional &amp; AI Enthusiast</p>
+      <p class="eyebrow hero-kicker load-reveal l1">Private Equity · M&amp;A · Investment Analysis</p>
       <h1 class="load-reveal l2">Building at the <span class="ital">intersection</span> of finance &amp; intelligence.</h1>
-      <p class="hero-sub load-reveal l3">Working across <b>private markets</b>, <b>acquisitions</b>, and <b>artificial intelligence</b> — turning fragmented data into decisions that move capital.</p>
+      <p class="hero-sub load-reveal l3">A finance professional on the <b>private equity</b> and <b>M&amp;A</b> track — I build the <b>AI tools</b> that source, score, and pressure-test deals.</p>
       <div class="hero-cta load-reveal l4">
         <a href="#projects" class="btn">View My Work</a>
         <a href="#contact" class="btn ghost">Get in Touch</a>
       </div>
       <div class="hero-meta load-reveal l5">
-        <div class="stat"><div class="n">112k+</div><div class="l">Pharmacies Scored</div></div>
-        <div class="stat"><div class="n">$50M+</div><div class="l">Capital Pipeline Tracked</div></div>
-        <div class="stat"><div class="n">20+</div><div class="l">Deal Data Sources</div></div>
-        <div class="stat"><div class="n">130+</div><div class="l">PE Investments Reviewed</div></div>
+        <div class="stat"><div class="n">130+</div><div class="l">PE investments screened — Transal</div></div>
+        <div class="stat"><div class="n">Multi-$B</div><div class="l">PE portfolio overseen — Transal</div></div>
+        <div class="stat"><div class="n">$50M+</div><div class="l">Annual M&amp;A pipeline tracked — Walgreens</div></div>
+        <div class="stat"><div class="n">80%</div><div class="l">of SOX testing cut by an AI pipeline I built — Walgreens</div></div>
       </div>
     </div>
   </section>
@@ -604,8 +607,8 @@
         </div>
         <div class="about-body">
           <p class="eyebrow reveal" style="margin-bottom:24px;">About</p>
-          <h2 id="about-h" class="reveal d1" style="font-family:var(--display); font-size:clamp(30px,4vw,48px); font-weight:300; letter-spacing:-.018em; margin:0 0 28px;">A finance mind, an <span style="font-style:italic; color:var(--brass-deep);">engineer's</span> hands.</h2>
-          <p class="dropcap reveal d2">Finance professional building AI-powered tools for deal sourcing, acquisitions, and private markets. University of Miami, cum laude — pairing rigorous financial modeling with full-stack systems that find, score, and surface opportunity at scale.</p>
+          <h2 id="about-h" class="reveal d1" style="font-family:var(--display); font-size:clamp(30px,4vw,48px); font-weight:300; letter-spacing:-.018em; margin:0 0 28px;">A finance mind with a <span style="font-style:italic; color:var(--brass-deep);">builder's</span> edge.</h2>
+          <p class="dropcap reveal d2">I'm a finance professional focused on private equity, M&amp;A, and investment analysis — with hands-on experience overseeing a multi-billion-dollar PE portfolio and building M&amp;A deal infrastructure. My edge: I build the AI tools that source, score, and pressure-test deals, moving from raw data to an investment decision faster than a traditional analyst. University of Miami, cum laude.</p>
           <div class="about-tags reveal d3">
             <span class="pill">Private Equity</span>
             <span class="pill">M&amp;A</span>
@@ -624,7 +627,7 @@
       <div class="sec-head reveal">
         <p class="eyebrow">Selected Work</p>
         <h2 id="projects-h">Tools built where <span class="ital">capital</span> meets code.</h2>
-        <p class="lead">Four production platforms spanning pharmacy M&amp;A, multi-vertical deal origination, SMB tax intelligence, and family-office portfolio monitoring.</p>
+        <p class="lead">Four production platforms I built to do deal work better — pharmacy M&amp;A, multi-vertical deal origination, SMB tax intelligence, and family-office portfolio monitoring. Proof of the edge, not the day job.</p>
       </div>
 
       <div class="proj-tabs reveal d1" role="tablist" aria-label="Projects">
@@ -850,7 +853,7 @@
           </div>
         </article>
 
-        <article class="tl-item reveal hidden-role">
+        <article class="tl-item reveal">
           <div class="tl-when">Jun 2025 – Aug 2025<span class="where">Chicago, IL</span></div>
           <div class="tl-role">
             <h3>Specialty Pharmacy Finance Intern</h3>
@@ -864,7 +867,7 @@
           </div>
         </article>
 
-        <article class="tl-item reveal hidden-role">
+        <article class="tl-item reveal">
           <div class="tl-when">May 2024 – Oct 2024<span class="where">Miami, FL</span></div>
           <div class="tl-role">
             <h3>Equity Analyst Intern</h3>
@@ -877,7 +880,7 @@
           </div>
         </article>
 
-        <article class="tl-item reveal hidden-role">
+        <article class="tl-item reveal">
           <div class="tl-when">Jul 2023 – Feb 2024<span class="where">Chicago, IL</span></div>
           <div class="tl-role">
             <h3>Algorithmic Trader</h3>
@@ -892,9 +895,6 @@
         </article>
       </div>
 
-      <div class="exp-toggle-wrap reveal">
-        <button class="btn ghost" id="expToggle" aria-expanded="false">Show Full Résumé</button>
-      </div>
     </div>
   </section>
 
@@ -1080,18 +1080,20 @@
     });
   });
 
-  /* ---- experience expand ---- */
+  /* ---- experience expand (guarded; all roles shown by default) ---- */
   var expToggle = document.getElementById("expToggle");
-  var hiddenRoles = document.querySelectorAll(".tl-item.hidden-role");
-  expToggle.addEventListener("click", function(){
-    var expanded = expToggle.getAttribute("aria-expanded") === "true";
-    hiddenRoles.forEach(function(r){
-      if(expanded){ r.classList.add("hidden-role"); }
-      else{ r.classList.remove("hidden-role"); r.classList.add("in"); }
+  if(expToggle){
+    var hiddenRoles = document.querySelectorAll(".tl-item.hidden-role");
+    expToggle.addEventListener("click", function(){
+      var expanded = expToggle.getAttribute("aria-expanded") === "true";
+      hiddenRoles.forEach(function(r){
+        if(expanded){ r.classList.add("hidden-role"); }
+        else{ r.classList.remove("hidden-role"); r.classList.add("in"); }
+      });
+      expToggle.setAttribute("aria-expanded", expanded ? "false" : "true");
+      expToggle.textContent = expanded ? "Show Full Résumé" : "Show Less";
     });
-    expToggle.setAttribute("aria-expanded", expanded ? "false" : "true");
-    expToggle.textContent = expanded ? "Show Full Résumé" : "Show Less";
-  });
+  }
 
   /* ---- scroll reveal ---- */
   var io = new IntersectionObserver(function(entries){
