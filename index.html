@@ -515,6 +515,29 @@
   @media(max-width:1000px){ .hero-meta{ grid-template-columns:repeat(2,1fr); } }                      /* 2x2 on tablet/phone */
   @media(max-width:480px){ .hero-meta{ gap:24px 18px; } }
   @media(max-width:480px){ .about-body .dropcap::first-letter{ font-size:2.5em; padding:.04em .12em 0 0; } }  /* tame drop-cap on narrow screens */
+
+  /* ===== deal work / investment memo ===== */
+  #dealwork{border-bottom:1px solid var(--rule);}
+  .memo{border:1px solid var(--rule-strong); background:var(--paper); padding:clamp(26px,4vw,50px); box-shadow:0 30px 60px -42px rgba(20,22,29,.4);}
+  .memo-meta{display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; font-family:var(--sans); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted-2); border-bottom:1px solid var(--rule); padding-bottom:16px; margin-bottom:24px;}
+  .memo h3{font-size:clamp(23px,3.2vw,33px); font-weight:300; letter-spacing:-.015em; margin:0 0 6px;}
+  .memo .memo-sub{font-family:var(--body); font-style:italic; color:var(--muted); margin:0 0 26px; font-size:17px;}
+  .bluf{background:var(--paper-2); border-left:2px solid var(--brass); padding:20px 24px; margin:0 0 30px;}
+  .bluf .lbl{font-family:var(--sans); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--brass-deep); display:block; margin-bottom:8px;}
+  .bluf p{margin:0; font-size:16.5px; color:var(--ink-soft); line-height:1.6;}
+  .memo-grid{display:grid; grid-template-columns:1fr 1fr; gap:26px 40px;}
+  @media(max-width:740px){ .memo-grid{grid-template-columns:1fr;} }
+  .memo-block .lbl{font-family:var(--sans); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--brass-deep); margin-bottom:8px; display:block;}
+  .memo-block p{margin:0; font-size:15.5px; color:var(--ink-soft); line-height:1.6;}
+  .returns{width:100%; border-collapse:collapse; margin:6px 0 0; font-family:var(--sans);}
+  .returns th,.returns td{text-align:left; padding:11px 12px; border-bottom:1px solid var(--rule); font-size:14px;}
+  .returns th{font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted-2); font-weight:600;}
+  .returns td{color:var(--ink-soft);}
+  .returns tr.base{background:rgba(154,123,79,.08);}
+  .returns tr.base td{color:var(--ink); font-weight:600;}
+  .returns-wrap{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+  @media(max-width:560px){ .returns th,.returns td{padding:9px 8px; font-size:12.5px; white-space:nowrap;} .returns{min-width:430px;} }
+  body.menu-open .mobile-menu a:nth-child(7){animation-delay:.48s;}
 </style>
 
 <!-- Structured data: Person -->
@@ -556,6 +579,7 @@
     </a>
     <nav class="links" aria-label="Primary">
       <a href="#about">About</a>
+      <a href="#dealwork">Deal Work</a>
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
@@ -570,11 +594,12 @@
 
 <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
   <a href="#about"><span class="mi">01</span> About</a>
-  <a href="#projects"><span class="mi">02</span> Projects</a>
-  <a href="#experience"><span class="mi">03</span> Experience</a>
-  <a href="#skills"><span class="mi">04</span> Skills</a>
-  <a href="#passions"><span class="mi">05</span> Passions</a>
-  <a href="#contact"><span class="mi">06</span> Contact</a>
+  <a href="#dealwork"><span class="mi">02</span> Deal Work</a>
+  <a href="#projects"><span class="mi">03</span> Projects</a>
+  <a href="#experience"><span class="mi">04</span> Experience</a>
+  <a href="#skills"><span class="mi">05</span> Skills</a>
+  <a href="#passions"><span class="mi">06</span> Passions</a>
+  <a href="#contact"><span class="mi">07</span> Contact</a>
 </nav>
 
 <main id="top">
@@ -618,6 +643,71 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ===== DEAL WORK ===== -->
+  <section id="dealwork" aria-labelledby="dealwork-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Deal Work</p>
+        <h2 id="dealwork-h">How I think about <span class="ital">a deal.</span></h2>
+        <p class="lead">A sample investment memo — the same sourcing engine from my projects, turned into a thesis, a valuation, and a recommendation.</p>
+      </div>
+
+      <article class="memo reveal d1">
+        <div class="memo-meta"><span>Investment Memo · Illustrative</span><span>Public NCPA / CMS data + proprietary screening</span></div>
+        <h3>Independent Pharmacy Roll-Up — Acquisition Thesis</h3>
+        <p class="memo-sub">Buy-and-build consolidation of independent community pharmacies, sourced via a proprietary AI screening engine I built.</p>
+
+        <div class="bluf">
+          <span class="lbl">Recommendation</span>
+          <p>Pursue a buy-and-build roll-up of independent community pharmacies — using proprietary AI screening to acquire owner-operated stores <strong>off-market</strong> at low-single-digit EBITDA multiples, integrate them onto a shared purchasing and clinical platform, and exit a scaled regional operator at a higher multiple. A focused ~25–35-store platform is achievable in 4–5 years; the edge is proprietary deal flow, not capital. <strong>Illustrative base case: ~3.0× MOIC / ~28% IRR.</strong></p>
+        </div>
+
+        <div class="memo-grid">
+          <div class="memo-block"><span class="lbl">Market Opportunity</span><p>~19,000 independent community pharmacies (NCPA 2025) generate ~$103B in annual revenue — a fragmented, owner-operated market consolidating at more than one closure a day. Owners are operators, not financial sellers, so processes are uncompetitive and pricing is negotiable. Fragmentation plus a retirement wave is the classic roll-up setup.</p></div>
+          <div class="memo-block"><span class="lbl">The Sourcing Edge</span><p>My platform scores a ~65k-record universe of non-chain pharmacies on a 6-factor model. I <em>rejected</em> normalization methods that inflated the target list to 25k–50k stores and kept a deliberately conservative score — isolating just <strong>820 high-conviction targets</strong>, with the top 100 holding 83–85% stable under ±10% stress. The discipline is the moat: a short, vetted, off-market pipeline.</p></div>
+          <div class="memo-block"><span class="lbl">Target Profile</span><p>The 820 targets share a clear signature versus the field: <strong>86%</strong> show stale licensing records (a retirement / disengagement proxy), sit in far less competitive markets (<strong>2.6 vs 14.9</strong> pharmacies per 10k residents), and serve higher-income ZIPs (<strong>$98k vs $66k</strong> median). Profitable, defensible stores whose owners are most likely to sell.</p></div>
+          <div class="memo-block"><span class="lbl">Valuation Framework</span><p>Two cross-checks: a <em>file buy</em> at ~$3–5 per annual script (defensible off-market; chains pay $5–12+ in competitive deals), or a <em>whole-business</em> buy at ~2.5–4.0× EBITDA plus inventory. Independents run ~22% gross margin (NCPA), so we underwrite thin entry margins with room to expand. Base entry: blended <strong>~3.5× EBITDA</strong>.</p></div>
+        </div>
+
+        <p class="dd-sub" style="margin-top:30px;">Illustrative Returns</p>
+        <div class="returns-wrap">
+        <table class="returns">
+          <thead><tr><th>Scenario</th><th>Stores</th><th>EBITDA&nbsp;%</th><th>Exit</th><th>MOIC</th><th>IRR</th></tr></thead>
+          <tbody>
+            <tr><td>Downside</td><td>25</td><td>5%</td><td>7.0×</td><td>~2.0×</td><td>~17%</td></tr>
+            <tr class="base"><td>Base</td><td>30</td><td>6%</td><td>7.5×</td><td>~3.0×</td><td>~28%</td></tr>
+            <tr><td>Upside</td><td>35</td><td>6.5%</td><td>8.0×</td><td>~4.0×</td><td>~38%</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p style="font-size:15px; color:var(--muted); line-height:1.6; margin:14px 0 0;">Return driver: multiple arbitrage (buy ~3.5×, exit ~7–8× as a scaled platform) plus margin expansion. Pace check — 820 scored targets × ~6% win rate ≈ 49 reachable; a 30-store build implies a disciplined, not heroic, close rate.</p>
+
+        <div class="deepdive" style="margin-top:32px;">
+          <button class="dd-toggle" aria-expanded="false">Value Creation, Risks &amp; Assumptions <span class="icon"></span></button>
+          <div class="dd-body"><div>
+            <p class="dd-sub">Value-Creation Plan</p>
+            <ul class="hl-list">
+              <li><strong>Purchasing scale</strong> — GPO / wholesaler improvements on a ~78% COGS base (~+150 bps)</li>
+              <li><strong>Reimbursement discipline</strong> — centralized PBM contracts and DIR-fee management (~+100 bps)</li>
+              <li><strong>Central fill &amp; shared back office</strong> — ~$50–80k saved per store</li>
+              <li><strong>Net target</strong> — lift entry EBITDA from ~4% toward ~6% of revenue (+200–300 bps vs standalone)</li>
+            </ul>
+            <p class="dd-sub">Key Risks &amp; Mitigants</p>
+            <ul class="hl-list">
+              <li><strong>PBM &amp; DIR pressure</strong> (CMS 2024 reforms; state PBM-delinking laws) → diversify into cash-pay clinical services</li>
+              <li><strong>Generic deflation</strong> → purchasing scale plus a richer service mix</li>
+              <li><strong>Amazon / mail-order</strong> → focus on high-touch local and rural markets</li>
+              <li><strong>340B is upside only, not core EBITDA</strong> — given the 2024 appellate ruling on manufacturer restrictions and HRSA's 2026 rebate-model pilot</li>
+              <li><strong>Integration &amp; pharmacist retention</strong> → earnouts, retention packages, phased onboarding (base case assumes modest post-close attrition)</li>
+            </ul>
+            <p class="dd-sub">Assumptions &amp; Limitations</p>
+            <p style="font-size:15px; color:var(--muted); line-height:1.65; margin:0;">Illustrative case study — not a live deal or a forecast. Market context from the NCPA 2024–2025 Digest, CMS, and Drug Channels; valuation and return assumptions reflect 2024–2026 comparables and are clearly bounded. Target counts and screening signals are outputs of my proprietary, un-audited model. Returns are scenario estimates, highly sensitive to store count, margin capture, and exit multiple.</p>
+          </div></div>
+        </div>
+      </article>
     </div>
   </section>
 
