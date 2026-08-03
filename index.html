@@ -733,25 +733,24 @@
       <div class="sec-head reveal">
         <p class="eyebrow">Selected Work</p>
         <h2 id="projects-h">Tools built where <span class="ital">capital</span> meets code.</h2>
-        <p class="lead">Four production platforms I built to do deal work better — pharmacy M&amp;A, SMB tax intelligence, multi-vertical deal origination, and family-office portfolio monitoring. Proof of the edge, not the day job.</p>
+        <p class="lead">Three production platforms I built to do deal work better — SMB tax intelligence, pharmacy M&amp;A, and multi-vertical deal origination. Proof of the edge, not the day job.</p>
       </div>
 
       <div class="proj-tabs reveal d1" role="tablist" aria-label="Projects">
-        <button class="proj-tab active" role="tab" aria-selected="true" aria-controls="panel-1" id="tab-1" data-tab="1"><span class="tn">01</span> Pharmacy M&amp;A</button>
-        <button class="proj-tab" role="tab" aria-selected="false" aria-controls="panel-2" id="tab-2" data-tab="2"><span class="tn">02</span> Bearing</button>
+        <button class="proj-tab active" role="tab" aria-selected="true" aria-controls="panel-2" id="tab-2" data-tab="2"><span class="tn">01</span> Bearing</button>
+        <button class="proj-tab" role="tab" aria-selected="false" aria-controls="panel-1" id="tab-1" data-tab="1"><span class="tn">02</span> Pharmacy M&amp;A</button>
         <button class="proj-tab" role="tab" aria-selected="false" aria-controls="panel-3" id="tab-3" data-tab="3"><span class="tn">03</span> Deal Sourcing Agent</button>
-        <button class="proj-tab" role="tab" aria-selected="false" aria-controls="panel-4" id="tab-4" data-tab="4"><span class="tn">04</span> FundLens</button>
       </div>
 
-      <!-- PANEL 01 -->
-      <div class="proj-panel active" role="tabpanel" id="panel-1" aria-labelledby="tab-1">
+      <!-- PANEL (slot 02): Pharmacy M&A -->
+      <div class="proj-panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1" hidden>
         <div class="proj-top">
           <figure class="figure">
             <video src="demos/pharmacy-ma-demo.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Demo of the Pharmacy M&amp;A Intelligence Platform"></video>
-            <figcaption><span>Fig. 01 — Acquisition Targeting Dashboard</span><span>Live Platform</span></figcaption>
+            <figcaption><span>Fig. 02 — Acquisition Targeting Dashboard</span><span>Live Platform</span></figcaption>
           </figure>
           <div class="proj-headline">
-            <div class="proj-no">01</div>
+            <div class="proj-no">02</div>
             <span class="status-tag">Live Platform</span>
             <h3>Pharmacy M&amp;A Intelligence Platform</h3>
             <p class="summary">A full-stack acquisition targeting platform that ingests 112,000+ U.S. pharmacy records from the CMS NPI registry, enriches with Medicare Part D claims and Census demographics, classifies chain vs. independent, scores acquisition readiness using a 6-factor weighted model, and tracks deals through an 8-stage pipeline.</p>
@@ -789,15 +788,15 @@
         </div>
       </div>
 
-      <!-- PANEL 02 -->
-      <div class="proj-panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>
+      <!-- PANEL (slot 01): Bearing -->
+      <div class="proj-panel active" role="tabpanel" id="panel-2" aria-labelledby="tab-2">
         <div class="proj-top">
           <figure class="figure">
             <video src="demos/bearing-x-tax-demo.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Demo of Bearing"></video>
-            <figcaption><span>Fig. 02 — SMB Health &amp; Tax Strategy Dashboard</span><span>Active Development</span></figcaption>
+            <figcaption><span>Fig. 01 — SMB Health &amp; Tax Strategy Dashboard</span><span>Active Development</span></figcaption>
           </figure>
           <div class="proj-headline">
-            <div class="proj-no">02</div>
+            <div class="proj-no">01</div>
             <span class="status-tag dev">Active Development</span>
             <h3>Bearing</h3>
             <p class="summary">A merged SMB consulting dashboard combining a full business-health analysis platform with 226 tax-saving strategies. Connects to QuickBooks for auto-fill, profiles each business across financial health, operational efficiency, and growth readiness, then matches them to applicable tax strategies ranked by estimated savings.</p>
@@ -873,47 +872,6 @@
         </div>
       </div>
 
-      <!-- PANEL 04 -->
-      <div class="proj-panel" role="tabpanel" id="panel-4" aria-labelledby="tab-4" hidden>
-        <div class="proj-top">
-          <figure class="figure">
-            <video src="demos/fundlens-demo.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Demo of FundLens"></video>
-            <figcaption><span>Fig. 04 — Family-Office Portfolio Analytics</span><span>Active Development</span></figcaption>
-          </figure>
-          <div class="proj-headline">
-            <div class="proj-no">04</div>
-            <span class="status-tag dev">Active Development</span>
-            <h3>FundLens</h3>
-            <p class="summary">A SaaS portfolio monitoring platform for small and mid-size family offices. Replaces manual spreadsheets and $65K+/year enterprise tools with AI-powered PDF report parsing, full fund analytics, vintage analysis, J-curve modeling, and an IC deck builder — for a fraction of the cost.</p>
-            <div class="ps-block"><span class="lbl">The Problem</span><p>Small/mid family offices ($50–500M AUM) are stuck between expensive enterprise platforms ($65K+/year) and error-prone spreadsheets.</p></div>
-            <div class="ps-block"><span class="lbl">The Solution</span><p>A full-stack SaaS with AI-powered PDF parsing that auto-extracts fund data from quarterly reports; 13 analytics pages (cash flows, J-curve, vintage analysis, fee tracking, commitment pacing, period comparisons, custom chart builder) — for $1–3K/month.</p></div>
-          </div>
-        </div>
-
-        <div class="deepdive">
-          <button class="dd-toggle" aria-expanded="false">Deep Dive — Architecture &amp; Highlights <span class="icon"></span></button>
-          <div class="dd-body"><div>
-            <p class="dd-sub">How It Works</p>
-            <div class="hiw-grid">
-              <div class="hiw-card"><div class="hc-no">i.</div><h4>AI PDF Parsing</h4><p>Qwen 3.5 local LLM extracts NAV, cash flows, IRR, multiples, fees from PDF reports — no API costs; confirmation screen; multi-format; historical bulk import.</p></div>
-              <div class="hiw-card"><div class="hc-no">ii.</div><h4>13-Page Analytics Suite</h4><p>Portfolio dashboard, cash flow analysis with forecast, J-curve modeling, vintage analysis with PME benchmarking, fee tracking, custom chart builder.</p></div>
-              <div class="hiw-card"><div class="hc-no">iii.</div><h4>Full-Stack Architecture</h4><p>Next.js 16 + React 19 on Vercel; Python FastAPI on Railway; Supabase (Postgres) with RLS; Qwen 3.5 9B local; target $1–3K/month vs Addepar $65K+/year (95% cost reduction).</p></div>
-            </div>
-            <p class="dd-sub">Highlights</p>
-            <ul class="hl-list">
-              <li>AI-powered PDF parsing eliminates manual entry</li>
-              <li>13 analytics pages</li>
-              <li>95% cost reduction vs enterprise</li>
-              <li>Next.js + FastAPI + Supabase with local AI</li>
-              <li>Built for $50–500M AUM family offices</li>
-            </ul>
-            <p class="dd-sub">Technology</p>
-            <div class="tech-tags">
-              <span>Next.js 16</span><span>React 19</span><span>Python</span><span>FastAPI</span><span>Supabase</span><span>Vercel</span><span>Railway</span><span>Qwen AI</span>
-            </div>
-          </div></div>
-        </div>
-      </div>
 
     </div>
   </section>
