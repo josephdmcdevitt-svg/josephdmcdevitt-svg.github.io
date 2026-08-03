@@ -284,6 +284,20 @@
     filter:grayscale(18%) contrast(1.02);
     border:1px solid var(--rule-strong);
   }
+  .monogram-plate{
+    width:100%; aspect-ratio:4/5;
+    border:1px solid var(--rule-strong);
+    background:linear-gradient(158deg, var(--paper-2), var(--paper));
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;
+    text-align:center; padding:24px;
+  }
+  .monogram-plate .mono-jm{
+    font-family:var(--display); font-weight:300; font-style:italic;
+    font-size:clamp(62px,11vw,100px); line-height:.9; color:var(--brass-deep); letter-spacing:.02em;
+  }
+  .monogram-plate .mono-cap{
+    font-family:var(--sans); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted-2);
+  }
   .about-body .dropcap{
     font-family:var(--display);
     font-size:clamp(26px,3.6vw,38px);
@@ -554,7 +568,7 @@
   "email":"mailto:josephd.mcdevitt@gmail.com",
   "telephone":"+1-847-504-7993",
   "description":"Finance professional focused on private equity, M&A, and investment analysis, who builds AI tools that source, score, and pressure-test deals.",
-  "knowsAbout":["Private Equity","Mergers & Acquisitions","Investment Analysis","Financial Modeling","Deal Sourcing","Leveraged Buyouts","Portfolio Management","DCF & LBO Modeling"],
+  "knowsAbout":["Private Equity","Venture Capital","Co-Investments","Mergers & Acquisitions","Investment Analysis","Financial Modeling","Deal Sourcing","Leveraged Buyouts","AI in Finance","Portfolio Management","DCF & LBO Modeling"],
   "sameAs":["https://www.linkedin.com/in/joseph-d-mcdevitt"]
 }
 </script>
@@ -609,16 +623,16 @@
     <div class="wrap">
       <p class="eyebrow hero-kicker load-reveal l1">Private Equity · M&amp;A · Investment Analysis</p>
       <h1 class="load-reveal l2">Building at the <span class="ital">intersection</span> of finance &amp; intelligence.</h1>
-      <p class="hero-sub load-reveal l3">A finance professional on the <b>private equity</b> and <b>M&amp;A</b> track — I build the <b>AI tools</b> that source, score, and pressure-test deals.</p>
+      <p class="hero-sub load-reveal l3">A finance professional on the <b>private equity</b> and <b>M&amp;A</b> track, bridging <b>finance and AI</b> — I build the tools that source, score, and pressure-test deals.</p>
       <div class="hero-cta load-reveal l4">
         <a href="#projects" class="btn">View My Work</a>
         <a href="#contact" class="btn ghost">Get in Touch</a>
       </div>
       <div class="hero-meta load-reveal l5">
-        <div class="stat"><div class="n">130+</div><div class="l">PE investments screened — Transal</div></div>
-        <div class="stat"><div class="n">Multi-$B</div><div class="l">PE portfolio supported as analyst — Transal</div></div>
+        <div class="stat"><div class="n">130+</div><div class="l">PE &amp; VC investments screened — Transal</div></div>
+        <div class="stat"><div class="n">Multi-$B</div><div class="l">VC/PE portfolio supported as analyst — Transal</div></div>
         <div class="stat"><div class="n">$50M+</div><div class="l">Annual M&amp;A pipeline tracked — Walgreens</div></div>
-        <div class="stat"><div class="n">80%</div><div class="l">of SOX testing cut by an AI pipeline I built — Walgreens</div></div>
+        <div class="stat"><div class="n">80%</div><div class="l">projected SOX-testing reduction from an AI pipeline I built — Walgreens</div></div>
       </div>
     </div>
   </section>
@@ -627,16 +641,19 @@
   <section id="about" aria-labelledby="about-h">
     <div class="wrap">
       <div class="about-grid">
-        <div class="headshot-frame reveal">
-          <img src="headshot.jpeg" alt="Portrait of Joseph McDevitt, finance professional and AI builder." width="600" height="750" loading="lazy" />
+        <div class="headshot-frame reveal" aria-hidden="true">
+          <div class="monogram-plate">
+            <span class="mono-jm">JM</span>
+            <span class="mono-cap">Finance × Intelligence</span>
+          </div>
         </div>
         <div class="about-body">
           <p class="eyebrow reveal" style="margin-bottom:24px;">About</p>
           <h2 id="about-h" class="reveal d1" style="font-family:var(--display); font-size:clamp(30px,4vw,48px); font-weight:300; letter-spacing:-.018em; margin:0 0 28px;">A finance mind with a <span style="font-style:italic; color:var(--brass-deep);">builder's</span> edge.</h2>
-          <p class="dropcap reveal d2">I started my first company at 15 — a gold-manufacturing business built by partnering with the largest electronics recycler in Illinois. Today I'm a finance professional focused on private equity, M&amp;A, and investment analysis: as an analyst I screened 130+ PE investments and supported oversight of a multi-billion-dollar portfolio, and I build M&amp;A deal infrastructure. My edge: I build the AI tools that source, score, and pressure-test deals, moving from raw data to an investment decision faster than a traditional analyst. University of Miami, cum laude.</p>
+          <p class="dropcap reveal d2">I started my first company at fifteen — a gold-refining operation built in partnership with Genesis Electronics, one of the largest electronics-recycling facilities in Illinois. Chemistry taught me to build; finance is where I stayed. I studied finance and mathematics at the University of Miami, cum laude, then moved through high-frequency algorithmic trading, equity research, and — as an analyst — a multi-billion-dollar venture and private-equity portfolio. Today I'm back at Walgreens on the AI team, bridging the gap between finance and AI: building the tools that source, score, and pressure-test deals and drive real cost savings, moving from raw data to a decision faster than a traditional analyst.</p>
           <div class="about-highlight reveal d2" style="display:flex; align-items:center; gap:20px; margin:34px 0 0; padding:22px 26px; background:var(--paper-2); border-left:2px solid var(--brass);">
             <span style="font-family:var(--display); font-weight:300; font-size:clamp(40px,6vw,58px); line-height:.85; color:var(--brass-deep);">15</span>
-            <span style="font-family:var(--sans); font-size:13px; letter-spacing:.05em; line-height:1.55; color:var(--ink-soft); text-transform:uppercase;">Age I founded my first company</span>
+            <span style="font-family:var(--sans); font-size:13px; letter-spacing:.05em; line-height:1.55; color:var(--ink-soft); text-transform:uppercase;">Founded my first company — a gold refinery</span>
           </div>
           <div class="about-tags reveal d3">
             <span class="pill">Private Equity</span>
@@ -912,7 +929,7 @@
       <div class="sec-head reveal">
         <p class="eyebrow">Experience</p>
         <h2 id="exp-h">A track record across <span class="ital">the deal lifecycle.</span></h2>
-        <p class="lead">From algorithmic trading to private equity analysis at multi-billion-dollar scale to enterprise M&amp;A intelligence.</p>
+        <p class="lead">From high-frequency trading to a multi-billion-dollar venture and private-equity portfolio to bridging finance and AI.</p>
       </div>
 
       <div class="timeline" id="timeline">
@@ -920,15 +937,15 @@
           <div class="tl-when">Jan 2026 – Present<span class="where">Chicago, IL</span></div>
           <div class="tl-role">
             <h3>AI/ML Finance Analyst</h3>
-            <div class="org">Walgreens — Finance Development Program</div>
+            <div class="org">Walgreens — AI Team</div>
             <ul class="tl-bullets">
-              <li>Designed and built the M&amp;A deal tracking dashboard underpinning $50M+ in annual capital deployment, giving leadership a live unified view of target pipelines, deal economics, and progress against strategy.</li>
-              <li>Leading an AI automation initiative projected to replace 80% of offshore SOX controls testing, reclaiming thousands of tester hours annually.</li>
-              <li>Shipped an executive analytics platform consolidating audit risk, coverage gaps, and resource allocation across business units; adopted by senior leadership within weeks.</li>
-              <li>Deployed AI-driven risk analytics surfacing emerging threat patterns in real time for the audit committee.</li>
-              <li>Partnered with C-suite to transform a quarterly static report into a live executive command center.</li>
+              <li>On Walgreens' internal AI team, bridging finance and AI — turning finance, M&amp;A, and controls workflows into automated, model-driven systems.</li>
+              <li>Designed and built the M&amp;A deal-tracking dashboard underpinning $50M+ in annual capital deployment, giving leadership a live view of pipeline, deal economics, and progress against strategy.</li>
+              <li>Leading a cost-saving AI automation initiative projected to replace ~80% of offshore SOX controls testing, reclaiming thousands of tester-hours annually.</li>
+              <li>Shipped an executive analytics platform consolidating risk, coverage gaps, and resource allocation across business units; adopted by senior leadership within weeks.</li>
+              <li>Deployed AI-driven risk analytics that surface emerging patterns in real time for leadership.</li>
             </ul>
-            <div class="tl-tags"><span>M&amp;A Intelligence</span><span>Dashboard Development</span><span>AI Analytics</span><span>Executive Reporting</span><span>Process Automation</span></div>
+            <div class="tl-tags"><span>Finance × AI</span><span>M&amp;A Intelligence</span><span>AI Automation</span><span>Cost Savings</span><span>Executive Analytics</span></div>
           </div>
         </article>
 
@@ -938,12 +955,12 @@
             <h3>Analyst</h3>
             <div class="org">Transal Corp</div>
             <ul class="tl-bullets">
-              <li>Reviewed 130+ active PE investments and screened hundreds of new opportunities within a multi-billion-dollar portfolio.</li>
+              <li>Reviewed 130+ active private-equity and venture investments and screened hundreds of new opportunities across a multi-billion-dollar portfolio, including direct co-investments.</li>
               <li>Modeled capital call pacing vs distribution flows in Excel to enhance liquidity forecasting.</li>
               <li>Used Addepar and advanced Excel modeling to support portfolio oversight, co-investment evaluation, and risk management.</li>
               <li>Built dynamic IRR and MOIC models simulating long-term index exposure.</li>
             </ul>
-            <div class="tl-tags"><span>Private Equity</span><span>Portfolio Analysis</span><span>Financial Modeling</span></div>
+            <div class="tl-tags"><span>Private Equity</span><span>Venture Capital</span><span>Co-Investments</span><span>Portfolio Analysis</span><span>Financial Modeling</span></div>
           </div>
         </article>
 
@@ -980,11 +997,11 @@
             <h3>Algorithmic Trading Intern</h3>
             <div class="org">Core Value Capital LLC</div>
             <ul class="tl-bullets">
-              <li>Conducted research and backtesting to identify new currency pairs for a proprietary trading algorithm.</li>
+              <li>Researched and backtested new currency pairs for a proprietary high-frequency scalping algorithm.</li>
               <li>Applied calculus-based principles across 13 currency pairs.</li>
               <li>Optimized capital allocation and leverage thresholds, removing 15% of pairs to mitigate risk.</li>
             </ul>
-            <div class="tl-tags"><span>Algorithmic Trading</span><span>Quantitative Analysis</span><span>Risk Management</span></div>
+            <div class="tl-tags"><span>High-Frequency Trading</span><span>Algorithmic Trading</span><span>Quantitative Analysis</span><span>Risk Management</span></div>
           </div>
         </article>
       </div>
