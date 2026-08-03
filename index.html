@@ -738,13 +738,13 @@
       <div class="sec-head reveal">
         <p class="eyebrow">Selected Work</p>
         <h2 id="projects-h">Tools built where <span class="ital">capital</span> meets code.</h2>
-        <p class="lead">Four production platforms I built to do deal work better — pharmacy M&amp;A, multi-vertical deal origination, SMB tax intelligence, and family-office portfolio monitoring. Proof of the edge, not the day job.</p>
+        <p class="lead">Four production platforms I built to do deal work better — pharmacy M&amp;A, SMB tax intelligence, multi-vertical deal origination, and family-office portfolio monitoring. Proof of the edge, not the day job.</p>
       </div>
 
       <div class="proj-tabs reveal d1" role="tablist" aria-label="Projects">
         <button class="proj-tab active" role="tab" aria-selected="true" aria-controls="panel-1" id="tab-1" data-tab="1"><span class="tn">01</span> Pharmacy M&amp;A</button>
-        <button class="proj-tab" role="tab" aria-selected="false" aria-controls="panel-2" id="tab-2" data-tab="2"><span class="tn">02</span> Deal Sourcing Agent</button>
-        <button class="proj-tab" role="tab" aria-selected="false" aria-controls="panel-3" id="tab-3" data-tab="3"><span class="tn">03</span> Bearing x Tax</button>
+        <button class="proj-tab" role="tab" aria-selected="false" aria-controls="panel-2" id="tab-2" data-tab="2"><span class="tn">02</span> Bearing</button>
+        <button class="proj-tab" role="tab" aria-selected="false" aria-controls="panel-3" id="tab-3" data-tab="3"><span class="tn">03</span> Deal Sourcing Agent</button>
         <button class="proj-tab" role="tab" aria-selected="false" aria-controls="panel-4" id="tab-4" data-tab="4"><span class="tn">04</span> FundLens</button>
       </div>
 
@@ -798,11 +798,53 @@
       <div class="proj-panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>
         <div class="proj-top">
           <figure class="figure">
-            <video src="demos/deal-sourcing-demo.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Demo of the Deal Sourcing Agent"></video>
-            <figcaption><span>Fig. 02 — Multi-Vertical Deal Pipeline</span><span>Live Platform</span></figcaption>
+            <video src="demos/bearing-x-tax-demo.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Demo of Bearing"></video>
+            <figcaption><span>Fig. 02 — SMB Health &amp; Tax Strategy Dashboard</span><span>Active Development</span></figcaption>
           </figure>
           <div class="proj-headline">
             <div class="proj-no">02</div>
+            <span class="status-tag dev">Active Development</span>
+            <h3>Bearing</h3>
+            <p class="summary">A merged SMB consulting dashboard combining a full business-health analysis platform with 226 tax-saving strategies. Connects to QuickBooks for auto-fill, profiles each business across financial health, operational efficiency, and growth readiness, then matches them to applicable tax strategies ranked by estimated savings.</p>
+            <div class="ps-block"><span class="lbl">The Problem</span><p>Small business owners don't know which tax strategies apply to them, and consultants waste hours profiling each client manually.</p></div>
+            <div class="ps-block"><span class="lbl">The Solution</span><p>An integrated platform that pulls real financial data from QuickBooks, runs multi-dimensional business-health analysis, and matches the profile against 226 tax strategies — each backed by IRC sections, Treasury Regulations, and court opinions — surfacing the highest-value opportunities first.</p></div>
+          </div>
+        </div>
+
+        <div class="deepdive">
+          <button class="dd-toggle" aria-expanded="false">Deep Dive — Architecture &amp; Highlights <span class="icon"></span></button>
+          <div class="dd-body"><div>
+            <p class="dd-sub">How It Works</p>
+            <div class="hiw-grid">
+              <div class="hiw-card"><div class="hc-no">i.</div><h4>Business Health Analysis</h4><p>Financial health, operational efficiency, growth readiness; QuickBooks auto-fill of live P&amp;L, balance sheet, cash flow.</p></div>
+              <div class="hiw-card"><div class="hc-no">ii.</div><h4>226 Tax Strategy Engine</h4><p>Each backed by IRC sections, Treasury Regs, court opinions; fact-dependency decision trees; savings estimation; priority ranking by estimated savings.</p></div>
+              <div class="hiw-card"><div class="hc-no">iii.</div><h4>Integrated Dashboard</h4><p>Client profiles with health scores; auto-matched strategies with eligibility explanations; consultant workflow intake-to-delivery; QuickBooks OAuth.</p></div>
+            </div>
+            <p class="dd-sub">Highlights</p>
+            <ul class="hl-list">
+              <li>226 tax strategies backed by primary legal authority</li>
+              <li>QuickBooks integration</li>
+              <li>Multi-dimensional health scoring across 3 domains</li>
+              <li>Fact-dependency decision trees</li>
+              <li>Estimated dollar savings per strategy</li>
+            </ul>
+            <p class="dd-sub">Technology</p>
+            <div class="tech-tags">
+              <span>Python</span><span>Streamlit</span><span>QuickBooks API</span><span>SQLite</span><span>Tax Knowledge Base</span><span>Decision Trees</span>
+            </div>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- PANEL 03 -->
+      <div class="proj-panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>
+        <div class="proj-top">
+          <figure class="figure">
+            <video src="demos/deal-sourcing-demo.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Demo of the Deal Sourcing Agent"></video>
+            <figcaption><span>Fig. 03 — Multi-Vertical Deal Pipeline</span><span>Live Platform</span></figcaption>
+          </figure>
+          <div class="proj-headline">
+            <div class="proj-no">03</div>
             <span class="status-tag">Live Platform</span>
             <h3>Deal Sourcing Agent</h3>
             <p class="summary">An AI-powered deal origination engine spanning three verticals — PE acquisition targets, venture-backed startups, and PI law firm acquisitions. Aggregates deal flow from 20+ data sources, scores opportunities with multi-factor algorithms, enriches with Census/BLS/CMS/ARDC public data, and surfaces ranked pipelines across interactive dashboards deployed on Vercel.</p>
@@ -831,48 +873,6 @@
             <p class="dd-sub">Technology</p>
             <div class="tech-tags">
               <span>Python</span><span>Next.js</span><span>TypeScript</span><span>SQLite</span><span>Supabase</span><span>Vercel</span><span>Leaflet.js</span><span>Chart.js</span><span>Census API</span><span>BLS API</span><span>NLP Engine</span>
-            </div>
-          </div></div>
-        </div>
-      </div>
-
-      <!-- PANEL 03 -->
-      <div class="proj-panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>
-        <div class="proj-top">
-          <figure class="figure">
-            <video src="demos/bearing-x-tax-demo.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Demo of Bearing x Tax"></video>
-            <figcaption><span>Fig. 03 — SMB Health &amp; Tax Strategy Dashboard</span><span>Active Development</span></figcaption>
-          </figure>
-          <div class="proj-headline">
-            <div class="proj-no">03</div>
-            <span class="status-tag dev">Active Development</span>
-            <h3>Bearing x Tax</h3>
-            <p class="summary">A merged SMB consulting dashboard combining a full business-health analysis platform with 226 tax-saving strategies. Connects to QuickBooks for auto-fill, profiles each business across financial health, operational efficiency, and growth readiness, then matches them to applicable tax strategies ranked by estimated savings.</p>
-            <div class="ps-block"><span class="lbl">The Problem</span><p>Small business owners don't know which tax strategies apply to them, and consultants waste hours profiling each client manually.</p></div>
-            <div class="ps-block"><span class="lbl">The Solution</span><p>An integrated platform that pulls real financial data from QuickBooks, runs multi-dimensional business-health analysis, and matches the profile against 226 tax strategies — each backed by IRC sections, Treasury Regulations, and court opinions — surfacing the highest-value opportunities first.</p></div>
-          </div>
-        </div>
-
-        <div class="deepdive">
-          <button class="dd-toggle" aria-expanded="false">Deep Dive — Architecture &amp; Highlights <span class="icon"></span></button>
-          <div class="dd-body"><div>
-            <p class="dd-sub">How It Works</p>
-            <div class="hiw-grid">
-              <div class="hiw-card"><div class="hc-no">i.</div><h4>Business Health Analysis</h4><p>Financial health, operational efficiency, growth readiness; QuickBooks auto-fill of live P&amp;L, balance sheet, cash flow.</p></div>
-              <div class="hiw-card"><div class="hc-no">ii.</div><h4>226 Tax Strategy Engine</h4><p>Each backed by IRC sections, Treasury Regs, court opinions; fact-dependency decision trees; savings estimation; priority ranking by estimated savings.</p></div>
-              <div class="hiw-card"><div class="hc-no">iii.</div><h4>Integrated Dashboard</h4><p>Client profiles with health scores; auto-matched strategies with eligibility explanations; consultant workflow intake-to-delivery; QuickBooks OAuth.</p></div>
-            </div>
-            <p class="dd-sub">Highlights</p>
-            <ul class="hl-list">
-              <li>226 tax strategies backed by primary legal authority</li>
-              <li>QuickBooks integration</li>
-              <li>Multi-dimensional health scoring across 3 domains</li>
-              <li>Fact-dependency decision trees</li>
-              <li>Estimated dollar savings per strategy</li>
-            </ul>
-            <p class="dd-sub">Technology</p>
-            <div class="tech-tags">
-              <span>Python</span><span>Streamlit</span><span>QuickBooks API</span><span>SQLite</span><span>Tax Knowledge Base</span><span>Decision Trees</span>
             </div>
           </div></div>
         </div>
