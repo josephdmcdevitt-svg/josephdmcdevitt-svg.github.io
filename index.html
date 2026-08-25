@@ -23,535 +23,186 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;1,8..60,400&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
 <style>
   :root{
     --paper:#FBF8F1;
-    --paper-2:#F4EFE6;
     --ink:#14161D;
-    --ink-soft:#1A2233;
-    --muted:#6B6357;
-    --muted-2:#8A8275;
-    --brass:#9A7B4F;
-    --brass-deep:#7E6238;
-    --green:#1F3D2F;
-    --rule:#E0D8C8;
-    --rule-strong:#CFC4AE;
-    --display:"Fraunces", Georgia, serif;
-    --body:"Spectral", Georgia, serif;
+    --muted:#55524B;
+    --accent:#8A6D3B;
+    --rule:#E3DCCB;
+    --display:"Libre Baskerville", Georgia, serif;
+    --body:"Source Serif 4", Georgia, serif;
     --sans:"Archivo", sans-serif;
-    --maxw:1240px;
+    --maxw:1180px;
     --ease:cubic-bezier(.22,.61,.36,1);
-  }
 
+    /* ===== disciplined type scale — 5 sizes, everything maps to one ===== */
+    --fs-hero:clamp(42px,7vw,84px);
+    --fs-head:clamp(30px,4.4vw,48px);
+    --fs-sub:clamp(17px,1.6vw,20px);
+    --fs-body:16.5px;
+    --fs-label:11.5px;
+  }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth; -webkit-text-size-adjust:100%;}
   body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:var(--body);
-    font-size:18px;
-    line-height:1.65;
-    font-weight:400;
-    -webkit-font-smoothing:antialiased;
-    text-rendering:optimizeLegibility;
-    overflow-x:hidden;
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--body); font-size:var(--fs-body); line-height:1.65; font-weight:400;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; overflow-x:hidden;
   }
-  ::selection{background:var(--brass); color:var(--paper);}
+  ::selection{background:var(--accent); color:var(--paper);}
   a{color:inherit; text-decoration:none;}
   img,video{max-width:100%; display:block;}
-
   .wrap{max-width:var(--maxw); margin:0 auto; padding:0 40px;}
-  @media(max-width:680px){ .wrap{padding:0 22px;} body{font-size:17px;} }
+  @media(max-width:680px){ .wrap{padding:0 22px;} }
 
-  /* labels / eyebrows */
-  .eyebrow{
-    font-family:var(--sans);
-    font-size:12px;
-    font-weight:600;
-    letter-spacing:.22em;
-    text-transform:uppercase;
-    color:var(--brass-deep);
-    display:inline-flex;
-    align-items:center;
-    gap:.7em;
-  }
-  .eyebrow::before{
-    content:"";
-    width:26px; height:1px;
-    background:var(--brass);
-    display:inline-block;
-  }
-  .num-big{
-    font-family:var(--display);
-    font-weight:300;
-    font-variant-numeric:lining-nums;
-    color:var(--brass);
-    line-height:1;
-  }
+  h1,h2,h3{font-family:var(--display); font-weight:400; color:var(--ink); line-height:1.08; letter-spacing:-.012em; margin:0;}
+  em{font-style:italic; color:var(--accent); font-weight:400;}
 
-  h1,h2,h3,h4{font-family:var(--display); font-weight:400; color:var(--ink); line-height:1.08; letter-spacing:-.01em;}
+  a:focus-visible, button:focus-visible, [tabindex]:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
 
-  /* ---------- focus ---------- */
-  a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
-    outline:2px solid var(--brass);
-    outline-offset:3px;
-    border-radius:2px;
+  .label{
+    font-family:var(--sans); font-size:var(--fs-label); font-weight:600;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--muted);
   }
 
   /* ---------- NAV ---------- */
-  header.nav{
-    position:fixed; top:0; left:0; right:0; z-index:100;
-    background:rgba(251,248,241,0);
-    transition:background .5s var(--ease), box-shadow .5s var(--ease), border-color .5s var(--ease);
-    border-bottom:1px solid transparent;
-  }
-  header.nav.scrolled{
-    background:rgba(251,248,241,.92);
-    backdrop-filter:saturate(140%) blur(10px);
-    border-bottom:1px solid var(--rule);
-  }
-  .nav-inner{
-    display:flex; align-items:center; justify-content:space-between;
-    height:78px;
-  }
-  .logo{
-    font-family:var(--display);
-    font-weight:500;
-    font-size:24px;
-    letter-spacing:.02em;
-    display:flex; align-items:center; gap:.55em;
-    color:var(--ink);
-  }
-  .logo .mark{
-    border:1px solid var(--rule-strong);
-    width:42px; height:42px; border-radius:50%;
-    display:grid; place-items:center;
-    font-size:16px; letter-spacing:.04em;
-    color:var(--brass-deep);
-    transition:border-color .4s var(--ease), color .4s var(--ease);
-  }
-  .logo:hover .mark{ border-color:var(--brass); color:var(--brass); }
+  header.nav{position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(251,248,241,0); border-bottom:1px solid transparent; transition:background .5s var(--ease), border-color .5s var(--ease);}
+  header.nav.scrolled{background:rgba(251,248,241,.94); backdrop-filter:blur(8px); border-bottom:1px solid var(--rule);}
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; height:76px;}
+  .wordmark{font-family:var(--display); font-size:19px; letter-spacing:.01em; color:var(--ink);}
   nav.links{display:flex; align-items:center; gap:34px;}
-  nav.links a{
-    font-family:var(--sans);
-    font-size:13.5px;
-    letter-spacing:.04em;
-    color:var(--muted);
-    position:relative;
-    padding:6px 0;
-    transition:color .35s var(--ease);
-  }
-  nav.links a::after{
-    content:""; position:absolute; left:0; bottom:0; height:1px; width:0;
-    background:var(--brass); transition:width .4s var(--ease);
-  }
-  nav.links a:hover, nav.links a.active{ color:var(--ink); }
-  nav.links a:hover::after, nav.links a.active::after{ width:100%; }
-
-  .menu-btn{
-    display:none; background:none; border:none; cursor:pointer;
-    width:42px; height:42px; padding:0; position:relative;
-  }
-  .menu-btn span{
-    position:absolute; left:9px; right:9px; height:1.5px; background:var(--ink);
-    transition:transform .4s var(--ease), opacity .3s var(--ease); border-radius:2px;
-  }
-  .menu-btn span:nth-child(1){top:15px;}
-  .menu-btn span:nth-child(2){top:21px;}
-  .menu-btn span:nth-child(3){top:27px;}
-  body.menu-open .menu-btn span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+  nav.links a{font-family:var(--sans); font-size:13px; letter-spacing:.04em; color:var(--muted); border-bottom:1px solid transparent; padding-bottom:3px; transition:color .3s var(--ease), border-color .3s var(--ease);}
+  nav.links a:hover, nav.links a.active{color:var(--ink); border-color:var(--accent);}
+  .menu-btn{display:none; background:none; border:none; cursor:pointer; width:40px; height:40px; padding:0; position:relative;}
+  .menu-btn span{position:absolute; left:8px; right:8px; height:1.5px; background:var(--ink); transition:transform .4s var(--ease), opacity .3s var(--ease);}
+  .menu-btn span:nth-child(1){top:15px;} .menu-btn span:nth-child(2){top:20px;} .menu-btn span:nth-child(3){top:25px;}
+  body.menu-open .menu-btn span:nth-child(1){transform:translateY(5px) rotate(45deg);}
   body.menu-open .menu-btn span:nth-child(2){opacity:0;}
-  body.menu-open .menu-btn span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
-
-  .mobile-menu{
-    position:fixed; inset:0; z-index:99;
-    background:var(--paper);
-    transform:translateY(-100%);
-    transition:transform .6s var(--ease);
-    display:flex; flex-direction:column; justify-content:center;
-    padding:0 32px;
-  }
-  body.menu-open .mobile-menu{ transform:translateY(0); }
-  .mobile-menu a{
-    font-family:var(--display);
-    font-size:clamp(30px,9vw,46px);
-    color:var(--ink);
-    padding:14px 0;
-    border-bottom:1px solid var(--rule);
-    display:flex; align-items:baseline; gap:.5em;
-    opacity:0; transform:translateY(18px);
-  }
-  body.menu-open .mobile-menu a{ animation:mm .6s var(--ease) forwards; }
-  body.menu-open .mobile-menu a:nth-child(1){animation-delay:.12s;}
-  body.menu-open .mobile-menu a:nth-child(2){animation-delay:.18s;}
-  body.menu-open .mobile-menu a:nth-child(3){animation-delay:.24s;}
-  body.menu-open .mobile-menu a:nth-child(4){animation-delay:.30s;}
-  body.menu-open .mobile-menu a:nth-child(5){animation-delay:.36s;}
-  body.menu-open .mobile-menu a:nth-child(6){animation-delay:.42s;}
-  @keyframes mm{to{opacity:1; transform:translateY(0);}}
-  .mobile-menu a .mi{font-family:var(--sans); font-size:13px; color:var(--brass); letter-spacing:.1em;}
-
-  @media(max-width:880px){
-    nav.links{display:none;}
-    .menu-btn{display:block;}
-  }
-
-  /* ---------- HERO ---------- */
-  .hero{
-    position:relative;
-    padding:170px 0 90px;
-    border-bottom:1px solid var(--rule);
-    overflow:hidden;
-  }
-  .hero::before{
-    content:"";
-    position:absolute; inset:0;
-    background:
-      radial-gradient(120% 80% at 85% -10%, rgba(154,123,79,.10), transparent 60%),
-      radial-gradient(90% 60% at 0% 110%, rgba(31,61,47,.06), transparent 60%);
-    pointer-events:none;
-  }
-  .hero .wrap{position:relative;}
-  .hero-kicker{margin-bottom:34px;}
-  .hero h1{
-    font-size:clamp(46px,8.4vw,116px);
-    font-weight:300;
-    line-height:.98;
-    letter-spacing:-.02em;
-    margin:0 0 6px;
-    max-width:14ch;
-  }
-  .hero h1 .ital{font-style:italic; color:var(--brass-deep); font-weight:400;}
-  .hero-sub{
-    font-family:var(--body);
-    font-size:clamp(18px,2.3vw,24px);
-    line-height:1.5;
-    color:var(--muted);
-    max-width:38ch;
-    margin:30px 0 0;
-  }
-  .hero-sub b{color:var(--ink-soft); font-weight:500; font-style:italic;}
-  .hero-cta{display:flex; gap:16px; margin-top:46px; flex-wrap:wrap;}
-
-  .btn{
-    font-family:var(--sans);
-    font-size:13.5px;
-    letter-spacing:.06em;
-    text-transform:uppercase;
-    font-weight:600;
-    padding:16px 30px;
-    border:1px solid var(--ink);
-    background:var(--ink);
-    color:var(--paper);
-    cursor:pointer;
-    transition:background .4s var(--ease), color .4s var(--ease), transform .3s var(--ease);
-  }
-  .btn:hover{background:transparent; color:var(--ink); transform:translateY(-2px);}
-  .btn.ghost{background:transparent; color:var(--ink); border-color:var(--rule-strong);}
-  .btn.ghost:hover{border-color:var(--ink); background:var(--ink); color:var(--paper);}
-
-  .hero-meta{
-    display:flex; flex-wrap:wrap; gap:36px 56px;
-    margin-top:70px; padding-top:34px;
-    border-top:1px solid var(--rule);
-  }
-  .hero-meta .stat .n{font-family:var(--display); font-size:clamp(30px,4.5vw,46px); font-weight:300; line-height:1; color:var(--ink);}
-  .hero-meta .stat .l{font-family:var(--sans); font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted-2); margin-top:10px;}
+  body.menu-open .menu-btn span:nth-child(3){transform:translateY(-5px) rotate(-45deg);}
+  .mobile-menu{position:fixed; inset:0; z-index:99; background:var(--paper); transform:translateY(-100%); transition:transform .5s var(--ease); display:flex; flex-direction:column; justify-content:center; padding:0 30px;}
+  body.menu-open .mobile-menu{transform:translateY(0);}
+  .mobile-menu a{font-family:var(--display); font-size:clamp(28px,8vw,42px); color:var(--ink); padding:12px 0; border-bottom:1px solid var(--rule); display:block;}
+  @media(max-width:820px){ nav.links{display:none;} .menu-btn{display:block;} }
 
   /* ---------- SECTION SHELL ---------- */
-  section{padding:110px 0;}
-  @media(max-width:680px){ section{padding:74px 0;} }
-  .sec-head{margin-bottom:60px;}
-  .sec-head .eyebrow{margin-bottom:20px;}
-  .sec-head h2{font-size:clamp(34px,5.2vw,62px); font-weight:300; letter-spacing:-.018em; max-width:18ch;}
-  .sec-head h2 .ital{font-style:italic; color:var(--brass-deep); font-weight:400;}
-  .lead{font-size:clamp(19px,2.4vw,23px); color:var(--muted); max-width:54ch; line-height:1.62; margin-top:24px;}
+  section{padding:100px 0;}
+  section + section, section{border-top:1px solid var(--rule);}
+  @media(max-width:680px){ section{padding:64px 0;} }
+  .sec-head{margin-bottom:52px;}
+  .sec-head .label{margin-bottom:18px; display:block;}
+  .sec-head h2{font-size:var(--fs-head); max-width:18ch;}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:168px 0 88px; border-top:none;}
+  .hero h1{font-size:var(--fs-hero); font-weight:400; line-height:1.06; max-width:15ch;}
+  .hero .label{margin-bottom:20px; display:block;}
+  .hero .about-body{margin-top:32px;}
+  .hero .about-body p{margin:0;}
+  .hero .hero-cta{margin-top:40px;}
+  .hero-sub{font-family:var(--body); font-size:var(--fs-sub); line-height:1.55; color:var(--muted); max-width:44ch; margin:28px 0 0;}
+  .hero-cta{display:flex; gap:38px; margin-top:44px; flex-wrap:wrap;}
+  .hero-cta a{font-family:var(--sans); font-size:13px; letter-spacing:.06em; text-transform:uppercase; font-weight:600; color:var(--ink); border-bottom:1px solid var(--rule); padding-bottom:5px; transition:border-color .3s var(--ease), color .3s var(--ease);}
+  .hero-cta a:hover{border-color:var(--accent);}
+  .hero-cta a.pri{color:var(--accent);}
+
+  .hero-stats{display:flex; gap:0; margin-top:68px; padding-top:32px; border-top:1px solid var(--rule);}
+  .hero-stats .stat{padding-right:42px; margin-right:42px; border-right:1px solid var(--rule);}
+  .hero-stats .stat:last-child{border-right:none; margin-right:0; padding-right:0;}
+  .hero-stats .n{font-family:var(--display); font-size:clamp(24px,2.6vw,32px); font-weight:400; color:var(--accent); line-height:1;}
+  .hero-stats .l{font-family:var(--sans); font-size:11px; letter-spacing:.06em; color:var(--muted); margin-top:9px; max-width:17ch; line-height:1.4;}
+  @media(max-width:680px){ .hero-stats{flex-direction:column; gap:22px;} .hero-stats .stat{border-right:none; margin-right:0; padding-right:0;} }
 
   /* ---------- ABOUT ---------- */
-  #about{border-bottom:1px solid var(--rule);}
-  .about-grid{display:grid; grid-template-columns:260px 1fr; gap:54px; align-items:center;}
-  .headshot-frame{position:relative; max-width:260px;}
-  .headshot-frame::after{
-    content:""; position:absolute; inset:18px -18px -18px 18px;
-    border:1px solid var(--brass); z-index:-1; transition:inset .6s var(--ease);
-  }
-  .headshot-frame:hover::after{inset:12px -12px -12px 12px;}
-  .headshot-frame img{
-    width:100%; aspect-ratio:4/5; object-fit:cover;
-    filter:grayscale(18%) contrast(1.02);
-    border:1px solid var(--rule-strong);
-  }
-  .monogram-plate{
-    width:100%; aspect-ratio:4/5;
-    border:1px solid var(--rule-strong);
-    background:linear-gradient(158deg, var(--paper-2), var(--paper));
-    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;
-    text-align:center; padding:24px;
-  }
-  .monogram-plate .mono-jm{
-    font-family:var(--display); font-weight:300; font-style:italic;
-    font-size:clamp(62px,11vw,100px); line-height:.9; color:var(--brass-deep); letter-spacing:.02em;
-  }
-  .monogram-plate .mono-cap{
-    font-family:var(--sans); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted-2);
-  }
-  .about-body .dropcap{
-    font-family:var(--display);
-    font-size:clamp(26px,3.6vw,38px);
-    line-height:1.32;
-    font-weight:300;
-    color:var(--ink-soft);
-    letter-spacing:-.01em;
-  }
-  .about-body .dropcap::first-letter{
-    font-size:3.4em; float:left; line-height:.78; padding:.06em .14em 0 0;
-    font-weight:400; color:var(--brass-deep); font-style:italic;
-  }
-  .about-tags{display:flex; flex-wrap:wrap; gap:10px; margin-top:38px; padding-top:30px; border-top:1px solid var(--rule);}
-  .pill{
-    font-family:var(--sans); font-size:12px; letter-spacing:.06em;
-    text-transform:uppercase; color:var(--muted);
-    border:1px solid var(--rule-strong); padding:8px 15px; border-radius:30px;
-  }
-  @media(max-width:820px){ .about-grid{grid-template-columns:1fr; gap:40px;} .headshot-frame{max-width:230px;} }
+  .about-body p{font-family:var(--body); font-size:var(--fs-sub); line-height:1.62; color:var(--ink); max-width:66ch;}
+  .about-body p .drop{font-size:1.9em; float:left; line-height:.8; padding:.05em .1em 0 0; font-weight:400; color:var(--accent); font-style:italic; font-family:var(--display);}
 
-  /* ---------- PROJECTS ---------- */
-  #projects{background:var(--paper-2); border-bottom:1px solid var(--rule);}
-  .proj-tabs{
-    display:flex; gap:4px; margin-bottom:46px; flex-wrap:wrap;
-    border-bottom:1px solid var(--rule);
-  }
-  .proj-tab{
-    background:none; border:none; cursor:pointer;
-    font-family:var(--sans); font-size:13px; letter-spacing:.05em;
-    color:var(--muted); padding:14px 20px;
-    position:relative; transition:color .35s var(--ease);
-    display:flex; align-items:baseline; gap:.6em;
-  }
-  .proj-tab .tn{font-family:var(--display); font-size:15px; color:var(--brass); font-weight:400;}
+  /* ---------- SELECTED WORK ---------- */
+  .proj-tabs{display:flex; gap:36px; border-bottom:1px solid var(--rule); margin-bottom:48px;}
+  .proj-tab{background:none; border:none; cursor:pointer; font-family:var(--sans); font-size:13.5px; letter-spacing:.04em; color:var(--muted); padding:0 0 16px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:color .3s var(--ease), border-color .3s var(--ease);}
   .proj-tab:hover{color:var(--ink);}
-  .proj-tab.active{color:var(--ink);}
-  .proj-tab::after{
-    content:""; position:absolute; left:0; right:0; bottom:-1px; height:2px;
-    background:var(--brass); transform:scaleX(0); transform-origin:left;
-    transition:transform .4s var(--ease);
-  }
-  .proj-tab.active::after{transform:scaleX(1);}
-  @media(max-width:680px){ .proj-tab{padding:12px 13px; font-size:12px;} .proj-tab .tn{font-size:13px;} }
+  .proj-tab.active{color:var(--ink); border-color:var(--accent);}
+  .project{padding:60px 0; border-top:1px solid var(--rule);}
+  .project:first-of-type{border-top:none; padding-top:0;}
+  .project.panel{padding:0; border-top:none;}
+  .project.panel[hidden]{display:none;}
+  .project .pno{font-family:var(--display); font-size:14px; color:var(--accent); letter-spacing:.08em; display:block; margin-bottom:14px;}
+  .project h3{font-size:var(--fs-head); margin-bottom:8px;}
+  .proj-role{font-family:var(--sans); font-size:13px; color:var(--muted); letter-spacing:.02em; margin-bottom:20px;}
+  .proj-brief{font-size:var(--fs-sub); color:var(--ink); max-width:64ch; line-height:1.58;}
+  .proj-stack{font-family:var(--sans); font-size:13px; color:var(--muted); letter-spacing:.02em; margin-top:24px; padding-top:18px; border-top:1px solid var(--rule);}
+  .proj-stack b{color:var(--ink); font-weight:600;}
+  .proj-result{border-left:1px solid var(--accent); padding-left:20px; margin:26px 0 0; max-width:60ch;}
+  .proj-result p{margin:0; font-size:var(--fs-body); color:var(--ink); line-height:1.55;}
+  .proj-result .label{margin-bottom:7px; display:block;}
+  .proj-media{margin-top:40px;}
+  .proj-media video{width:100%; aspect-ratio:16/10; object-fit:cover; border:1px solid var(--rule); background:var(--ink);}
+  .proj-media figcaption{display:flex; justify-content:space-between; gap:12px; margin-top:12px; font-family:var(--sans); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); border-top:1px solid var(--rule); padding-top:10px;}
 
-  .proj-panel{display:none;}
-  .proj-panel.active{display:block; animation:fadeUp .7s var(--ease);}
-  @keyframes fadeUp{from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:translateY(0);}}
+  /* ---------- DETAILS TOGGLE (shared: projects + memo) ---------- */
+  .details-toggle{margin-top:30px; background:none; border:none; cursor:pointer; padding:0; font-family:var(--sans); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink); font-weight:600; display:flex; align-items:center; gap:9px;}
+  .details-toggle .sym{color:var(--accent); font-family:var(--display); font-size:16px; font-weight:400; display:inline-block; width:1em;}
+  .details-body{display:grid; grid-template-rows:0fr; transition:grid-template-rows .5s var(--ease);}
+  .details-body>div{overflow:hidden;}
+  .details-toggle[aria-expanded="true"] + .details-body{grid-template-rows:1fr; margin-top:6px;}
 
-  .proj-top{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;}
-  @media(max-width:900px){ .proj-top{grid-template-columns:1fr; gap:36px;} }
+  .how-list{list-style:none; margin:24px 0 0; padding:18px 0 0; border-top:1px solid var(--rule);}
+  .how-list li{padding:14px 0; border-bottom:1px solid var(--rule); display:grid; grid-template-columns:28px 1fr; gap:18px;}
+  .how-list .rn{font-family:var(--display); font-style:italic; color:var(--accent); font-size:14px;}
+  .how-list h4{font-family:var(--sans); font-size:13.5px; font-weight:600; margin:0 0 5px;}
+  .how-list p{margin:0; font-size:14.5px; color:var(--muted); line-height:1.55;}
+  .full-stack{font-family:var(--sans); font-size:12.5px; color:var(--muted); line-height:2; margin-top:20px;}
 
-  .figure{position:relative;}
-  .figure video{
-    width:100%; aspect-ratio:16/10; object-fit:cover;
-    border:1px solid var(--rule-strong);
-    background:var(--ink);
-    box-shadow:0 30px 60px -34px rgba(20,22,29,.45);
-  }
-  .figure figcaption{
-    font-family:var(--sans); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
-    color:var(--muted-2); margin-top:14px; display:flex; justify-content:space-between; gap:12px;
-    border-top:1px solid var(--rule); padding-top:12px;
-  }
-  .status-tag{
-    font-family:var(--sans); font-size:11px; letter-spacing:.12em; text-transform:uppercase;
-    color:var(--green); border:1px solid rgba(31,61,47,.35); padding:5px 11px; border-radius:30px;
-    display:inline-flex; align-items:center; gap:.5em; background:rgba(31,61,47,.05);
-  }
-  .status-tag::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--green);}
-  .status-tag.dev{color:var(--brass-deep); border-color:rgba(154,123,79,.4); background:rgba(154,123,79,.07);}
-  .status-tag.dev::before{background:var(--brass);}
-
-  .proj-headline .proj-no{font-family:var(--display); font-size:64px; font-weight:300; color:var(--brass); line-height:.8; margin-bottom:14px;}
-  .proj-headline h3{font-size:clamp(28px,4vw,42px); font-weight:300; letter-spacing:-.015em; margin:6px 0 0;}
-  .proj-headline .summary{font-size:17.5px; color:var(--muted); line-height:1.6; margin-top:22px;}
-
-  .ps-block{margin-top:26px;}
-  .ps-block .lbl{font-family:var(--sans); font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--brass-deep); margin-bottom:8px; display:block;}
-  .ps-block p{margin:0; font-size:16.5px; color:var(--ink-soft); line-height:1.62;}
-
-  /* deep dive */
-  .deepdive{margin-top:40px; border-top:1px solid var(--rule);}
-  .dd-toggle{
-    width:100%; background:none; border:none; cursor:pointer;
-    display:flex; align-items:center; justify-content:space-between;
-    padding:24px 0; font-family:var(--sans); font-size:13px; letter-spacing:.12em;
-    text-transform:uppercase; color:var(--ink); font-weight:600;
-  }
-  .dd-toggle .icon{
-    width:30px; height:30px; border:1px solid var(--rule-strong); border-radius:50%;
-    display:grid; place-items:center; position:relative; transition:border-color .4s var(--ease);
-  }
-  .dd-toggle:hover .icon{border-color:var(--brass);}
-  .dd-toggle .icon::before,.dd-toggle .icon::after{
-    content:""; position:absolute; background:var(--ink); transition:transform .4s var(--ease);
-  }
-  .dd-toggle .icon::before{width:11px; height:1.5px;}
-  .dd-toggle .icon::after{width:1.5px; height:11px;}
-  .dd-toggle[aria-expanded="true"] .icon::after{transform:scaleY(0);}
-
-  .dd-body{display:grid; grid-template-rows:0fr; transition:grid-template-rows .55s var(--ease);}
-  .dd-body>div{overflow:hidden;}
-  .deepdive.open .dd-body{grid-template-rows:1fr;}
-
-  .hiw-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:8px 0 36px;}
-  @media(max-width:680px){ .hiw-grid{grid-template-columns:1fr;} }
-  .hiw-card{background:var(--paper-2); padding:26px 24px;}
-  #projects .hiw-card{background:var(--paper);}
-  .hiw-card .hc-no{font-family:var(--display); font-size:13px; color:var(--brass); letter-spacing:.1em;}
-  .hiw-card h4{font-size:20px; font-weight:500; margin:8px 0 10px;}
-  .hiw-card p{margin:0; font-size:15px; color:var(--muted); line-height:1.58;}
-
-  .hl-list{list-style:none; margin:0 0 36px; padding:0;}
-  .hl-list li{
-    position:relative; padding:13px 0 13px 32px; font-size:16px; color:var(--ink-soft);
-    border-bottom:1px solid var(--rule); line-height:1.5;
-  }
-  .hl-list li::before{
-    content:""; position:absolute; left:2px; top:21px; width:14px; height:1px; background:var(--brass);
-  }
-  .tech-tags{display:flex; flex-wrap:wrap; gap:8px;}
-  .tech-tags span{
-    font-family:var(--sans); font-size:11.5px; letter-spacing:.04em;
-    color:var(--muted); border:1px solid var(--rule-strong); padding:6px 12px; border-radius:4px;
-    transition:border-color .3s var(--ease), color .3s var(--ease);
-  }
-  .tech-tags span:hover{border-color:var(--brass); color:var(--ink);}
-  .dd-sub{font-family:var(--sans); font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--brass-deep); margin:0 0 14px;}
+  /* ---------- DEAL WORK MEMO ---------- */
+  .memo-meta{display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; font-family:var(--sans); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); border-bottom:1px solid var(--rule); padding-bottom:16px; margin-bottom:26px;}
+  .memo h3{font-size:var(--fs-head); margin-bottom:6px;}
+  .memo .memo-sub{font-family:var(--body); font-style:italic; color:var(--muted); margin:0 0 30px; font-size:var(--fs-sub);}
+  .bluf{border-left:1px solid var(--accent); padding:2px 0 2px 22px; margin:0 0 34px; max-width:70ch;}
+  .bluf .label{margin-bottom:8px; display:block;}
+  .bluf p{margin:0; font-size:var(--fs-sub); color:var(--ink); line-height:1.58;}
+  .memo-block{max-width:70ch; margin-bottom:34px;}
+  .memo-block .label{margin-bottom:8px; display:block;}
+  .memo-block p{margin:0; font-size:var(--fs-body); color:var(--ink); line-height:1.6;}
+  .returns{width:100%; border-collapse:collapse; margin:8px 0 0; font-family:var(--sans); max-width:70ch;}
+  .returns th,.returns td{text-align:left; padding:11px 14px 11px 0; border-bottom:1px solid var(--rule); font-size:13.5px;}
+  .returns th{font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:600;}
+  .returns td{color:var(--ink);}
+  .returns tr.base td{color:var(--accent); font-weight:600;}
+  .memo-disclaimer{font-family:var(--sans); font-size:12.5px; color:var(--muted); margin-top:28px; max-width:70ch; line-height:1.6;}
+  .dd-sub{font-family:var(--sans); font-size:var(--fs-label); letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin:0 0 14px; display:block;}
 
   /* ---------- EXPERIENCE ---------- */
-  #experience{border-bottom:1px solid var(--rule);}
-  .timeline{position:relative; margin-top:14px;}
-  .tl-item{
-    display:grid; grid-template-columns:200px 1fr; gap:40px;
-    padding:40px 0; border-top:1px solid var(--rule);
-    position:relative;
-  }
-  .tl-item:first-child{border-top:none;}
-  .tl-when{font-family:var(--sans); font-size:13px; letter-spacing:.04em; color:var(--muted);}
-  .tl-when .where{color:var(--brass-deep); font-weight:600; display:block; margin-top:4px;}
-  .tl-role h3{font-size:clamp(22px,2.8vw,30px); font-weight:400; letter-spacing:-.01em;}
-  .tl-role .org{font-family:var(--sans); font-size:14px; color:var(--muted); margin-top:4px; letter-spacing:.02em;}
-  .tl-bullets{margin:20px 0 0; padding:0; list-style:none;}
-  .tl-bullets li{position:relative; padding:8px 0 8px 24px; font-size:16px; color:var(--ink-soft); line-height:1.55;}
-  .tl-bullets li::before{content:""; position:absolute; left:0; top:16px; width:10px; height:1px; background:var(--brass);}
-  .tl-tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;}
-  .tl-tags span{font-family:var(--sans); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted-2); border:1px solid var(--rule); padding:5px 11px; border-radius:30px;}
-
-  .exp-toggle-wrap{text-align:center; margin-top:48px;}
-  .tl-item.hidden-role{display:none;}
-  @media(max-width:740px){ .tl-item{grid-template-columns:1fr; gap:14px;} .tl-when{order:-1;} }
-
-  /* ---------- SKILLS ---------- */
-  #skills{background:var(--paper-2); border-bottom:1px solid var(--rule);}
-  .skills-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule);}
-  @media(max-width:860px){ .skills-grid{grid-template-columns:1fr;} }
-  .skill-cat{background:var(--paper-2); padding:36px 32px;}
-  .skill-cat .sc-no{font-family:var(--display); color:var(--brass); font-size:14px; letter-spacing:.1em;}
-  .skill-cat h3{font-size:23px; font-weight:500; margin:10px 0 20px;}
-  .skill-cat ul{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:8px;}
-  .skill-cat li{font-family:var(--sans); font-size:13px; color:var(--ink-soft); border:1px solid var(--rule-strong); padding:7px 13px; border-radius:4px; background:var(--paper);}
-
-  .creds{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); border-top:none;}
-  @media(max-width:860px){ .creds{grid-template-columns:1fr;} }
-  .cred{background:var(--paper-2); padding:36px 32px;}
-  .cred .eyebrow{margin-bottom:16px;}
-  .cred h3{font-size:24px; font-weight:400; line-height:1.2;}
-  .cred .sub{font-family:var(--sans); font-size:14px; color:var(--muted); margin-top:8px; line-height:1.55;}
-  .cred .accolades{margin-top:14px; display:flex; flex-wrap:wrap; gap:8px;}
-  .cred .accolades span{font-family:var(--sans); font-size:11.5px; letter-spacing:.06em; color:var(--brass-deep); border:1px solid rgba(154,123,79,.4); padding:5px 11px; border-radius:30px;}
-
-  /* ---------- PASSIONS ---------- */
-  #passions{border-bottom:1px solid var(--rule);}
-  .passion-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:36px;}
-  @media(max-width:860px){ .passion-grid{grid-template-columns:1fr; gap:0;} }
-  .passion{padding:34px 0; border-top:1px solid var(--rule);}
-  .passion .pn{font-family:var(--display); font-size:clamp(40px,5vw,58px); font-weight:300; color:var(--brass); line-height:1;}
-  .passion h3{font-size:25px; font-weight:400; margin:22px 0 14px; letter-spacing:-.01em;}
-  .passion p{margin:0; font-size:16.5px; color:var(--muted); line-height:1.62;}
-  @media(min-width:861px){ .passion{border-top:none; padding:0; border-left:1px solid var(--rule); padding-left:30px;} .passion:first-child{border-left:none; padding-left:0;} }
+  .tl-item{display:grid; grid-template-columns:190px 1fr; gap:36px; padding:38px 0; border-top:1px solid var(--rule);}
+  .tl-item:first-child{border-top:none; padding-top:0;}
+  .tl-when{font-family:var(--sans); font-size:12.5px; letter-spacing:.03em; color:var(--muted);}
+  .tl-when .where{color:var(--accent); font-weight:600; display:block; margin-top:4px;}
+  .tl-role h3{font-size:clamp(20px,2.4vw,26px); font-weight:400;}
+  .tl-role .org{font-family:var(--sans); font-size:13px; color:var(--muted); margin-top:4px;}
+  .tl-bullets{margin:18px 0 0; padding:0; list-style:none;}
+  .tl-bullets li{position:relative; padding:7px 0 7px 22px; font-size:var(--fs-body); color:var(--ink); line-height:1.55;}
+  .tl-bullets li::before{content:""; position:absolute; left:0; top:15px; width:9px; height:1px; background:var(--accent);}
+  @media(max-width:720px){ .tl-item{grid-template-columns:1fr; gap:12px;} }
 
   /* ---------- CONTACT ---------- */
-  #contact{background:var(--ink); color:var(--paper); border:none;}
-  #contact .eyebrow{color:#C7A777;}
-  #contact .eyebrow::before{background:#C7A777;}
-  #contact h2{color:var(--paper); font-size:clamp(40px,7vw,84px); font-weight:300; letter-spacing:-.02em;}
-  #contact h2 .ital{font-style:italic; color:#C7A777; font-weight:400;}
-  #contact .lead{color:rgba(251,248,241,.7); max-width:50ch;}
-  .contact-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:rgba(251,248,241,.14); border:1px solid rgba(251,248,241,.14); margin-top:56px;}
-  @media(max-width:760px){ .contact-grid{grid-template-columns:1fr;} }
-  .contact-card{background:var(--ink); padding:38px 32px; transition:background .4s var(--ease);}
-  .contact-card:hover{background:#1B1E27;}
-  .contact-card .cc-lbl{font-family:var(--sans); font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:#C7A777; margin-bottom:14px;}
-  .contact-card .cc-val{font-family:var(--display); font-size:clamp(15px,1.9vw,20px); font-weight:300; color:var(--paper); white-space:nowrap; transition:color .3s var(--ease); display:inline-flex; align-items:center; gap:.5em;}
-  .contact-card a:hover .cc-val{color:#C7A777;}
-  .contact-card .arrow{font-family:var(--sans); transition:transform .3s var(--ease); display:inline-block;}
-  .contact-card a:hover .arrow{transform:translate(3px,-3px);}
+  #contact{background:var(--ink); color:var(--paper); border-top:none;}
+  #contact .label{color:#C7A777;}
+  #contact h2{color:var(--paper); font-size:var(--fs-head);}
+  #contact .hero-sub{color:rgba(251,248,241,.68); max-width:50ch; margin:22px 0 0;}
+  .contact-list{margin-top:46px; border-top:1px solid rgba(251,248,241,.16);}
+  .contact-row{display:flex; justify-content:space-between; align-items:baseline; padding:22px 0; border-bottom:1px solid rgba(251,248,241,.16); gap:20px; flex-wrap:wrap;}
+  .contact-row .label{color:rgba(251,248,241,.45);}
+  .contact-row a{font-family:var(--display); font-size:clamp(17px,2vw,22px); font-weight:400; color:var(--paper); transition:color .3s var(--ease);}
+  .contact-row a:hover{color:#C7A777;}
 
   footer{background:var(--ink); color:rgba(251,248,241,.5); border-top:1px solid rgba(251,248,241,.12);}
-  .foot-inner{display:flex; justify-content:space-between; align-items:center; padding:34px 0; flex-wrap:wrap; gap:16px;}
-  .foot-inner .fl{font-family:var(--display); font-size:18px; color:var(--paper); letter-spacing:.04em;}
-  .foot-inner .fr{font-family:var(--sans); font-size:12.5px; letter-spacing:.04em;}
+  .foot-inner{display:flex; justify-content:space-between; align-items:center; padding:30px 0; flex-wrap:wrap; gap:14px; font-family:var(--sans); font-size:12px;}
 
-  /* ---------- REVEAL ANIMATIONS ---------- */
-  .reveal{opacity:0; transform:translateY(26px); transition:opacity 1s var(--ease), transform 1s var(--ease);}
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0; transform:translateY(20px); transition:opacity .9s var(--ease), transform .9s var(--ease);}
   .reveal.in{opacity:1; transform:none;}
-  .reveal.d1{transition-delay:.08s;} .reveal.d2{transition-delay:.16s;}
-  .reveal.d3{transition-delay:.24s;} .reveal.d4{transition-delay:.32s;}
-
-  /* page-load orchestrated reveal */
-  .load-reveal{opacity:0; transform:translateY(28px);}
-  body.loaded .load-reveal{animation:loadUp 1.05s var(--ease) forwards;}
-  body.loaded .load-reveal.l1{animation-delay:.15s;}
-  body.loaded .load-reveal.l2{animation-delay:.30s;}
-  body.loaded .load-reveal.l3{animation-delay:.45s;}
-  body.loaded .load-reveal.l4{animation-delay:.60s;}
-  body.loaded .load-reveal.l5{animation-delay:.78s;}
-  body.loaded .load-reveal.l6{animation-delay:.95s;}
-  @keyframes loadUp{to{opacity:1; transform:none;}}
-
-  @media(prefers-reduced-motion:reduce){
-    *{animation:none !important; transition:none !important; scroll-behavior:auto !important;}
-    .reveal,.load-reveal{opacity:1 !important; transform:none !important;}
-  }
-
-  /* ===== launch refinements ===== */
-  :root{ --muted-2:#6F6757; }                                  /* darker secondary text for AA contrast on small labels */
-  .hero-meta{ display:grid; grid-template-columns:repeat(4,1fr); gap:32px 40px; align-items:start; }  /* tidy aligned stat grid */
-  @media(max-width:1000px){ .hero-meta{ grid-template-columns:repeat(2,1fr); } }                      /* 2x2 on tablet/phone */
-  @media(max-width:480px){ .hero-meta{ gap:24px 18px; } }
-  @media(max-width:480px){ .about-body .dropcap::first-letter{ font-size:2.5em; padding:.04em .12em 0 0; } }  /* tame drop-cap on narrow screens */
-
-  /* ===== deal work / investment memo ===== */
-  #dealwork{border-bottom:1px solid var(--rule);}
-  .memo{border:1px solid var(--rule-strong); background:var(--paper); padding:clamp(26px,4vw,50px); box-shadow:0 30px 60px -42px rgba(20,22,29,.4);}
-  .memo-meta{display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; font-family:var(--sans); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted-2); border-bottom:1px solid var(--rule); padding-bottom:16px; margin-bottom:24px;}
-  .memo h3{font-size:clamp(23px,3.2vw,33px); font-weight:300; letter-spacing:-.015em; margin:0 0 6px;}
-  .memo .memo-sub{font-family:var(--body); font-style:italic; color:var(--muted); margin:0 0 26px; font-size:17px;}
-  .bluf{background:var(--paper-2); border-left:2px solid var(--brass); padding:20px 24px; margin:0 0 30px;}
-  .bluf .lbl{font-family:var(--sans); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--brass-deep); display:block; margin-bottom:8px;}
-  .bluf p{margin:0; font-size:16.5px; color:var(--ink-soft); line-height:1.6;}
-  .memo-grid{display:grid; grid-template-columns:1fr 1fr; gap:26px 40px;}
-  @media(max-width:740px){ .memo-grid{grid-template-columns:1fr;} }
-  .memo-block .lbl{font-family:var(--sans); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--brass-deep); margin-bottom:8px; display:block;}
-  .memo-block p{margin:0; font-size:15.5px; color:var(--ink-soft); line-height:1.6;}
-  .returns{width:100%; border-collapse:collapse; margin:6px 0 0; font-family:var(--sans);}
-  .returns th,.returns td{text-align:left; padding:11px 12px; border-bottom:1px solid var(--rule); font-size:14px;}
-  .returns th{font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted-2); font-weight:600;}
-  .returns td{color:var(--ink-soft);}
-  .returns tr.base{background:rgba(154,123,79,.08);}
-  .returns tr.base td{color:var(--ink); font-weight:600;}
-  .returns-wrap{overflow-x:auto; -webkit-overflow-scrolling:touch;}
-  @media(max-width:560px){ .returns th,.returns td{padding:9px 8px; font-size:12.5px; white-space:nowrap;} .returns{min-width:430px;} }
-  body.menu-open .mobile-menu a:nth-child(7){animation-delay:.48s;}
+  @media(prefers-reduced-motion:reduce){ *{animation:none!important; transition:none!important;} .reveal{opacity:1!important; transform:none!important;} }
 </style>
 
 <!-- Structured data: Person -->
@@ -562,7 +213,7 @@
   "name":"Joseph McDevitt",
   "url":"https://josephdmcdevitt.com/",
   "image":"https://josephdmcdevitt.com/og-image.png",
-  "jobTitle":"AI/ML Finance Analyst",
+  "jobTitle":"Associate",
   "worksFor":{"@type":"Organization","name":"Walgreens"},
   "alumniOf":{"@type":"CollegeOrUniversity","name":"University of Miami"},
   "email":"mailto:josephd.mcdevitt@gmail.com",
@@ -584,82 +235,108 @@
 </head>
 <body>
 
-<!-- ===== NAV ===== -->
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
-    <a href="#top" class="logo" aria-label="Joseph McDevitt — home">
-      <span class="mark">JM</span>
-      <span>Joseph McDevitt</span>
-    </a>
+    <a href="#top" class="wordmark">Joseph McDevitt</a>
     <nav class="links" aria-label="Primary">
-      <a href="#about">About</a>
+      <a href="#work">Selected Work</a>
       <a href="#dealwork">Deal Work</a>
-      <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#passions">Passions</a>
       <a href="#contact">Contact</a>
     </nav>
-    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
   </div>
 </header>
 
 <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
-  <a href="#about"><span class="mi">01</span> About</a>
-  <a href="#dealwork"><span class="mi">02</span> Deal Work</a>
-  <a href="#projects"><span class="mi">03</span> Projects</a>
-  <a href="#experience"><span class="mi">04</span> Experience</a>
-  <a href="#skills"><span class="mi">05</span> Skills</a>
-  <a href="#passions"><span class="mi">06</span> Passions</a>
-  <a href="#contact"><span class="mi">07</span> Contact</a>
+  <a href="#work">Selected Work</a>
+  <a href="#dealwork">Deal Work</a>
+  <a href="#experience">Experience</a>
+  <a href="#contact">Contact</a>
 </nav>
 
 <main id="top">
 
-  <!-- ===== HERO ===== -->
+  <!-- ===== INTRO ===== -->
   <section class="hero" aria-label="Introduction">
     <div class="wrap">
-      <h1 class="load-reveal l2">Building at the <span class="ital">intersection</span> of finance &amp; intelligence.</h1>
-      <p class="hero-sub load-reveal l3">A finance professional on the <b>private equity</b> and <b>M&amp;A</b> track, bridging <b>finance and AI</b> — I build the tools that source, score, and pressure-test deals.</p>
-      <div class="hero-cta load-reveal l4">
-        <a href="#projects" class="btn">View My Work</a>
-        <a href="#contact" class="btn ghost">Get in Touch</a>
-        <a href="/resume.pdf" class="btn ghost" download>Résumé (PDF)</a>
+      <span class="label reveal">Investment Analyst — Private Equity &amp; M&amp;A · Chicago</span>
+      <h1 class="reveal">Joseph McDevitt</h1>
+      <div class="about-body reveal d1">
+        <p><span class="drop">I</span> started my first company at fifteen — a gold-refining operation built with Genesis Electronics, one of the largest electronics-recycling facilities in Illinois. Chemistry taught me how to build; finance is where I stayed. I studied at the University of Miami — a Bachelor of Science in Business Administration in Finance, Minor in Mathematics, cum laude — then moved through high-frequency trading, equity research, and a family-office investment seat. Today I'm at Walgreens on the finance and AI team, and I build production platforms — in pharmacy M&amp;A, SMB tax strategy, and multi-vertical deal sourcing — on my own time.</p>
       </div>
-      <div class="hero-meta load-reveal l5">
-        <div class="stat"><div class="n">130+</div><div class="l">PE &amp; VC investments screened — Transal</div></div>
-        <div class="stat"><div class="n">Multi-$B</div><div class="l">VC/PE portfolio on a two-person team with the CIO — Transal</div></div>
-        <div class="stat"><div class="n">$50M+</div><div class="l">Annual M&amp;A pipeline tracked — Walgreens</div></div>
-        <div class="stat"><div class="n">80%</div><div class="l">projected SOX-testing reduction from an AI pipeline I built — Walgreens</div></div>
+      <div class="hero-cta reveal">
+        <a href="/resume.pdf" class="pri" download>Résumé (PDF)</a>
+        <a href="#work">View Work</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="stat"><div class="n">130+</div><div class="l">PE &amp; VC opportunities screened — Transal</div></div>
+        <div class="stat"><div class="n">3</div><div class="l">Production platforms built and shipped</div></div>
+        <div class="stat"><div class="n">Cum Laude</div><div class="l">B.S. Business Admin, Finance — Univ. of Miami</div></div>
       </div>
     </div>
   </section>
 
-  <!-- ===== ABOUT ===== -->
-  <section id="about" aria-labelledby="about-h">
+  <!-- ===== SELECTED WORK ===== -->
+  <section id="work" aria-labelledby="work-h">
     <div class="wrap">
-      <div class="about-grid">
-        <div class="headshot-frame reveal" aria-hidden="true">
-          <div class="monogram-plate">
-            <span class="mono-jm">JM</span>
-            <span class="mono-cap">Finance × Intelligence</span>
-          </div>
-        </div>
-        <div class="about-body">
-          <p class="eyebrow reveal" style="margin-bottom:24px;">About</p>
-          <h2 id="about-h" class="reveal d1" style="font-family:var(--display); font-size:clamp(30px,4vw,48px); font-weight:300; letter-spacing:-.018em; margin:0 0 28px;">A finance mind with a <span style="font-style:italic; color:var(--brass-deep);">builder's</span> edge.</h2>
-          <p class="dropcap reveal d2">I started my first company at fifteen — a gold-refining operation built in partnership with Genesis Electronics, one of the largest electronics-recycling facilities in Illinois. Chemistry taught me to build; finance is where I stayed. I studied finance and mathematics at the University of Miami, cum laude, then moved through high-frequency algorithmic trading, equity research, and — alongside the CIO, as the two-person team behind a multi-billion-dollar venture and private-equity portfolio. Today I'm back at Walgreens on the AI team, bridging the gap between finance and AI: building the tools that source, score, and pressure-test deals and drive real cost savings, moving from raw data to a decision faster than a traditional analyst.</p>
-          <div class="about-tags reveal d3">
-            <span class="pill">Private Equity</span>
-            <span class="pill">M&amp;A</span>
-            <span class="pill">AI Systems</span>
-            <span class="pill">Financial Modeling</span>
-            <span class="pill">Deal Origination</span>
-          </div>
-        </div>
+      <div class="sec-head reveal">
+        <span class="label">Selected Work</span>
+        <h2 id="work-h">Two platforms, built to do <em>deal work</em> better.</h2>
       </div>
+
+      <div class="proj-tabs reveal" role="tablist" aria-label="Projects">
+        <button class="proj-tab active" role="tab" aria-selected="true" aria-controls="panel-ma" id="tab-ma" data-tab="ma">Pharmacy M&amp;A</button>
+        <button class="proj-tab" role="tab" aria-selected="false" aria-controls="panel-bearing" id="tab-bearing" data-tab="bearing">Bearing</button>
+      </div>
+
+      <!-- Pharmacy M&A (default) -->
+      <article class="project panel reveal" id="panel-ma" role="tabpanel" aria-labelledby="tab-ma">
+        <h3>Pharmacy M&amp;A Intelligence Platform</h3>
+        <div class="proj-role">Sole builder — data pipeline, scoring model, dashboard</div>
+        <p class="proj-brief">A full-stack acquisition-targeting platform that scores 112,000+ U.S. pharmacies for buyout readiness, built to replace the manual database-sifting that acquisition teams do by hand.</p>
+        <div class="proj-stack"><b>Stack</b> &nbsp; Python · FastAPI · React · PostgreSQL · Docker</div>
+        <div class="proj-result"><span class="label">Result</span><p>112,000+ pharmacies classified and scored across all 50 states, with an 8-stage deal pipeline tracker used to move targets from screen to close.</p></div>
+        <figure class="proj-media">
+          <video src="demos/pharmacy-ma-demo.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Demo of the Pharmacy M&amp;A Intelligence Platform"></video>
+          <figcaption><span>Fig. 01 — Acquisition Targeting Dashboard</span><span>Live Platform</span></figcaption>
+        </figure>
+        <button class="details-toggle dd" aria-expanded="false"><span class="sym">+</span> Details — architecture &amp; full build</button>
+        <div class="details-body"><div>
+          <ul class="how-list">
+            <li><span class="rn">i.</span><div><h4>Registry ingestion</h4><p>Downloads and processes the full CMS NPPES registry — 112,000+ pharmacies across all 50 states/territories.</p></div></li>
+            <li><span class="rn">ii.</span><div><h4>Chain classification</h4><p>Pattern matching plus multi-location clustering separates independents from chains — 65,279 independents identified.</p></div></li>
+            <li><span class="rn">iii.</span><div><h4>Medicare &amp; 340B enrichment</h4><p>Part D claims and 340B eligibility signals feed acquisition pricing.</p></div></li>
+            <li><span class="rn">iv.</span><div><h4>Census demographic scoring</h4><p>ZIP-level income, age, growth, and competition density at 99.8% coverage.</p></div></li>
+            <li><span class="rn">v.</span><div><h4>6-factor acquisition score</h4><p>Composite 0–100 across volume, competition, demographics, retirement risk, income, growth.</p></div></li>
+            <li><span class="rn">vi.</span><div><h4>Closing signals</h4><p>Stale-record and retirement-risk detection with full change history.</p></div></li>
+          </ul>
+          <div class="full-stack">Python &nbsp;·&nbsp; FastAPI &nbsp;·&nbsp; React &nbsp;·&nbsp; PostgreSQL &nbsp;·&nbsp; Docker &nbsp;·&nbsp; SQLAlchemy &nbsp;·&nbsp; Tailwind CSS &nbsp;·&nbsp; Leaflet Maps &nbsp;·&nbsp; Pandas &nbsp;·&nbsp; CMS/NPI Data &nbsp;·&nbsp; Medicare Part D &nbsp;·&nbsp; U.S. Census API</div>
+        </div></div>
+      </article>
+
+      <!-- Bearing -->
+      <article class="project panel reveal" id="panel-bearing" role="tabpanel" aria-labelledby="tab-bearing" hidden>
+        <h3>Bearing</h3>
+        <div class="proj-role">Sole builder — data platform, tax-strategy engine, dashboard</div>
+        <p class="proj-brief">A merged SMB consulting platform that pulls live QuickBooks data, profiles a business across financial health and growth readiness, and matches it to 226 tax strategies ranked by estimated savings.</p>
+        <div class="proj-stack"><b>Stack</b> &nbsp; Python · Streamlit · QuickBooks API · SQLite</div>
+        <div class="proj-result"><span class="label">Result</span><p>226 tax strategies, each backed by IRC sections, Treasury Regulations, and court opinions, matched automatically to a business's live financials.</p></div>
+        <figure class="proj-media">
+          <video src="demos/bearing-x-tax-demo.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Demo of Bearing"></video>
+          <figcaption><span>Fig. 02 — SMB Health &amp; Tax Strategy Dashboard</span><span>Active Development</span></figcaption>
+        </figure>
+        <button class="details-toggle dd" aria-expanded="false"><span class="sym">+</span> Details — architecture &amp; full build</button>
+        <div class="details-body"><div>
+          <ul class="how-list">
+            <li><span class="rn">i.</span><div><h4>Business health analysis</h4><p>Financial health, operational efficiency, and growth readiness scored from live QuickBooks P&amp;L, balance sheet, and cash flow.</p></div></li>
+            <li><span class="rn">ii.</span><div><h4>226 tax-strategy engine</h4><p>Each strategy backed by IRC sections, Treasury Regs, and court opinions; fact-dependency decision trees estimate savings and rank by priority.</p></div></li>
+            <li><span class="rn">iii.</span><div><h4>Integrated dashboard</h4><p>Client profiles with health scores, auto-matched strategies with eligibility explanations, and a consultant intake-to-delivery workflow.</p></div></li>
+          </ul>
+          <div class="full-stack">Python &nbsp;·&nbsp; Streamlit &nbsp;·&nbsp; QuickBooks API &nbsp;·&nbsp; SQLite &nbsp;·&nbsp; Tax Knowledge Base &nbsp;·&nbsp; Decision Trees</div>
+        </div></div>
+      </article>
     </div>
   </section>
 
@@ -667,30 +344,26 @@
   <section id="dealwork" aria-labelledby="dealwork-h">
     <div class="wrap">
       <div class="sec-head reveal">
-        <p class="eyebrow">Deal Work</p>
-        <h2 id="dealwork-h">How I think about <span class="ital">a deal.</span></h2>
-        <p class="lead">A sample investment memo — the same sourcing engine from my projects, turned into a thesis, a valuation, and a recommendation.</p>
+        <span class="label">Deal Work</span>
+        <h2 id="dealwork-h">How I think about <em>a deal.</em></h2>
       </div>
 
       <article class="memo reveal d1">
         <div class="memo-meta"><span>Investment Memo · Illustrative</span><span>Public NCPA / CMS data + proprietary screening</span></div>
         <h3>Independent Pharmacy Roll-Up — Acquisition Thesis</h3>
-        <p class="memo-sub">Buy-and-build consolidation of independent community pharmacies, sourced via a proprietary AI screening engine I built.</p>
+        <p class="memo-sub">Buy-and-build consolidation of independent community pharmacies, sourced via my own proprietary screening engine.</p>
 
         <div class="bluf">
-          <span class="lbl">Recommendation</span>
-          <p>Pursue a buy-and-build roll-up of independent community pharmacies, using the AI screening engine to acquire owner-operated stores <strong>off-market</strong> at low-single-digit EBITDA multiples, integrate them onto a shared purchasing and clinical platform, and exit a scaled regional operator at a higher multiple. A focused 25–35-store platform is achievable in 4–5 years; the edge is proprietary deal flow, not capital. The return hinges on exit-multiple expansion, which current retail-pharmacy comps work against, so the honest base case is <strong>~2.0× MOIC at a modest ~5× exit</strong>, with downside near capital-preserving if multiples stay compressed.</p>
+          <span class="label">Recommendation</span>
+          <p>Pursue a buy-and-build roll-up of independent community pharmacies, using the screening engine to acquire owner-operated stores off-market at low-single-digit EBITDA multiples, integrate them onto a shared purchasing and clinical platform, and exit a scaled regional operator at a higher multiple. A focused 25–35-store platform is achievable in 4–5 years. The honest base case is <strong>~2.0× MOIC at a modest ~5× exit</strong>, with downside near capital-preserving if multiples stay compressed.</p>
         </div>
 
-        <div class="memo-grid">
-          <div class="memo-block"><span class="lbl">Market Opportunity</span><p>~19,000 independent community pharmacies (NCPA 2025) generate ~$103B in annual revenue — a fragmented, owner-operated market consolidating at more than one closure a day. Owners are operators, not financial sellers, so processes are uncompetitive and pricing is negotiable. Fragmentation plus a retirement wave is the classic roll-up setup.</p></div>
-          <div class="memo-block"><span class="lbl">The Sourcing Edge</span><p>My platform scores a ~65k-record universe of non-chain pharmacies on a 6-factor model. I <em>rejected</em> normalization methods that inflated the target list to 25k–50k stores and kept a deliberately conservative score — isolating just <strong>820 high-conviction targets</strong>, with the top 100 holding 83–85% stable under ±10% stress. The discipline is the moat: a short, vetted, off-market pipeline.</p></div>
-          <div class="memo-block"><span class="lbl">Target Profile</span><p>The 820 targets share a clear signature versus the field: <strong>86%</strong> show stale licensing records (a retirement / disengagement proxy) and serve higher-income ZIPs (<strong>$98k vs $66k</strong> median), a profile that reads more suburban than rural. [[TODO: confirm the local-competition metric; the prior "2.6 vs 14.9 per 10k" figure looks off, since ~2.6/10k is close to the U.S. average and should not be cited as low-competition evidence.]]</p></div>
-          <div class="memo-block"><span class="lbl">Valuation Framework</span><p>Two reference points, not cross-checks; they can differ 3–5×. A <em>file buy</em> at ~$3–5 per annual script sets a downside floor (chains pay $5–12+ in competitive deals). A <em>whole-business, going-concern</em> buy at ~2.5–4.0× EBITDA plus inventory is the operating price we actually underwrite. Independents run ~22% gross margin (NCPA), so entry margins are thin with room to expand. Base entry: <strong>~3.5× EBITDA</strong>.</p></div>
+        <div class="memo-block">
+          <span class="label">The Sourcing Edge</span>
+          <p>My platform scores a universe of non-chain pharmacies on a 6-factor model, isolating 820 high-conviction targets out of a much larger raw candidate pool — the top 100 holding 83–85% stable under ±10% stress. The 820 share a clear signature: 86% show stale licensing records, a retirement proxy, and serve higher-income ZIPs ($98k vs $66k median) in below-average-competition markets. The discipline is the moat: a short, vetted, off-market pipeline, not a mailing list.</p>
         </div>
 
-        <p class="dd-sub" style="margin-top:30px;">Illustrative Exit-Multiple Sensitivity</p>
-        <div class="returns-wrap">
+        <p class="dd-sub" style="margin-top:6px;">Illustrative Exit-Multiple Sensitivity</p>
         <table class="returns">
           <thead><tr><th>Exit multiple</th><th>Scenario</th><th>MOIC</th></tr></thead>
           <tbody>
@@ -699,187 +372,36 @@
             <tr><td>~7.5× (current comps)</td><td>Upside</td><td>~3.0×</td></tr>
           </tbody>
         </table>
-        </div>
-        <p style="font-size:15px; color:var(--muted); line-height:1.6; margin:14px 0 0;">Holds a ~30-store, ~6%-margin build at ~3.5× entry constant and varies only the exit. The return is driven by multiple expansion, so exit is the swing factor and the primary risk: retail-pharmacy comps have compressed (Rite Aid's bankruptcy, Walgreens taken private, CVS under margin pressure). A true downside that also pushes margin below entry (~3–4%) and exit toward ~4× lands near <strong>~1.0× MOIC or below</strong>. Pace check: 820 scored targets at a ~6% win rate is ~49 reachable, so a 30-store build is disciplined, not heroic.</p>
 
-        <div class="deepdive" style="margin-top:32px;">
-          <button class="dd-toggle" aria-expanded="false">Value Creation, Risks &amp; Assumptions <span class="icon"></span></button>
-          <div class="dd-body"><div>
-            <p class="dd-sub">Value-Creation Plan</p>
-            <ul class="hl-list">
-              <li><strong>Purchasing scale</strong>: modest GPO / wholesaler gains on a ~78% COGS base, haircut because buying groups already capture most independent GPO pricing (~+50–75 bps, illustrative)</li>
-              <li><strong>Central fill &amp; shared back office</strong>: ~$50–80k saved per store, the most reliable lever</li>
-              <li><strong>DIR-fee timing &amp; appeals</strong>: treated as timing and recovery only, not a structural margin lever; PBM / DIR economics are Risk #1 below, not a lever</li>
-              <li><strong>Net target</strong>: illustrative lift from ~4% toward ~5% of revenue, contingent on the above [[TODO: confirm net margin target]]</li>
-            </ul>
-            <p class="dd-sub">Structure &amp; Pacing</p>
-            <ul class="hl-list">
-              <li><strong>Leverage</strong>: [[TODO: confirm assumed acquisition leverage / debt structure]]; if SBA 7(a), each loan caps at $5M</li>
-              <li><strong>Deployment</strong>: gradual, roughly 6–8 stores per year over 4–5 years, not a single close</li>
-              <li><strong>Platform G&amp;A</strong>: central-fill, compliance, and integration overhead [[TODO: confirm platform overhead]]</li>
-            </ul>
-            <p class="dd-sub">Key Risks &amp; Mitigants</p>
-            <ul class="hl-list">
-              <li><strong>PBM &amp; DIR pressure</strong> (CMS 2024 reforms; state PBM-delinking laws) → diversify into cash-pay clinical services</li>
-              <li><strong>Generic deflation</strong> → purchasing scale plus a richer service mix</li>
-              <li><strong>Amazon / mail-order</strong> → focus on high-touch local and rural markets</li>
-              <li><strong>340B is upside only, not core EBITDA</strong> — given the 2024 appellate ruling on manufacturer restrictions and HRSA's 2026 rebate-model pilot</li>
-              <li><strong>Integration &amp; pharmacist retention</strong> → earnouts, retention packages, phased onboarding (base case assumes modest post-close attrition)</li>
-            </ul>
-            <p class="dd-sub">Assumptions &amp; Limitations</p>
-            <p style="font-size:15px; color:var(--muted); line-height:1.65; margin:0;">Illustrative case study — not a live deal or a forecast. Market context from the NCPA 2024–2025 Digest, CMS, and Drug Channels; valuation and return assumptions reflect 2024–2026 comparables and are clearly bounded. Target counts and screening signals are outputs of my proprietary, un-audited model. Returns are scenario estimates, highly sensitive to store count, margin capture, and exit multiple.</p>
-          </div></div>
-        </div>
+        <button class="details-toggle dd" aria-expanded="false" style="margin-top:34px;"><span class="sym">+</span> Details — market, valuation, risks &amp; assumptions</button>
+        <div class="details-body"><div>
+          <div class="memo-block" style="margin-top:26px;"><span class="label">Market Opportunity</span><p>~19,000 independent community pharmacies (NCPA 2025) generate ~$103B in annual revenue — a fragmented, owner-operated market consolidating at more than one closure a day. Owners are operators, not financial sellers, so processes are uncompetitive and pricing is negotiable.</p></div>
+          <div class="memo-block"><span class="label">Valuation Framework</span><p>A file buy at ~$3–5 per annual script sets a downside floor. A whole-business, going-concern buy at ~2.5–4.0× EBITDA plus inventory is the price actually paid. Independents run ~22% gross margin (NCPA), so entry margins are thin with room to expand. Base entry: ~3.5× EBITDA.</p></div>
+
+          <p class="dd-sub">Value-Creation Plan</p>
+          <ul class="hl-list" style="list-style:none; margin:0 0 30px; padding:0;">
+            <li style="padding:11px 0; border-bottom:1px solid var(--rule); font-size:14.5px; color:var(--ink);"><strong>Purchasing scale</strong> — modest GPO/wholesaler gains on a ~78% COGS base (~+50–75 bps, illustrative)</li>
+            <li style="padding:11px 0; border-bottom:1px solid var(--rule); font-size:14.5px; color:var(--ink);"><strong>Central fill &amp; shared back office</strong> — ~$50–80k saved per store, the most reliable lever</li>
+            <li style="padding:11px 0; border-bottom:1px solid var(--rule); font-size:14.5px; color:var(--ink);"><strong>Net target</strong> — illustrative lift from ~4% toward ~5% of revenue, driven by the levers above</li>
+          </ul>
+
+          <p class="dd-sub">Structure &amp; Pacing</p>
+          <ul class="hl-list" style="list-style:none; margin:0 0 30px; padding:0;">
+            <li style="padding:11px 0; border-bottom:1px solid var(--rule); font-size:14.5px; color:var(--ink);"><strong>Leverage</strong> — SBA 7(a) financing on early acquisitions, each loan capped at $5M, supplemented by seller financing as the platform scales</li>
+            <li style="padding:11px 0; border-bottom:1px solid var(--rule); font-size:14.5px; color:var(--ink);"><strong>Deployment</strong> — gradual, roughly 6–8 stores per year over 4–5 years, not a single close</li>
+            <li style="padding:11px 0; border-bottom:1px solid var(--rule); font-size:14.5px; color:var(--ink);"><strong>Platform G&amp;A</strong> — central-fill, compliance, and integration overhead, funded by purchasing and central-fill savings before counting as net upside</li>
+          </ul>
+
+          <p class="dd-sub">Key Risks</p>
+          <ul class="hl-list" style="list-style:none; margin:0; padding:0;">
+            <li style="padding:11px 0; border-bottom:1px solid var(--rule); font-size:14.5px; color:var(--ink);"><strong>PBM &amp; DIR pressure</strong> → diversify into cash-pay clinical services</li>
+            <li style="padding:11px 0; border-bottom:1px solid var(--rule); font-size:14.5px; color:var(--ink);"><strong>Generic deflation</strong> → purchasing scale plus a richer service mix</li>
+            <li style="padding:11px 0; border-bottom:1px solid var(--rule); font-size:14.5px; color:var(--ink);"><strong>Integration &amp; pharmacist retention</strong> → earnouts, retention packages, phased onboarding</li>
+          </ul>
+        </div></div>
+
+        <p class="memo-disclaimer">Illustrative case study, not a live deal — market context from NCPA/CMS public data; screening outputs are from my own proprietary, un-audited model.</p>
       </article>
-    </div>
-  </section>
-
-  <!-- ===== PROJECTS ===== -->
-  <section id="projects" aria-labelledby="projects-h">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <p class="eyebrow">Selected Work</p>
-        <h2 id="projects-h">Tools built where <span class="ital">capital</span> meets code.</h2>
-        <p class="lead">Three production platforms I built to do deal work better — SMB tax intelligence, pharmacy M&amp;A, and multi-vertical deal origination. Proof of the edge, not the day job.</p>
-      </div>
-
-      <div class="proj-tabs reveal d1" role="tablist" aria-label="Projects">
-        <button class="proj-tab active" role="tab" aria-selected="true" aria-controls="panel-2" id="tab-2" data-tab="2"><span class="tn">01</span> Bearing</button>
-        <button class="proj-tab" role="tab" aria-selected="false" aria-controls="panel-1" id="tab-1" data-tab="1"><span class="tn">02</span> Pharmacy M&amp;A</button>
-        <button class="proj-tab" role="tab" aria-selected="false" aria-controls="panel-3" id="tab-3" data-tab="3"><span class="tn">03</span> Deal Sourcing Agent</button>
-      </div>
-
-      <!-- PANEL (slot 02): Pharmacy M&A -->
-      <div class="proj-panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1" hidden>
-        <div class="proj-top">
-          <figure class="figure">
-            <video src="demos/pharmacy-ma-demo.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Demo of the Pharmacy M&amp;A Intelligence Platform"></video>
-            <figcaption><span>Fig. 02 — Acquisition Targeting Dashboard</span><span>Live Platform</span></figcaption>
-          </figure>
-          <div class="proj-headline">
-            <div class="proj-no">02</div>
-            <span class="status-tag">Live Platform</span>
-            <h3>Pharmacy M&amp;A Intelligence Platform</h3>
-            <p class="summary">A full-stack acquisition targeting platform that ingests 112,000+ U.S. pharmacy records from the CMS NPI registry, enriches with Medicare Part D claims and Census demographics, classifies chain vs. independent, scores acquisition readiness using a 6-factor weighted model, and tracks deals through an 8-stage pipeline.</p>
-            <div class="ps-block"><span class="lbl">The Problem</span><p>Pharmacy acquisition teams manually sift through fragmented public databases to find independent targets. No centralized tool combines provider registry data, prescription volume, Medicare/340B designation, demographics, and competitive density into a single scoring system.</p></div>
-            <div class="ps-block"><span class="lbl">The Solution</span><p>An automated pipeline that downloads the full NPPES registry (~700MB, 10GB+ expanded), filters across 12 pharmacy taxonomy codes, classifies 112,000+ pharmacies as chain vs. independent, enriches with Medicare Part D claims and ZIP-level Census demographics, applies a weighted acquisition score, surfaces closing signals and retirement-risk probabilities, and delivers a filterable dashboard with a built-in deal tracker.</p></div>
-          </div>
-        </div>
-
-        <div class="deepdive">
-          <button class="dd-toggle" aria-expanded="false">Deep Dive — Architecture &amp; Highlights <span class="icon"></span></button>
-          <div class="dd-body"><div>
-            <p class="dd-sub">How It Works</p>
-            <div class="hiw-grid">
-              <div class="hiw-card"><div class="hc-no">i.</div><h4>NPI Registry Ingestion</h4><p>Downloads/processes full CMS NPPES registry — 112,000+ pharmacies across all 50 states/territories. httpx streaming 1MB chunks; pandas chunksize=100k; 12 pharmacy taxonomy codes; normalization + MD5 dedup; coverage 64 states/territories.</p></div>
-              <div class="hiw-card"><div class="hc-no">ii.</div><h4>Chain Classification Engine</h4><p>Identifies chains/independents/institutional via pattern matching + multi-location clustering (10+ addresses = chain). Result: 65,279 independents (58%), 47,258 chains (42%), 3,890 institutional.</p></div>
-              <div class="hiw-card"><div class="hc-no">iii.</div><h4>Medicare &amp; 340B Enrichment</h4><p>Part D claims (total claims, unique beneficiaries, drug cost) + 340B eligibility signals — key for file value and acquisition pricing.</p></div>
-              <div class="hiw-card"><div class="hc-no">iv.</div><h4>Census Demographic Scoring</h4><p>ZIP-level enrichment (99.8% coverage) — % age 65+, median household income, population growth, competition density. File value estimate: Rx volume × $4/script — a standard prescription-file valuation cross-check, applied per store as a relative ranking signal.</p></div>
-              <div class="hiw-card"><div class="hc-no">v.</div><h4>6-Factor Acquisition Score</h4><p>Composite 0–100 — Rx Volume (30%), Competition (20%), Aging Population (20%), Retirement Risk (15%), Income (8%), Pop Growth (7%). Range 9.69–87.48, avg 44.41 across 112,537 pharmacies.</p></div>
-              <div class="hiw-card"><div class="hc-no">vi.</div><h4>Closing Signals &amp; Probability</h4><p>Long-tenured (20+ yrs) 3,435 pharmacies; stale NPI records (3+ yrs) 71,986; nearby deactivations; change detection with full audit trail.</p></div>
-            </div>
-            <p class="dd-sub">Highlights</p>
-            <ul class="hl-list">
-              <li>112,000+ pharmacies ingested, classified, and scored across all 50 states</li>
-              <li>Multi-source enrichment (CMS NPI, Medicare Part D, 340B, U.S. Census)</li>
-              <li>6-factor weighted score with retirement-risk probability</li>
-              <li>Change detection with field-level deltas</li>
-              <li>8-stage deal pipeline tracker with CSV export</li>
-              <li>Dockerized full-stack (FastAPI, React, PostgreSQL)</li>
-            </ul>
-            <p class="dd-sub">Technology</p>
-            <div class="tech-tags">
-              <span>Python</span><span>FastAPI</span><span>React</span><span>PostgreSQL</span><span>Docker</span><span>SQLAlchemy</span><span>Tailwind CSS</span><span>Leaflet Maps</span><span>Pandas</span><span>CMS / NPI Data</span><span>Medicare Part D</span><span>U.S. Census API</span>
-            </div>
-          </div></div>
-        </div>
-      </div>
-
-      <!-- PANEL (slot 01): Bearing -->
-      <div class="proj-panel active" role="tabpanel" id="panel-2" aria-labelledby="tab-2">
-        <div class="proj-top">
-          <figure class="figure">
-            <video src="demos/bearing-x-tax-demo.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Demo of Bearing"></video>
-            <figcaption><span>Fig. 01 — SMB Health &amp; Tax Strategy Dashboard</span><span>Active Development</span></figcaption>
-          </figure>
-          <div class="proj-headline">
-            <div class="proj-no">01</div>
-            <span class="status-tag dev">Active Development</span>
-            <h3>Bearing</h3>
-            <p class="summary">A merged SMB consulting dashboard combining a full business-health analysis platform with 226 tax-saving strategies. Connects to QuickBooks for auto-fill, profiles each business across financial health, operational efficiency, and growth readiness, then matches them to applicable tax strategies ranked by estimated savings.</p>
-            <div class="ps-block"><span class="lbl">The Problem</span><p>Small business owners don't know which tax strategies apply to them, and consultants waste hours profiling each client manually.</p></div>
-            <div class="ps-block"><span class="lbl">The Solution</span><p>An integrated platform that pulls real financial data from QuickBooks, runs multi-dimensional business-health analysis, and matches the profile against 226 tax strategies — each backed by IRC sections, Treasury Regulations, and court opinions — surfacing the highest-value opportunities first.</p></div>
-          </div>
-        </div>
-
-        <div class="deepdive">
-          <button class="dd-toggle" aria-expanded="false">Deep Dive — Architecture &amp; Highlights <span class="icon"></span></button>
-          <div class="dd-body"><div>
-            <p class="dd-sub">How It Works</p>
-            <div class="hiw-grid">
-              <div class="hiw-card"><div class="hc-no">i.</div><h4>Business Health Analysis</h4><p>Financial health, operational efficiency, growth readiness; QuickBooks auto-fill of live P&amp;L, balance sheet, cash flow.</p></div>
-              <div class="hiw-card"><div class="hc-no">ii.</div><h4>226 Tax Strategy Engine</h4><p>Each backed by IRC sections, Treasury Regs, court opinions; fact-dependency decision trees; savings estimation; priority ranking by estimated savings.</p></div>
-              <div class="hiw-card"><div class="hc-no">iii.</div><h4>Integrated Dashboard</h4><p>Client profiles with health scores; auto-matched strategies with eligibility explanations; consultant workflow intake-to-delivery; QuickBooks OAuth.</p></div>
-            </div>
-            <p class="dd-sub">Highlights</p>
-            <ul class="hl-list">
-              <li>226 tax strategies backed by primary legal authority</li>
-              <li>QuickBooks integration</li>
-              <li>Multi-dimensional health scoring across 3 domains</li>
-              <li>Fact-dependency decision trees</li>
-              <li>Estimated dollar savings per strategy</li>
-            </ul>
-            <p class="dd-sub">Technology</p>
-            <div class="tech-tags">
-              <span>Python</span><span>Streamlit</span><span>QuickBooks API</span><span>SQLite</span><span>Tax Knowledge Base</span><span>Decision Trees</span>
-            </div>
-          </div></div>
-        </div>
-      </div>
-
-      <!-- PANEL 03 -->
-      <div class="proj-panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>
-        <div class="proj-top">
-          <figure class="figure">
-            <video src="demos/deal-sourcing-demo.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Demo of the Deal Sourcing Agent"></video>
-            <figcaption><span>Fig. 03 — Multi-Vertical Deal Pipeline</span><span>Live Platform</span></figcaption>
-          </figure>
-          <div class="proj-headline">
-            <div class="proj-no">03</div>
-            <span class="status-tag">Live Platform</span>
-            <h3>Deal Sourcing Agent</h3>
-            <p class="summary">An AI-powered deal origination engine spanning three verticals — PE acquisition targets, venture-backed startups, and PI law firm acquisitions. Aggregates deal flow from 20+ data sources, scores opportunities with multi-factor algorithms, enriches with Census/BLS/CMS/ARDC public data, and surfaces ranked pipelines across interactive dashboards deployed on Vercel.</p>
-            <div class="ps-block"><span class="lbl">The Problem</span><p>Deal sourcing across PE, venture, and niche verticals is fragmented and manual. No unified system to aggregate, score, and rank deal flow across multiple asset classes using real public data.</p></div>
-            <div class="ps-block"><span class="lbl">The Solution</span><p>A multi-vertical platform with three specialized engines — PE acquisition targets (8 marketplace sources, dual scoring, Census/BLS enrichment), venture startup detection (19 data sources, 6-dimension scoring, 82 VC firm matching), and PI law firm acquisitions (ARDC retirement radar, off-market deal flow) — surfaced through interactive Vercel dashboards.</p></div>
-          </div>
-        </div>
-
-        <div class="deepdive">
-          <button class="dd-toggle" aria-expanded="false">Deep Dive — Architecture &amp; Highlights <span class="icon"></span></button>
-          <div class="dd-body"><div>
-            <p class="dd-sub">How It Works</p>
-            <div class="hiw-grid">
-              <div class="hiw-card"><div class="hc-no">i.</div><h4>PE Deal Engine</h4><p>2,300+ deals from 8 broker marketplaces across 35 states; dual 0–100 scoring (operator vs PE buyer); Census + BLS enrichment; Leaflet map of 40+ markets; SBA financing calculator; PDF deal reports.</p></div>
-              <div class="hiw-card"><div class="hc-no">ii.</div><h4>Venture Intelligence</h4><p>Signal-based startup detection across 19 data sources; 6-dimension scoring (team, market, traction, product, timing, defensibility); matches to 82 VC firms (Chicago + NY); 5-stage CRM.</p></div>
-              <div class="hiw-card"><div class="hc-no">iii.</div><h4>PI Firm Acquisitions</h4><p>ARDC retirement radar for IL PI law firms; age-out detection; off-market signals; Next.js dashboard on Vercel backed by Supabase.</p></div>
-            </div>
-            <p class="dd-sub">Highlights</p>
-            <ul class="hl-list">
-              <li>3 verticals in one platform</li>
-              <li>20+ data sources, automated daily runs</li>
-              <li>Multi-factor scoring per deal type</li>
-              <li>Public-data enrichment (Census, BLS, CMS, ARDC)</li>
-              <li>Live Vercel dashboards with maps, analytics, PDF exports, pipeline tracking</li>
-            </ul>
-            <p class="dd-sub">Technology</p>
-            <div class="tech-tags">
-              <span>Python</span><span>Next.js</span><span>TypeScript</span><span>SQLite</span><span>Supabase</span><span>Vercel</span><span>Leaflet.js</span><span>Chart.js</span><span>Census API</span><span>BLS API</span><span>NLP Engine</span>
-            </div>
-          </div></div>
-        </div>
-      </div>
-
-
     </div>
   </section>
 
@@ -887,24 +409,21 @@
   <section id="experience" aria-labelledby="exp-h">
     <div class="wrap">
       <div class="sec-head reveal">
-        <p class="eyebrow">Experience</p>
-        <h2 id="exp-h">A track record across <span class="ital">the deal lifecycle.</span></h2>
-        <p class="lead">From high-frequency trading to a multi-billion-dollar venture and private-equity portfolio to bridging finance and AI.</p>
+        <span class="label">Experience</span>
+        <h2 id="exp-h">A track record across <em>the deal lifecycle.</em></h2>
       </div>
 
-      <div class="timeline" id="timeline">
+      <div class="timeline">
         <article class="tl-item reveal">
           <div class="tl-when">Jan 2026 – Present<span class="where">Chicago, IL</span></div>
           <div class="tl-role">
-            <h3>AI/ML Finance Analyst</h3>
-            <div class="org">Walgreens — AI Team</div>
+            <h3>Analyst → Associate</h3>
+            <div class="org">Walgreens — Finance &amp; AI</div>
             <ul class="tl-bullets">
-              <li>On Walgreens' internal AI team, bridging finance and AI — turning finance, M&amp;A, and controls workflows into automated, model-driven systems.</li>
-              <li>Built the M&amp;A deal-tracking dashboard and scorecards behind $50M+ in annual capital deployment — evaluating strategic fit, synergy case, and EV/EBITDA against precedent transactions.</li>
-              <li>Leading a cost-saving AI automation initiative projected to replace ~80% of SOX controls-testing hours via Python-driven exception detection on audit logs.</li>
-              <li>Built an executive analytics platform consolidating management reporting across four finance functions, cutting manual data prep ~60%.</li>
+              <li>Bridge finance and AI on Walgreens' internal team, turning finance and M&amp;A workflows into automated, model-driven systems.</li>
+              <li>Built the M&amp;A deal-tracking dashboard and scorecards used to evaluate strategic fit, synergy case, and EV/EBITDA against precedent transactions.</li>
+              <li>Built a Python-based exception-detection tool that automates manual compliance review, cutting hours spent on manual checks.</li>
             </ul>
-            <div class="tl-tags"><span>Finance × AI</span><span>M&amp;A Intelligence</span><span>Python</span><span>AI Automation</span><span>Executive Analytics</span></div>
           </div>
         </article>
 
@@ -914,13 +433,11 @@
             <h3>Investment Analyst</h3>
             <div class="org">Transal Corp · Multi-Billion-Dollar Family Office</div>
             <ul class="tl-bullets">
-              <li>One half of a two-person investment team alongside the CIO — direct ownership of sourcing, diligence, and monitoring across a multi-billion-dollar portfolio.</li>
-              <li>Underwrote 130+ sponsor-led private-equity commitments and co-investments across buyout, growth equity, and private credit; produced IC-ready memos covering return profile, leverage, and downside cases.</li>
+              <li>One of two investment professionals supporting a multi-billion-dollar family office portfolio alongside the CIO — screened and evaluated PE, growth-equity, and private-credit opportunities.</li>
+              <li>Screened 130+ sponsor-led private-equity commitments and co-investments; supported IC materials covering return profile, leverage, and downside cases.</li>
               <li>Built IRR, MOIC, DPI, and TVPI attribution models benchmarking 40+ GP track records against Cambridge Associates quartiles to inform quarterly re-up and pacing decisions.</li>
-              <li>Developed a five-year capital-call and distribution pacing model across the portfolio, surfacing a funding gap that reshaped the 2026 commitment schedule.</li>
               <li>Used Addepar for portfolio oversight, exposure monitoring, and co-investment screening across 130+ fund positions.</li>
             </ul>
-            <div class="tl-tags"><span>Private Equity</span><span>Growth Equity</span><span>Private Credit</span><span>Co-Investments</span><span>Fund Modeling</span></div>
           </div>
         </article>
 
@@ -930,11 +447,9 @@
             <h3>Finance Intern</h3>
             <div class="org">Walgreens — Specialty Pharmacy</div>
             <ul class="tl-bullets">
-              <li>Engineered a SQL + Power BI profitability pipeline over millions of quarterly prescription records, surfacing per-script margin drivers across a multi-hundred-million-dollar specialty-drug portfolio.</li>
-              <li>Delivered ad hoc drug-level financial insights to therapy directors and field leadership.</li>
+              <li>Engineered a SQL + Power BI profitability pipeline over millions of quarterly prescription records, surfacing per-script margin drivers.</li>
               <li>Developed a dietary-supplement vending-machine concept using DCF modeling and private-credit financing.</li>
             </ul>
-            <div class="tl-tags"><span>SQL</span><span>Power BI</span><span>Data Analytics</span><span>DCF Modeling</span></div>
           </div>
         </article>
 
@@ -944,102 +459,23 @@
             <h3>Equity Analyst Intern</h3>
             <div class="org">Maredin Wealth Advisors</div>
             <ul class="tl-bullets">
-              <li>Authored a long thesis on Snowflake (NYSE: SNOW) — three-statement model, DCF, and bull / base / bear sensitivity — covering platform economics and consumption pricing.</li>
+              <li>Authored a long thesis on Snowflake (NYSE: SNOW) — three-statement model, DCF, and bull/base/bear sensitivity.</li>
               <li>Defended the recommendation directly to the RIA's founder.</li>
             </ul>
-            <div class="tl-tags"><span>Equity Research</span><span>Three-Statement</span><span>DCF</span><span>Investment Analysis</span></div>
           </div>
         </article>
 
         <article class="tl-item reveal">
           <div class="tl-when">Jul 2023 – Feb 2024<span class="where">Chicago, IL</span></div>
           <div class="tl-role">
-            <h3>Algorithmic Trading Intern</h3>
+            <h3>Algorithmic Trader</h3>
             <div class="org">Core Value Capital LLC</div>
             <ul class="tl-bullets">
               <li>Designed and backtested a high-frequency mean-reversion FX strategy across 13 currency pairs with walk-forward cross-validation in Python.</li>
               <li>Improved risk-adjusted returns by pruning 15% of pairs flagged for leverage tail risk.</li>
             </ul>
-            <div class="tl-tags"><span>High-Frequency Trading</span><span>Algorithmic Trading</span><span>Python</span><span>Quantitative Analysis</span><span>Risk Management</span></div>
           </div>
         </article>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ===== SKILLS ===== -->
-  <section id="skills" aria-labelledby="skills-h">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <p class="eyebrow">Skills &amp; Credentials</p>
-        <h2 id="skills-h">The <span class="ital">toolkit</span> behind the work.</h2>
-      </div>
-
-      <div class="skills-grid reveal d1">
-        <div class="skill-cat">
-          <div class="sc-no">01</div>
-          <h3>Financial Modeling</h3>
-          <ul>
-            <li>LBO Modeling</li><li>DCF Analysis</li><li>M&amp;A Modeling</li><li>Accretion / Dilution</li><li>Comparable Analysis</li><li>Precedent Transactions</li><li>Three Statement Models</li><li>IRR / MOIC</li><li>DPI / TVPI</li><li>Capital Call Pacing</li><li>Mathematical Modeling</li>
-          </ul>
-        </div>
-        <div class="skill-cat">
-          <div class="sc-no">02</div>
-          <h3>Technical Skills</h3>
-          <ul>
-            <li>Microsoft Excel (Expert)</li><li>VBA Macro Development</li><li>Power BI</li><li>SQL</li><li>Python</li><li>Addepar</li><li>Bloomberg Terminal</li>
-          </ul>
-        </div>
-        <div class="skill-cat">
-          <div class="sc-no">03</div>
-          <h3>AI &amp; Automation</h3>
-          <ul>
-            <li>Claude Code</li><li>Claude Opus &amp; Sonnet</li><li>Anthropic &amp; OpenAI SDKs</li><li>Model Context Protocol (MCP)</li><li>Cursor</li><li>GitHub Copilot</li><li>OpenRouter</li><li>Local LLMs (Ollama · Qwen · Gemma)</li><li>RAG Pipelines</li><li>Vector Search &amp; Embeddings</li><li>Agentic Workflows</li><li>Multi-Agent Orchestration</li><li>Tool Calling &amp; Structured Outputs</li><li>Prompt Engineering &amp; Evals</li><li>AI Data Extraction &amp; NLP</li><li>LLM Workflow Automation</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="creds reveal d2">
-        <div class="cred">
-          <p class="eyebrow">Education</p>
-          <h3>University of Miami</h3>
-          <p class="sub">Miami Herbert Business School — B.B.A. Finance, Minor in Mathematics · Cum Laude · GPA 3.79</p>
-          <div class="accolades"><span>Provost's Honor Roll</span><span>Dean's List</span></div>
-        </div>
-        <div class="cred">
-          <p class="eyebrow">Certification</p>
-          <h3>Wall Street Prep (WSP)</h3>
-          <p class="sub">Financial Modeling Certification</p>
-          <div class="accolades"><span>LBO</span><span>DCF</span><span>M&amp;A</span><span>Comps</span><span>Precedents</span><span>Three Statement</span><span>Excel VBA</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== PASSIONS ===== -->
-  <section id="passions" aria-labelledby="pass-h">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <p class="eyebrow">What Drives Me</p>
-        <h2 id="pass-h">Three convictions, <span class="ital">one direction.</span></h2>
-      </div>
-      <div class="passion-grid">
-        <div class="passion reveal d1">
-          <div class="pn">01</div>
-          <h3>Artificial Intelligence</h3>
-          <p>AI will fundamentally reshape finance — from deal sourcing and due diligence to portfolio construction and risk management. Actively building tools and workflows that put AI at the center of the investment process.</p>
-        </div>
-        <div class="passion reveal d2">
-          <div class="pn">02</div>
-          <h3>Buying Companies</h3>
-          <p>Finding an undervalued business, structuring a deal, and creating value through operational improvement and strategic growth. M&amp;A and acquisitions are where I want to build my career.</p>
-        </div>
-        <div class="passion reveal d3">
-          <div class="pn">03</div>
-          <h3>Private Markets</h3>
-          <p>PE, VC, private credit, co-investments — the corners of the market where analysis actually moves the outcome. My edge is the tooling: I build the systems that source and pressure-test deals faster than a traditional analyst, so I can screen more and conviction-check harder before capital is committed.</p>
-        </div>
       </div>
     </div>
   </section>
@@ -1048,84 +484,47 @@
   <section id="contact" aria-labelledby="contact-h">
     <div class="wrap">
       <div class="sec-head reveal">
-        <p class="eyebrow">Contact</p>
-        <h2 id="contact-h">Let's <span class="ital">connect.</span></h2>
-        <p class="lead">I'm always interested in discussing deals, AI applications in finance, or new opportunities.</p>
+        <span class="label">Contact</span>
+        <h2 id="contact-h">Let's <em>connect.</em></h2>
+        <p class="hero-sub">I'm always interested in discussing deals, AI applications in finance, or new opportunities.</p>
       </div>
-      <div class="contact-grid reveal d1">
-        <div class="contact-card">
-          <div class="cc-lbl">Email</div>
-          <a href="mailto:josephd.mcdevitt@gmail.com"><span class="cc-val">josephd.mcdevitt@gmail.com <span class="arrow">↗</span></span></a>
-        </div>
-        <div class="contact-card">
-          <div class="cc-lbl">LinkedIn</div>
-          <a href="https://www.linkedin.com/in/joseph-d-mcdevitt" target="_blank" rel="noopener"><span class="cc-val">joseph-d-mcdevitt <span class="arrow">↗</span></span></a>
-        </div>
-        <div class="contact-card">
-          <div class="cc-lbl">Phone</div>
-          <a href="tel:8475047993"><span class="cc-val">847-504-7993 <span class="arrow">↗</span></span></a>
-        </div>
-        <div class="contact-card">
-          <div class="cc-lbl">GitHub</div>
-          <a href="https://github.com/josephdmcdevitt-svg" target="_blank" rel="noopener"><span class="cc-val">josephdmcdevitt-svg <span class="arrow">↗</span></span></a>
-        </div>
+      <div class="contact-list reveal d1">
+        <div class="contact-row"><span class="label">Email</span><a href="mailto:josephd.mcdevitt@gmail.com">josephd.mcdevitt@gmail.com</a></div>
+        <div class="contact-row"><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/joseph-d-mcdevitt" target="_blank" rel="noopener">joseph-d-mcdevitt</a></div>
+        <div class="contact-row"><span class="label">GitHub</span><a href="https://github.com/josephdmcdevitt-svg" target="_blank" rel="noopener">josephdmcdevitt-svg</a></div>
+        <div class="contact-row"><span class="label">Résumé</span><a href="/resume.pdf" download>Download PDF</a></div>
       </div>
-      <a href="/resume.pdf" download style="display:inline-block; margin-top:34px; font-family:var(--sans); font-size:13.5px; letter-spacing:.06em; text-transform:uppercase; font-weight:600; padding:16px 30px; border:1px solid rgba(251,248,241,.4); color:var(--paper);">Download résumé (PDF) ↗</a>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap foot-inner">
-    <div class="fl">Joseph McDevitt</div>
-    <div class="fr" style="display:flex; gap:20px; align-items:center; flex-wrap:wrap;">
-      <a href="https://github.com/josephdmcdevitt-svg" target="_blank" rel="noopener" style="color:inherit;">GitHub</a>
-      <a href="https://www.linkedin.com/in/joseph-d-mcdevitt" target="_blank" rel="noopener" style="color:inherit;">LinkedIn</a>
-      <a href="/resume.pdf" download style="color:inherit;">Résumé (PDF)</a>
-      <span>© 2026 Joseph McDevitt</span>
-    </div>
+    <div>Joseph McDevitt</div>
+    <div>© 2026</div>
   </div>
 </footer>
 
 <script>
 (function(){
   "use strict";
-
-  /* ---- page load reveal ---- */
-  window.addEventListener("load", function(){ document.body.classList.add("loaded"); });
-  // fallback in case load is slow
-  setTimeout(function(){ document.body.classList.add("loaded"); }, 1200);
-
-  /* ---- nav scrolled state ---- */
   var nav = document.getElementById("nav");
-  function onScroll(){
-    if(window.scrollY > 24){ nav.classList.add("scrolled"); }
-    else{ nav.classList.remove("scrolled"); }
-  }
-  window.addEventListener("scroll", onScroll, {passive:true});
-  onScroll();
+  function onScroll(){ nav.classList.toggle("scrolled", window.scrollY > 24); }
+  window.addEventListener("scroll", onScroll, {passive:true}); onScroll();
 
-  /* ---- mobile menu ---- */
   var menuBtn = document.getElementById("menuBtn");
   var mobileMenu = document.getElementById("mobileMenu");
-  function closeMenu(){
-    document.body.classList.remove("menu-open");
-    menuBtn.setAttribute("aria-expanded","false");
-  }
+  function closeMenu(){ document.body.classList.remove("menu-open"); menuBtn.setAttribute("aria-expanded","false"); }
   menuBtn.addEventListener("click", function(){
     var open = document.body.classList.toggle("menu-open");
     menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
   });
-  mobileMenu.querySelectorAll("a").forEach(function(a){
-    a.addEventListener("click", closeMenu);
-  });
-  document.addEventListener("keydown", function(e){
-    if(e.key === "Escape"){ closeMenu(); }
-  });
+  mobileMenu.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", closeMenu); });
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape"){ closeMenu(); } });
 
   /* ---- project tabs ---- */
   var tabs = document.querySelectorAll(".proj-tab");
-  var panels = document.querySelectorAll(".proj-panel");
+  var panels = document.querySelectorAll("[role='tabpanel']");
   tabs.forEach(function(tab){
     tab.addEventListener("click", function(){
       var id = tab.getAttribute("data-tab");
@@ -1133,11 +532,9 @@
       tab.classList.add("active"); tab.setAttribute("aria-selected","true");
       panels.forEach(function(p){
         var match = p.id === "panel-" + id;
-        p.classList.toggle("active", match);
-        if(match){ p.removeAttribute("hidden"); } else { p.setAttribute("hidden",""); }
+        if(match){ p.removeAttribute("hidden"); p.classList.add("in"); } else { p.setAttribute("hidden",""); }
       });
     });
-    // keyboard arrows
     tab.addEventListener("keydown", function(e){
       var arr = Array.prototype.slice.call(tabs);
       var i = arr.indexOf(tab);
@@ -1149,55 +546,32 @@
     });
   });
 
-  /* ---- deep-dive accordions ---- */
-  document.querySelectorAll(".dd-toggle").forEach(function(btn, i){
-    var ddBody = btn.closest(".deepdive").querySelector(".dd-body");
-    if(ddBody){ if(!ddBody.id){ ddBody.id = "dd-region-" + (i+1); } ddBody.setAttribute("role","region"); btn.setAttribute("aria-controls", ddBody.id); }
+  document.querySelectorAll(".details-toggle").forEach(function(btn, i){
+    var body = btn.nextElementSibling;
+    if(body){ if(!body.id){ body.id = "dd-region-" + (i+1); } body.setAttribute("role","region"); btn.setAttribute("aria-controls", body.id); }
     btn.addEventListener("click", function(){
-      var wrap = btn.closest(".deepdive");
-      var open = wrap.classList.toggle("open");
-      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      var open = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", open ? "false" : "true");
+      btn.querySelector(".sym").textContent = open ? "+" : "−";
     });
   });
 
-  /* ---- experience expand (guarded; all roles shown by default) ---- */
-  var expToggle = document.getElementById("expToggle");
-  if(expToggle){
-    var hiddenRoles = document.querySelectorAll(".tl-item.hidden-role");
-    expToggle.addEventListener("click", function(){
-      var expanded = expToggle.getAttribute("aria-expanded") === "true";
-      hiddenRoles.forEach(function(r){
-        if(expanded){ r.classList.add("hidden-role"); }
-        else{ r.classList.remove("hidden-role"); r.classList.add("in"); }
-      });
-      expToggle.setAttribute("aria-expanded", expanded ? "false" : "true");
-      expToggle.textContent = expanded ? "Show Full Résumé" : "Show Less";
-    });
-  }
-
-  /* ---- scroll reveal ---- */
   var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(en){
-      if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); }
-    });
+    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
   }, {threshold:0.12, rootMargin:"0px 0px -8% 0px"});
   document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
 
-  /* ---- active nav link on scroll ---- */
   var sections = document.querySelectorAll("main section[id]");
   var navLinks = document.querySelectorAll("nav.links a");
   var spy = new IntersectionObserver(function(entries){
     entries.forEach(function(en){
       if(en.isIntersecting){
         var id = en.target.id;
-        navLinks.forEach(function(l){
-          l.classList.toggle("active", l.getAttribute("href") === "#"+id);
-        });
+        navLinks.forEach(function(l){ l.classList.toggle("active", l.getAttribute("href") === "#"+id); });
       }
     });
   }, {threshold:0.4});
   sections.forEach(function(s){ spy.observe(s); });
-
 })();
 </script>
 </body>
